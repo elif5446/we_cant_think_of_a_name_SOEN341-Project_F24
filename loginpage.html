@@ -5,17 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="loginpage.css" />
     <script src="loginpage.js"></script>
-    <title>Peer Assesment</title>
+    <title>Peer Assessment</title>
   </head>
   <body>
     <header>
-      <div id="header"><h1 id="title">Peer Assesment Program</h1></div>
+      <div id="header">
+        <h1 id="title">Peer Assessment Program</h1>
+      </div>
     </header>
-    <form>
-      <label for="studentid">Student ID:</label>
-      <input type="text" id="studentid" name="studentid">
-      <label for="password">Password:</label>
-      <input type="text" id="password" name="password">
-    </form>
+
+    <main>
+      <section id="login-section">
+        <form id="login-form" action="#" method="POST">
+          <div class="form-group">
+            <label for="studentid">Student ID:</label>
+            <input type="text" id="studentid" name="studentid" required />
+          </div>
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required />
+          </div>
+          <div class="form-group">
+            <button type="submit">Login</button>
+          </div>
+        </form>
+      </section>
+    </main>
   </body>
 </html>
+√
