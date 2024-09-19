@@ -1,5 +1,5 @@
 *{
-    font-family: 'Times New Roman', Times, serif;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-align:center;
 }
 
@@ -14,7 +14,7 @@ body {
   }
   
   header {
-    background-color: #98cec0;;
+    background-color: #98c;;
     padding: 40;
     text-align: center;
     position: relative; 
