@@ -1,5 +1,5 @@
 *{
-    font-family: 'Times New Roman', Times, serif;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-align:center;
 }
 
@@ -17,7 +17,8 @@ body {
 
 
   body::before {
-    background-image: url('images/student.jpg');
+    content: ""; 
+    background-image: url('./images/student.jpg');
     position:absolute;
     top:0;
     left:0;
@@ -34,7 +35,7 @@ body {
   }
   
   header {
-    background-color: #98cec0;;
+    background-color: rgb(225, 225, 222);;
     padding: 40;
     text-align: center;
     position: relative; 
@@ -46,7 +47,7 @@ body {
   
   #title {
     margin: 0;
-    color: #f9f5f2;
+    color: #e5724c;
   }
   
   main {
@@ -58,12 +59,13 @@ body {
   }
   
   #login-section {
-    background-color: #f9f5f2;
     padding: 20px;
     width:400px;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(254, 167, 4, 0.1);
     z-index:1;
+    background-color:bisque;
+
   }
   
   #login-form {
@@ -96,6 +98,7 @@ body {
   }
   
   button:hover {
-    background-color: rgb(3, 144, 19);
+    background-color: red;
+    color: white;
   }
   
