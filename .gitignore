@@ -1,0 +1,13 @@
+admin/
+resources/
+temp/
+published_content/
+private_content/
+node_modules/
+.commitmessage
+.vscode/
+.env
+.venv
+*.bak
+*.swp
+*.tmp
