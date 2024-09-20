@@ -1,38 +1,18 @@
 import React from 'react';
-import styled from 'styled-components';
+import '../styles/Main.css';
 
-const MainContainer = styled.section`
-    background-color:#f9f5f2;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-    `;
-
-const Title = styled.h1`
-  font-size: 4rem;
-  font-weight: bold;
-  margin: 0;
-`;
-
-const Button = styled.button`
-  background-color: #fff700;
-  border: none;
-  padding: 10px 20px;
-  margin-top: 20px;
-  font-size: 1rem;
-  cursor: pointer;
-`;
 
 const Main = () => (
-  <MainContainer>
-    <Title>WELCOME TO THE PEER ASSESEMENT PROGRAM</Title>
-    <Button>INSTRUCTOR LOGIN</Button>
-    <Button>STUDENT LOGIN</Button>
-  </MainContainer>
+    <section className="main-container">
+    <div className = "title-container">
+        <h2 className="title">WELCOME TO THE...</h2>
+        <h1 className = "maintitle">PEER ASSESSMENT PROGRAM</h1>
+    </div>
+    <div className = "button-container">
+        <button className="button">INSTRUCTOR LOGIN</button>
+        <button className="button">STUDENT LOGIN</button>
+    </div>
+  </section>
 );
 
 export default Main;
