@@ -68,12 +68,11 @@ input[type = "text"]:hover, input[type="password"]:hover {
 
 
 
-button {
+button.login, button.return {
     border: none;
     padding: 15px 30px;
     margin-top: 20px;
     font-size: 1rem;
-    margin-right:40px;
     cursor: pointer;
     border-radius:8px;
     background: linear-gradient(135deg, #fdbbb3, #ff7171);
@@ -81,7 +80,7 @@ button {
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
   }
 
-button:hover {
+button:hover.login, button:hover.return {
     background: linear-gradient(135deg, #fd8f81, #ff0000);
     transform: translateY(-3px); 
   
@@ -99,7 +98,7 @@ button:hover {
 }
 .return {
     margin-bottom: 300px;
-    margin-left: 340px;
+    margin-left: 310px;
     background: linear-gradient(135deg, #ffd6d2, #fdbbb3);
     transition: all 0.3s ease;
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);

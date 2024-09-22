@@ -23,7 +23,7 @@ const InstructorLogin = () => (
                 </div>
                 <div className="form-group">
                 <Link to = "/instructor-page">
-                    <button type="submit">Login</button>
+                    <button type="submit" className = "login">Login</button>
                 </Link></div>
                 <Link to = "/">
                 <button className = "return">

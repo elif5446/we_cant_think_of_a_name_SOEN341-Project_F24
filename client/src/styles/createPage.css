@@ -63,28 +63,24 @@ input[type = "text"], input[type="password"] {
 
 input[type="text"][name="studentID"]:hover, 
 input[type="password"][name="pwd"]:hover {
-    background: linear-gradient(135deg, #ffdf61, #ffe874);
+    background: linear-gradient(135deg, #cccccc, #969696);
     transform: translateY(-3px); 
 }
 
-
-
-
-button {
+button.signin, button.returnHome {
     border: none;
     padding: 15px 30px;
     margin-top: 20px;
-    margin-left:50px;
     font-size: 1rem;
     cursor: pointer;
     border-radius:8px;
-    background: linear-gradient(135deg, #ffdf61, #ffe874);
+    background: linear-gradient(135deg, #969595, #d3d3d3);
     transition: all 0.3s ease;
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
   }
 
-button:hover {
-    background: linear-gradient(135deg, #ffdd33, #ffcc00);
+button:hover.signin {
+    background: linear-gradient(135deg, #cfcece, #838282);
     transform: translateY(-3px); 
   
   
@@ -102,8 +98,8 @@ button:hover {
 }
 .returnHome {
     margin-bottom: 300px;
-    margin-left: 340px;
-    background: linear-gradient(135deg, #f3efdc, #fff8d5);
+    margin-left: 310px;
+    background: linear-gradient(135deg, #ededed, #d3d3d3);
     transition: all 0.3s ease;
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
 }
@@ -111,18 +107,18 @@ button:hover {
 
 
 
-.maintitle {
+.main_title {
     font-size: 3rem;
     font-weight: bold;
     margin-top: 30px;
     color: #333;
     text-align: center;
     text-shadow: 
-      1px 1px 0px #ff7171,  
-      2px 2px 0px #ff7171,
-      3px 3px 0px #ff7171,
-      4px 4px 0px #ff7171,
-      5px 5px 0px #ff7171,
+      1px 1px 0px #a9a9a9,  
+      2px 2px 0px #a9a9a9,
+      3px 3px 0px #a9a9a9,
+      4px 4px 0px #a9a9a9,
+      5px 5px 0px #a9a9a9,
       6px 6px 5px rgba(0, 0, 0, 0.6), 
       7px 7px 10px rgba(0, 0, 0, 0.4),
       8px 8px 15px rgba(0, 0, 0, 0.2); 

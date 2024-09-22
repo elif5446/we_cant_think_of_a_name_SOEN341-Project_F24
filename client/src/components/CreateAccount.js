@@ -6,10 +6,10 @@ const CreateAccount = () => (
     
 <div className="create-login-page">
     <div className="create-login-container">
-        <img src="/images/newuser.svg" alt="Sign Up Icon" className="newuser-icon" />
+        <img src="/images/loginimg.svg" alt="Sign Up Icon" className="newuser-icon" />
         <div id = "login-section"><br></br>
-        <h1 className="maintitle">CREATE AN</h1>
-        <h1 className="maintitle">ACCOUNT</h1>
+        <h1 className="main_title">CREATE AN</h1>
+        <h1 className="main_title">ACCOUNT</h1>
 
 
             <form id="form-group">
@@ -21,9 +21,9 @@ const CreateAccount = () => (
                     <label htmlFor="password">Password:</label><br></br>
                     <input type="password" id="password" name="pwd" required />
                 </div>
-                <div className="formgroup"><br></br>
+                <div className="formgroup">
                 <Link to = "/">
-                    <button type="submit">Login</button>
+                    <button type="submit" className = "signin">Login</button>
 
                 </Link>
                 </div>

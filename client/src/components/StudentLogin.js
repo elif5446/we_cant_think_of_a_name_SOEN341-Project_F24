@@ -22,7 +22,7 @@ const StudentLogin = () => (
                     <label htmlFor="password">Password:</label><br></br>
                     <input type="password" id="password" name="PWD" required />
                 </div>
-                <div className="form-group"><br></br>
+                <div className="form-group">
                 <Link to = "/student-page">
                     <button className="loginbutton">Login</button>
                 </Link>
