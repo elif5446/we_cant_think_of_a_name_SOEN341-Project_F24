@@ -17,15 +17,14 @@ body {
 }
 .title-container {
     margin-bottom:30px;
-    padding-top:10px;
+    /* padding-top:10px; */
 }
 
 
 .maintitle {
     font-size: 4.5rem;
     font-weight: bold;
-    margin-top: 50px;
-    
+    margin-top: 30px;
     color: #111;
     text-shadow: 
       1px 1px 0px #ffcc00,  
@@ -47,18 +46,26 @@ body {
     color: #333;
 }  
 
+.stingers {
+    width:200px;
+    height:250px;
+    filter: drop-shadow(5px 5px 5px #222); 
 
+
+}
 .button-container {
     display: flex;
     gap: 25px; 
-    margin-top: 250px;
+    margin-top: 30px;
 }
 .button {
     background: linear-gradient(135deg, #ffcc00, #ffdd33);
     border: none;
     padding: 15px 30px;
-    margin-top: 20px;
     font-size: 1rem;
+    display:flex;
+    align-items: center;
+    text-decoration: none;
     cursor: pointer;
     border-radius:8px;
     transition: all 0.3s ease;
@@ -73,4 +80,10 @@ body {
     outline: none;
     box-shadow: 0 0 10px 2px rgba(255, 199, 0, 0.6);
   }
+
+.student-avatar, .instructor-avatar, .unknown-avatar {
+    width:30px;
+    height:auto;
+    margin-right:20px;
+}
 
