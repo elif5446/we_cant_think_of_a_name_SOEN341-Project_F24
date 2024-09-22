@@ -1,4 +1,3 @@
-import Header from "../components/Header"; 
 import "../styles/Login.css"
 
 function Login() {
