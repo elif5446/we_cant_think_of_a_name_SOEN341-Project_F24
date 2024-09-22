@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/InstructorLogin.css'; 
 
 const InstructorLogin = () => (
     
 <div className="instructor-login-page">
     <div className="instructor-login-container">
-        <img src="/images/loginStudent.svg" alt="Sign Up Icon" className="student-icon" />
+        <img src="/images/instructorlogin.svg" alt="Sign Up Icon" className="instructor-icon" />
         <div id = "login-section"><br></br>
         <h1 className="maintitle">INSTRUCTOR</h1>
         <h1 className="maintitle">LOGIN</h1>
@@ -21,7 +22,10 @@ const InstructorLogin = () => (
                     <input type="password" id="password" name="password" required />
                 </div>
                 <div className="form-group"><br></br>
+                <Link to = "/instructor-page">
                     <button type="submit">Login</button>
+
+                </Link>
                 </div>
             </form>
          </div>  

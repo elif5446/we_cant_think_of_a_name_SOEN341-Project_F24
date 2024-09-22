@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Poppins', sans-serif;
   }
 .main-container {
     background-color:#f9f5f2;
@@ -10,7 +10,7 @@ body {
     justify-content:flex-start;
     align-items:center;
     text-align: center;
-    padding: 20px;
+    padding: 50 0px;
     position: relative;
     overflow:hidden;
 
@@ -22,9 +22,10 @@ body {
 
 
 .maintitle {
-    font-size: 4rem;
+    font-size: 4.5rem;
     font-weight: bold;
     margin-top: 50px;
+    
     color: #111;
     text-shadow: 
       1px 1px 0px #ffcc00,  

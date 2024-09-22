@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/StudentLogin.css'; 
 
 const StudentLogin = () => (
@@ -21,7 +22,9 @@ const StudentLogin = () => (
                     <input type="password" id="password" name="password" required />
                 </div>
                 <div className="form-group"><br></br>
-                    <button type="submit">Login</button>
+                <Link to = "/student-page">
+                    <button className="button">Login</button>
+                </Link>
                 </div>
             </form>
          </div>  
