@@ -27,13 +27,14 @@ const StudentMenu = () => (
     <section className='main-container'>
         <nav>
             <ul>
-            <li><Link to='/student-menu'>Menu</Link></li>
-            <li><Link to='/student-courses'>My Courses</Link></li>
-            <li><Link to='/student-profile'>My Profile</Link></li>
+                <li></li>
+                <li><Link to='/student-menu'>Menu</Link></li>
+                <li><Link to='/student-courses'>My Courses</Link></li>
+                <div id='profile'><li><Link to='/student-profile'>My Profile</Link></li></div> 
             </ul>
         </nav>
         <div>
-
+        
         </div>
     </section>
     </>
