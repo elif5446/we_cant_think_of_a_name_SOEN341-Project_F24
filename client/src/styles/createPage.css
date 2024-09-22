@@ -3,14 +3,14 @@
     font-size: 100%;
 
 }
-.instructor-login-container {
+.create-login-container {
     display: flex;
     align-items: center;
     padding: 20px;
     gap:100px;
     
   }
-.instructor-login-page {
+.create-login-page {
     display:flex;
     justify-content:flex-end;
     background-color:#f9f5f2;
@@ -41,7 +41,7 @@
     flex-direction: column;
 }
 
-.form-group {
+.formgroup {
     margin-bottom: 15px;
 }
 
@@ -61,10 +61,12 @@ input[type = "text"], input[type="password"] {
     box-sizing: border-box;
 }
 
-input[type = "text"]:hover, input[type="password"]:hover {
-    background: linear-gradient(135deg, #fdd6d2, #ff9f9f);
+input[type="text"][name="studentID"]:hover, 
+input[type="password"][name="pwd"]:hover {
+    background: linear-gradient(135deg, #ffdf61, #ffe874);
     transform: translateY(-3px); 
 }
+
 
 
 
@@ -72,18 +74,19 @@ button {
     border: none;
     padding: 15px 30px;
     margin-top: 20px;
+    margin-left:50px;
     font-size: 1rem;
-    margin-right:40px;
     cursor: pointer;
     border-radius:8px;
-    background: linear-gradient(135deg, #fdbbb3, #ff7171);
+    background: linear-gradient(135deg, #ffdf61, #ffe874);
     transition: all 0.3s ease;
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
   }
 
 button:hover {
-    background: linear-gradient(135deg, #fd8f81, #ff0000);
+    background: linear-gradient(135deg, #ffdd33, #ffcc00);
     transform: translateY(-3px); 
+  
   
   }
 .instructor-icon, .newuser-icon {
@@ -93,14 +96,14 @@ button:hover {
     margin-left:25px;
   }
 
-.home-avatar {
+.homeavatar {
     width:30px;
     height:auto;
 }
-.return {
+.returnHome {
     margin-bottom: 300px;
     margin-left: 340px;
-    background: linear-gradient(135deg, #ffd6d2, #fdbbb3);
+    background: linear-gradient(135deg, #f3efdc, #fff8d5);
     transition: all 0.3s ease;
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
 }
@@ -108,7 +111,7 @@ button:hover {
 
 
 
-.title {
+.maintitle {
     font-size: 3rem;
     font-weight: bold;
     margin-top: 30px;

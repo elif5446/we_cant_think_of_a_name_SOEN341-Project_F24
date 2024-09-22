@@ -6,6 +6,7 @@ import StudentLogin from './components/StudentLogin';
 import InstructorLogin from './components/InstructorLogin';
 import StudentPage from './components/StudentPage';
 import InstructorPage from './components/InstructorPage';
+import CreateAccount from './components/CreateAccount';
 
 function App() {
   return (
@@ -16,6 +17,8 @@ function App() {
         <Route path = "/instructor-login" element = {<InstructorLogin />} />
         <Route path = "/student-page" element = {<StudentPage />} />
         <Route path = "/instructor-page" element = {<InstructorPage />} />
+        <Route path = "/newuser-login" element = {<CreateAccount />} />
+
 
 
 

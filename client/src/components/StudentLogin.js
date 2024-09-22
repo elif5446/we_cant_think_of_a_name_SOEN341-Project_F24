@@ -16,17 +16,22 @@ const StudentLogin = () => (
             <form id="form-group">
                 <div className = "form-group"><br></br>
                     <label htmlFor="studentid">Student ID:</label><br></br>
-                    <input type="text" id="studentid" name="studentid" required />
+                    <input type="text" id="studentid" name="ID" required />
                 </div>
                 <div className="form-group">
                     <label htmlFor="password">Password:</label><br></br>
-                    <input type="password" id="password" name="password" required />
+                    <input type="password" id="password" name="PWD" required />
                 </div>
                 <div className="form-group"><br></br>
                 <Link to = "/student-page">
-                    <button className="button">Login</button>
+                    <button className="loginbutton">Login</button>
                 </Link>
                 </div>
+                <Link to = "/">
+                <button className = "returnH">
+                <img src="/images/home.svg" alt="Home Icon" className="home-avatar" />
+                </button>
+                </Link>
             </form>
          </div>  
     </div>
