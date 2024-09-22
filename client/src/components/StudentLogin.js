@@ -22,7 +22,7 @@ const StudentLogin = () => (
                     <input type="password" id="password" name="password" required />
                 </div>
                 <div className="form-group"><br></br>
-                <Link to = "/student-page">
+                <Link to = "/student-menu">
                     <button className="button">Login</button>
                 </Link>
                 </div>
