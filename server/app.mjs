@@ -1,18 +1,19 @@
-import express from "express";
-import apiRoutes from "./routes/api.mjs"; // Import API routes
-import dotenv from "dotenv";
+// Import Express (your server library)
+import express from 'express';
 
-// Initialize environment variables
-dotenv.config();
+// Import the API routes you just created
+import apiRoutes from './routes/api.mjs';
 
+// Create an instance of your server
 const app = express();
-app.use(express.json()); // Parse JSON
 
-// Link your API routes
-app.use("/api", apiRoutes);
+// Tell the server to use JSON data (this helps the server read information sent to it)
+app.use(express.json());
 
-// Start server
-const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+// Tell the server to use the routes defined in 'api.mjs' for any request that starts with '/api'
+app.use('/api', apiRoutes);
+
+// Tell the server to listen for requests on a specific port (usually 3000)
+app.listen(3000, () => {
+    console.log('Server running on http://localhost:3000');
 });

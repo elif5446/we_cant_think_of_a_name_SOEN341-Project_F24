@@ -6,11 +6,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cd server && npm install && cd ../client && npm install && npm build",
-    "run": "npm start"
+    "start:server": "cd server && npm start",
+    "start:client": "cd client && npm start",
+    "start:both": "concurrently \"npm run start:server\" \"npm run start:client\"",
+    "run": "npm run start:both"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "concurrently": "^7.6.0",
     "dotenv": "^16.4.5",
     "express": "^4.21.0"
   }
