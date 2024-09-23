@@ -4,41 +4,19 @@ import '../styles/StudentMenu.css';
 import { useState, useEffect } from 'react';
 
 const StudentMenu = () => (
-    // const [courses, setCourses] = useState([])
-
-    // useEffect(() => {
-    //     const courseList = [
-    //         {id: 1, name: "MATH205", image: "", prof: "Hendrik Tebeng", class: "MB2.210"},
-    //         {id: 1, name: "MATH205", image: "", prof: "Hendrik Tebeng", class: "MB2.210"},
-    //         {id: 1, name: "MATH205", image: "", prof: "Hendrik Tebeng", class: "MB2.210"},
-    //         {id: 1, name: "MATH205", image: "", prof: "Hendrik Tebeng", class: "MB2.210"},
-    //         {id: 1, name: "MATH205", image: "", prof: "Hendrik Tebeng", class: "MB2.210"},
-    //         {id: 1, name: "MATH205", image: "", prof: "Hendrik Tebeng", class: "MB2.210"},
-    //         {id: 1, name: "MATH205", image: "", prof: "Hendrik Tebeng", class: "MB2.210"},
-    //         {id: 1, name: "MATH205", image: "", prof: "Hendrik Tebeng", class: "MB2.210"},
-    //     ]
-
-    //     setCourses(courseList)
-
-    //     console.log(courses)
-    //   }, [courses]);
-
-    <>
     <section className='main-container'>
         <nav>
             <ul>
-                <li></li>
+                <div><img src="/images/stingers.png" alt="StingersIcon" className="stingers" /></div>
                 <li><Link to='/student-menu'>Menu</Link></li>
                 <li><Link to='/student-courses'>My Courses</Link></li>
                 <div id='profile'><li><Link to='/student-profile'>My Profile</Link></li></div> 
             </ul>
         </nav>
         <div>
-        
+            <h3 className='title'>PEER ASSESSMENT PROGRAM</h3>
         </div>
     </section>
-    </>
-
 );
 
 export default StudentMenu;

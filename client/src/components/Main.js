@@ -10,13 +10,28 @@ const Main = () => (
         <h1 className = "maintitle">PEER ASSESSMENT</h1>
         <h1 className = "maintitle">PROGRAM</h1>
     </div>
+    <img src="/images/stingers.png" alt="StingersIcon" className="stingers" />
+
+
 
     <div className = "button-container">
     <Link to = "/instructor-login">
-        <button className="button">INSTRUCTOR LOGIN</button>
+
+        <button className="button">
+        <img src="/images/teacherAvatar.svg" alt="Sign Up Icon" className="instructor-avatar" />
+
+            INSTRUCTOR LOGIN</button>
     </Link>
     <Link to = "/student-login">
-        <button className="button">STUDENT LOGIN</button>
+        
+        <button className="button">
+        <img src="/images/studentAvatar.svg" alt="Sign Up Icon" className="student-avatar" />
+            STUDENT LOGIN</button>
+    </Link>
+    <Link to = "/student-login">
+        <button className="button">
+        <img src="/images/newuser.png" alt="Sign Up Icon" className="unknown-avatar" />
+            CREATE AN ACCOUNT</button>
     </Link>
     </div>
   </section>

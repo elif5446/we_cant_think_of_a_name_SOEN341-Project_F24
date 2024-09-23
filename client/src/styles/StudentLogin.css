@@ -75,7 +75,7 @@ button {
     font-size: 1rem;
     cursor: pointer;
     border-radius:8px;
-    background: linear-gradient(135deg, #ffdd33, #ffcc00);
+    background: linear-gradient(135deg, #ffdf61, #ffe874);
     transition: all 0.3s ease;
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
   }
