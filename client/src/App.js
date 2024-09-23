@@ -1,24 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; 
+import LoginPage from './LoginPage';  // Import LoginPage (exact spelling)
+import Dashboard from './Dashboard'; 
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Welcome to My App</h1>
+      <p>This is the custom content that should replace the default template.</p>
+
+      {/* Set up the Router and Routes */}
+      <Router>
+        <Routes>
+          <Route path="/" element={<LoginPage />} />  {/* Main login page */}
+          <Route path="/dashboard" element={<Dashboard />} />  {/* Dashboard page */}
+        </Routes>
+      </Router>
+      {/* Without this part, everything works fine */}
     </div>
   );
 }
