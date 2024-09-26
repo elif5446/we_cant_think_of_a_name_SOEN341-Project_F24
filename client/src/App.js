@@ -5,6 +5,7 @@ import Main from './components/Main';
 import StudentLogin from './components/StudentLogin';
 import InstructorLogin from './components/InstructorLogin';
 import InstructorPage from './components/InstructorPage';
+import CreateAccount from './components/CreateAccount';
 import StudentMenu from './components/studentMenu';
 import StudentCourses from './components/StudentCourses';
 import StudentProfile from './components/StudentProfile';
@@ -20,6 +21,7 @@ function App() {
         <Route path = "/createPage-login" element = {<CreateAccount />} />
         <Route path = "/student-menu" element = {<StudentMenu />} />
         <Route path = "/instructor-page" element = {<InstructorPage />} />
+        <Route path = "/newuser-login" element = {<CreateAccount />} />
         <Route path = "/student-courses" element = {<StudentCourses/>} />
         <Route path = "/student-profile" element = {<StudentProfile/>} />
 

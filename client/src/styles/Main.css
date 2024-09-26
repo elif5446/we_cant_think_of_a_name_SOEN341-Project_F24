@@ -1,6 +1,7 @@
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
+    text-decoration:none;
   }
 .main-container {
     background-color:#f9f5f2;
@@ -24,10 +25,7 @@ body {
     width:300px;
     height:400px;
     filter: drop-shadow(5px 5px 5px #222); 
-
-
 }
-
 
 .Maintitle {
     font-size: 3.5rem;
@@ -46,7 +44,7 @@ body {
       line-height:35%;
 
 }  
-.title {
+.subtitle {
     font-size: 2rem;
     font-weight: bold;
     margin-top:70px;
@@ -57,7 +55,11 @@ body {
 .button-container {
     display: flex;
     gap: 25px; 
+<<<<<<< HEAD
+    margin-top: 20px;
+=======
     margin-top: 80px;
+>>>>>>> 3fbfc70a73f3959dc2f3fefbcb1481893ab7ce6f
 }
 .button {
     background: linear-gradient(135deg, #ffcc00, #ffdd33);

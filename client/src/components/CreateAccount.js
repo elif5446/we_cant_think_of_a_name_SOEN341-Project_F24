@@ -24,6 +24,16 @@ const CreateAccount = () => (
                 <div className="formgroup">
                 <Link to = "/">
                     <button type="submit" className = "signin">Login</button>
+<<<<<<< HEAD
+
+                </Link>
+                </div>
+                <Link to = "/">
+                <button className = "returnHome">
+                <img src="/images/home.svg" alt="Home Icon" className="homeavatar" />
+                </button>
+                </Link>
+=======
                 </Link>
                 </div>
                 {/* <Link to = "/">
@@ -31,6 +41,7 @@ const CreateAccount = () => (
                 <img src="/images/home.svg" alt="Home Icon" className="homeavatar" />
                 </button>
                 </Link> */}
+>>>>>>> 3fbfc70a73f3959dc2f3fefbcb1481893ab7ce6f
             </form>
          </div>  
     </div>
