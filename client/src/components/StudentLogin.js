@@ -25,6 +25,9 @@ const StudentLogin = () => (
                 <div className="form-group">
                 <Link to = "/student-page">
                     <button className="loginbutton">Login</button>
+                <div className="form-group"><br></br>
+                <Link to = "/student-menu">
+                    <button className="button">Login</button>
                 </Link>
                 </div>
                 <Link to = "/">
