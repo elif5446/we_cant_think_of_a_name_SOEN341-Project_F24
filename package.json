@@ -6,15 +6,17 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cd server && npm install && cd ../client && npm install && npm build",
-    "run": "npm start"
+    "start:server": "cd server && npm start",
+    "start:client": "cd client && npm start",
+    "start:both": "concurrently \"npm run start:server\" \"npm run start:client\"",
+    "run": "npm run start:both"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "styled-components": "^6.1.13",
-    "express": "^4.21.0"
-  },
-  "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+    "bcryptjs": "^2.4.3",
+    "express": "^4.21.0",
+    "express-session": "^1.18.0",
+    "jsonwebtoken": "^9.0.2"
   }
 }
