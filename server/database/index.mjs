@@ -1,12 +1,68 @@
 import dotenv from "dotenv"
 import mongoose from "mongoose"
-import {readline} from "readline-sync"
-import {bcrypt} from "bcryptjs"
+import { readline } from "readline-sync"
+import { bcrypt } from "bcryptjs"
+import { userModel } from "./models/user.mjs"
 
 // require('dotenv').config();
 // const mongoose = require('mongoose');
 // const readline = require('readline-sync');
 // const bcrypt = require('bcryptjs');
+
+dotenv.config()
+dbName = "test"
+let instance
+
+class Database {
+    constructor() {
+        if (!instance) {
+            instance = this
+            this.url = process.env.ATLAS_URI
+            this.UserModel = userModel
+        }
+        return instance
+    }
+
+    async connect() {
+        try {
+            mongoose.set('strictQuery', false)
+            const options = {
+                dbName: dbName
+            }
+            await mongoose.connect(instance.url, options)
+        } catch (e) {
+            throw 'Error trying to connect: ' + e
+        }
+    }
+
+    async createUser(email, firstname, lastname, password, usertype) {
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password, salt);
+
+        const user = new this.UserModel({
+            email: email,
+            firstname: firstname,
+            lastname: lastname,
+            password: hashedPassword,
+            usertype: usertype.toLowerCase()
+        })
+
+        try {
+            user.save()
+          } catch (e) {
+            throw 'Error trying to save ' + e
+          }      
+    }
+
+    async getUser(email, password) {
+        let user = await this.UserModel.findOne({email: email})
+        if (user.password === password) {
+            return user
+        } else {
+            return {}
+        }
+    }
+}
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI, {
@@ -20,33 +76,6 @@ mongoose.connect(process.env.MONGODB_URI, {
     })
     .catch(err => console.error('MongoDB Connection Error:', err));
 
-// Define your User schema
-const UserSchema = new mongoose.Schema({
-    email: {
-        type: String,
-        required: true,
-        unique: true,
-    },
-    firstname: {
-        type: String,
-        required: true,
-    },
-    lastname: {
-        type: String,
-        required: true,
-    },
-    password: {
-        type: String,
-        required: true,
-    },
-    usertype: {
-        type: String,
-        enum: ['student', 'instructor'],
-        default: 'student',
-    },
-});
-
-const User = mongoose.model('User', UserSchema);
 
 // Main menu function
 function mainMenu() {
