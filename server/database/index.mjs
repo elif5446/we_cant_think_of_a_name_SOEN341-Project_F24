@@ -1,9 +1,12 @@
-// index.js
+import dotenv from "dotenv"
+import mongoose from "mongoose"
+import {readline} from "readline-sync"
+import {bcrypt} from "bcryptjs"
 
-require('dotenv').config();
-const mongoose = require('mongoose');
-const readline = require('readline-sync');
-const bcrypt = require('bcryptjs');
+// require('dotenv').config();
+// const mongoose = require('mongoose');
+// const readline = require('readline-sync');
+// const bcrypt = require('bcryptjs');
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI, {
