@@ -14,8 +14,7 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.2",
     "react-scripts": "5.0.1",
-    "readline-sync": "^1.4.10",
-    "web-vitals": "^2.1.4"
+    "readline-sync": "^1.4.10"
   },
   "scripts": {
     "start": "node index.js",
@@ -40,5 +39,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "web-vitals": "^4.2.3"
   }
 }
