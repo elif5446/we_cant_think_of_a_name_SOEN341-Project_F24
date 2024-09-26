@@ -61,8 +61,10 @@ input[type = "text"], input[type="password"] {
     box-sizing: border-box;
 }
 
-input[type = "text"]:hover, input[type="password"]:hover {
-    background: linear-gradient(135deg, #ffdf61, #ffe874);
+input[type="text"][name="ID"]:hover, 
+input[type="password"][name="PWD"]:hover{
+
+   background: linear-gradient(135deg, #fff0b3, #ffe047);
     transform: translateY(-3px); 
 }
 
@@ -72,16 +74,17 @@ button {
     border: none;
     padding: 15px 30px;
     margin-top: 20px;
+    margin-left:30px;
     font-size: 1rem;
     cursor: pointer;
     border-radius:8px;
-    background: linear-gradient(135deg, #ffdf61, #ffe874);
+    background: linear-gradient(135deg, #fff0b3, #ffe047);
     transition: all 0.3s ease;
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
   }
 
 button:hover {
-    background: linear-gradient(135deg, #ffdd33, #ffcc00);
+    background: linear-gradient(135deg, #ffe047, #fff0b3);
     transform: translateY(-3px); 
   
   }
@@ -93,7 +96,7 @@ button:hover {
   }
 
 
-.maintitle {
+.main-title {
     font-size: 3rem;
     font-weight: bold;
     margin-top: 30px;

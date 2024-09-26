@@ -6,7 +6,7 @@ const InstructorLogin = () => (
     
 <div className="instructor-login-page">
     <div className="instructor-login-container">
-        <img src="/images/instructorlogin.svg" alt="Sign Up Icon" className="instructor-icon" />
+        <img src="/images/teacher.svg" alt="Sign Up Icon" className="instructor-icon" />
         <div id = "login-section"><br></br>
         <h1 className="maintitle">INSTRUCTOR</h1>
         <h1 className="maintitle">LOGIN</h1>
@@ -27,6 +27,11 @@ const InstructorLogin = () => (
 
                 </Link>
                 </div>
+                {/* <Link to = "/">
+                <button className = "returnH">
+                <img src="/images/home.svg" alt="Home Icon" className="homeavatar" />
+                </button>
+                </Link> */}
             </form>
          </div>  
     </div>

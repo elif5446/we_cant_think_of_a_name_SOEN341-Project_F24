@@ -3,14 +3,14 @@
     font-size: 100%;
 
 }
-.instructor-login-container {
+.create-login-container {
     display: flex;
     align-items: center;
     padding: 20px;
     gap:100px;
     
   }
-.instructor-login-page {
+.create-login-page {
     display:flex;
     justify-content:flex-end;
     background-color:#f9f5f2;
@@ -27,7 +27,7 @@
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
     background-color: #ffffff;
     width:400px;
-    height:500px;
+    height:550px;
     padding:20px;
     display:flex;
     flex-direction: column;
@@ -41,7 +41,7 @@
     flex-direction: column;
 }
 
-.form-group {
+.formgroup {
     margin-bottom: 15px;
 }
 
@@ -61,50 +61,65 @@ input[type = "text"], input[type="password"] {
     box-sizing: border-box;
 }
 
-input[type = "text"]:hover, input[type="password"]:hover {
-    background: linear-gradient(135deg, #fdb8b6, #ff716c);
+input[type="text"][name="studentID"]:hover, 
+input[type="password"][name="pwd"]:hover {
+    background: linear-gradient(135deg, #cccccc, #969696);
     transform: translateY(-3px); 
 }
 
-
-
-button {
+button.signin, button.returnHome {
     border: none;
     padding: 15px 30px;
     margin-top: 20px;
+    margin-left:30px;
     font-size: 1rem;
     cursor: pointer;
     border-radius:8px;
-    background: linear-gradient(135deg, #fdb8b6, #ff716c);
+    background: linear-gradient(135deg, #969595, #d3d3d3);
     transition: all 0.3s ease;
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
   }
 
-button:hover {
-    background: linear-gradient(135deg, #ff716c, #fdb8b6);
+button:hover.signin, button:hover.returnHome {
+    background: linear-gradient(135deg, #cfcece, #838282);
     transform: translateY(-3px); 
   
+  
   }
-.instructor-icon {
+.instructor-icon, .newuser-icon {
     width: 600px; 
     height: 500px;
     margin-top: 50px;
     margin-left:25px;
   }
 
+.homeavatar {
+    width:30px;
+    height:auto;
+}
+.returnHome {
+    margin-bottom: 300px;
+    margin-left: 200px;
+    background: linear-gradient(135deg, #ededed, #d3d3d3);
+    transition: all 0.3s ease;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
+}
 
-.maintitle {
+
+
+
+.main_title {
     font-size: 3rem;
     font-weight: bold;
     margin-top: 30px;
     color: #333;
     text-align: center;
     text-shadow: 
-      1px 1px 0px #ff716c,  
-      2px 2px 0px #ff716c,
-      3px 3px 0px #ff716c,
-      4px 4px 0px #ff716c,
-      5px 5px 0px #ff716c,
+      1px 1px 0px #a9a9a9,  
+      2px 2px 0px #a9a9a9,
+      3px 3px 0px #a9a9a9,
+      4px 4px 0px #a9a9a9,
+      5px 5px 0px #a9a9a9,
       6px 6px 5px rgba(0, 0, 0, 0.6), 
       7px 7px 10px rgba(0, 0, 0, 0.4),
       8px 8px 15px rgba(0, 0, 0, 0.2); 
