@@ -6,7 +6,7 @@ import '../styles/Main.css';
 const Main = () => (
     <section className="main-container">
     <div className = "title-container">
-        <h2 className="subtitle">WELCOME TO THE...</h2><br></br>
+        <h2 className="subtitle">WELCOME TO THE...</h2>
         <h1 className = "Maintitle">PEER ASSESSMENT</h1>
         <h1 className = "Maintitle">PROGRAM</h1>
     </div>

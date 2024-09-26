@@ -79,7 +79,7 @@ button.signin, button.returnHome {
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
   }
 
-button:hover.signin {
+button:hover.signin, button:hover.returnHome {
     background: linear-gradient(135deg, #cfcece, #838282);
     transform: translateY(-3px); 
   

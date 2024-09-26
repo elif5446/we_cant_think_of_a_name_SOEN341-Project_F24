@@ -1,6 +1,7 @@
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
+    text-decoration:none;
   }
 .main-container {
     background-color:#f9f5f2;
