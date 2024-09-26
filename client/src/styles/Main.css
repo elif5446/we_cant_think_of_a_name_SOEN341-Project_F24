@@ -20,9 +20,17 @@ body {
     /* padding-top:10px; */
 }
 
+.stingers {
+    width:300px;
+    height:400px;
+    filter: drop-shadow(5px 5px 5px #222); 
 
-.maintitle {
-    font-size: 4.5rem;
+
+}
+
+
+.Maintitle {
+    font-size: 3.5rem;
     font-weight: bold;
     margin-top: 30px;
     color: #111;
@@ -46,17 +54,10 @@ body {
     color: #333;
 }  
 
-.stingers {
-    width:200px;
-    height:250px;
-    filter: drop-shadow(5px 5px 5px #222); 
-
-
-}
 .button-container {
     display: flex;
     gap: 25px; 
-    margin-top: 30px;
+    margin-top: 80px;
 }
 .button {
     background: linear-gradient(135deg, #ffcc00, #ffdd33);
