@@ -22,16 +22,27 @@ const StudentLogin = () => (
                     <label htmlFor="password">Password:</label><br></br>
                     <input type="password" id="password" name="PWD" required />
                 </div>
+                <div className="form-group">
+                <Link to = "/student-page">
+                    <button className="loginbutton">Login</button>
                 <div className="form-group"><br></br>
                 <Link to = "/student-menu">
                     <button className="button">Login</button>
                 </Link>
                 </div>
+<<<<<<< HEAD
+                <Link to = "/">
+                <button className = "returnH">
+                <img src="/images/home.svg" alt="Home Icon" className="home-avatar" />
+                </button>
+                </Link>
+=======
                 {/* <Link to = "/">
                 <button className = "returnHome">
                 <img src="/images/home.svg" alt="Home Icon" className="homeavatar" />
                 </button>
                 </Link> */}
+>>>>>>> 3fbfc70a73f3959dc2f3fefbcb1481893ab7ce6f
             </form>
          </div>  
     </div>

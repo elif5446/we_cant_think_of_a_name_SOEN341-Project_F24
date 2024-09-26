@@ -1,6 +1,7 @@
 *{
     font-family: 'Poppins', sans-serif;
     font-size: 100%;
+    
 
 }
 .student-login-container {
@@ -8,6 +9,7 @@
     align-items: center;
     padding: 20px;
     gap:100px;
+
     
   }
 .student-login-page {
@@ -22,12 +24,14 @@
 }
 
 
+
+
 #login-section {
     border-radius: 8px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
     background-color: #ffffff;
     width:400px;
-    height:500px;
+    height:550px;
     padding:20px;
     display:flex;
     flex-direction: column;
@@ -63,14 +67,13 @@ input[type = "text"], input[type="password"] {
 
 input[type="text"][name="ID"]:hover, 
 input[type="password"][name="PWD"]:hover{
-
    background: linear-gradient(135deg, #fff0b3, #ffe047);
     transform: translateY(-3px); 
 }
 
 
 
-button {
+button.loginbutton, button.returnH{
     border: none;
     padding: 15px 30px;
     margin-top: 20px;
@@ -94,6 +97,17 @@ button:hover {
     margin-top: 110px;
     margin-left:25px;
   }
+.home-avatar {
+    width:30px;
+    height:auto;
+}
+.returnH {
+    margin-bottom: 400px;
+    margin-left: 310px;
+    background: linear-gradient(135deg, #f3efdc, #fff8d5);
+    transition: all 0.3s ease;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
+}
 
 
 .main-title {

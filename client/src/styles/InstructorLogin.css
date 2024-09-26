@@ -27,7 +27,7 @@
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
     background-color: #ffffff;
     width:400px;
-    height:500px;
+    height:550px;
     padding:20px;
     display:flex;
     flex-direction: column;
@@ -68,7 +68,7 @@ input[type = "text"]:hover, input[type="password"]:hover {
 
 
 
-button {
+button.login, button.return {
     border: none;
     padding: 15px 30px;
     margin-top: 20px;
@@ -85,15 +85,29 @@ button:hover {
     transform: translateY(-3px); 
   
   }
-.instructor-icon {
+.instructor-icon, .newuser-icon {
     width: 600px; 
     height: 500px;
     margin-top: 50px;
     margin-left:25px;
   }
 
+.home-avatar {
+    width:30px;
+    height:auto;
+}
+.return {
+    margin-bottom: 300px;
+    margin-left: 310px;
+    background: linear-gradient(135deg, #ffd6d2, #fdbbb3);
+    transition: all 0.3s ease;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
+}
 
-.maintitle {
+
+
+
+.title {
     font-size: 3rem;
     font-weight: bold;
     margin-top: 30px;
