@@ -24,14 +24,13 @@ const CreateAccount = () => (
                 <div className="formgroup">
                 <Link to = "/">
                     <button type="submit" className = "signin">Login</button>
-
                 </Link>
                 </div>
-                <Link to = "/">
+                {/* <Link to = "/">
                 <button className = "returnHome">
                 <img src="/images/home.svg" alt="Home Icon" className="homeavatar" />
                 </button>
-                </Link>
+                </Link> */}
             </form>
          </div>  
     </div>

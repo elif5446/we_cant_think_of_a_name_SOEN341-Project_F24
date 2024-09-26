@@ -71,6 +71,7 @@ button.signin, button.returnHome {
     border: none;
     padding: 15px 30px;
     margin-top: 20px;
+    margin-left:30px;
     font-size: 1rem;
     cursor: pointer;
     border-radius:8px;
@@ -98,7 +99,7 @@ button:hover.signin, button:hover.returnHome {
 }
 .returnHome {
     margin-bottom: 300px;
-    margin-left: 310px;
+    margin-left: 200px;
     background: linear-gradient(135deg, #ededed, #d3d3d3);
     transition: all 0.3s ease;
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);

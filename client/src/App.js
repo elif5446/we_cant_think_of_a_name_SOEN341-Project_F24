@@ -8,6 +8,7 @@ import InstructorPage from './components/InstructorPage';
 import StudentMenu from './components/studentMenu';
 import StudentCourses from './components/StudentCourses';
 import StudentProfile from './components/StudentProfile';
+import CreateAccount from './components/CreateAccount';
 
 function App() {
   return (
@@ -16,13 +17,11 @@ function App() {
         <Route path = "/" element = {<Main />} />
         <Route path = "/student-login" element = {<StudentLogin />} />
         <Route path = "/instructor-login" element = {<InstructorLogin />} />
+        <Route path = "/createPage-login" element = {<CreateAccount />} />
         <Route path = "/student-menu" element = {<StudentMenu />} />
         <Route path = "/instructor-page" element = {<InstructorPage />} />
         <Route path = "/student-courses" element = {<StudentCourses/>} />
         <Route path = "/student-profile" element = {<StudentProfile/>} />
-
-
-
 
       </Routes>
     </Router>

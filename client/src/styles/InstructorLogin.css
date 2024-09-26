@@ -62,7 +62,7 @@ input[type = "text"], input[type="password"] {
 }
 
 input[type = "text"]:hover, input[type="password"]:hover {
-    background: linear-gradient(135deg, #ffdf61, #ffe874);
+    background: linear-gradient(135deg, #fdb8b6, #ff716c);
     transform: translateY(-3px); 
 }
 
@@ -75,13 +75,13 @@ button {
     font-size: 1rem;
     cursor: pointer;
     border-radius:8px;
-    background: linear-gradient(135deg, #ffdd33, #ffcc00);
+    background: linear-gradient(135deg, #fdb8b6, #ff716c);
     transition: all 0.3s ease;
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
   }
 
 button:hover {
-    background: linear-gradient(135deg, #ffdd33, #ffcc00);
+    background: linear-gradient(135deg, #ff716c, #fdb8b6);
     transform: translateY(-3px); 
   
   }
@@ -100,11 +100,11 @@ button:hover {
     color: #333;
     text-align: center;
     text-shadow: 
-      1px 1px 0px #ffcc00,  
-      2px 2px 0px #ffcc00,
-      3px 3px 0px #ffcc00,
-      4px 4px 0px #ffcc00,
-      5px 5px 0px #ffcc00,
+      1px 1px 0px #ff716c,  
+      2px 2px 0px #ff716c,
+      3px 3px 0px #ff716c,
+      4px 4px 0px #ff716c,
+      5px 5px 0px #ff716c,
       6px 6px 5px rgba(0, 0, 0, 0.6), 
       7px 7px 10px rgba(0, 0, 0, 0.4),
       8px 8px 15px rgba(0, 0, 0, 0.2); 
