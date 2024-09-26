@@ -39,7 +39,7 @@ router.post('/createA-account', (req, res) => {
 
     const { email, password, firstName, lastName, userType } = req.body;
     try{
-        if (email === "test@example.com" && password === "password" && firstName != null && lastName != null && (userType === 1 || userType === 0)) {//student being 1 and instructor being 0
+        if (email === "test@example.com" && password === "password" && firstName != null && lastName != null && (userType === "Student" || userType === "Instructor")) {
             return res.status(200).json({ message: "Login successful!" });
         } else {
             return res.status(401).json({ message: "Invalid credentials" });
