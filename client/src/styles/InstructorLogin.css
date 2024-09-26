@@ -62,7 +62,7 @@ input[type = "text"], input[type="password"] {
 }
 
 input[type = "text"]:hover, input[type="password"]:hover {
-    background: linear-gradient(135deg, #fdd6d2, #ff9f9f);
+    background: linear-gradient(135deg, #fdb8b6, #ff716c);
     transform: translateY(-3px); 
 }
 
@@ -75,13 +75,13 @@ button.login, button.return {
     font-size: 1rem;
     cursor: pointer;
     border-radius:8px;
-    background: linear-gradient(135deg, #fdbbb3, #ff7171);
+    background: linear-gradient(135deg, #fdb8b6, #ff716c);
     transition: all 0.3s ease;
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
   }
 
-button:hover.login, button:hover.return {
-    background: linear-gradient(135deg, #fd8f81, #ff0000);
+button:hover {
+    background: linear-gradient(135deg, #ff716c, #fdb8b6);
     transform: translateY(-3px); 
   
   }
@@ -114,11 +114,11 @@ button:hover.login, button:hover.return {
     color: #333;
     text-align: center;
     text-shadow: 
-      1px 1px 0px #ff7171,  
-      2px 2px 0px #ff7171,
-      3px 3px 0px #ff7171,
-      4px 4px 0px #ff7171,
-      5px 5px 0px #ff7171,
+      1px 1px 0px #ff716c,  
+      2px 2px 0px #ff716c,
+      3px 3px 0px #ff716c,
+      4px 4px 0px #ff716c,
+      5px 5px 0px #ff716c,
       6px 6px 5px rgba(0, 0, 0, 0.6), 
       7px 7px 10px rgba(0, 0, 0, 0.4),
       8px 8px 15px rgba(0, 0, 0, 0.2); 

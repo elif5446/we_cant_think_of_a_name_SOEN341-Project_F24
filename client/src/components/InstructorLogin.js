@@ -30,6 +30,15 @@ const InstructorLogin = () => (
                 <img src="/images/home.svg" alt="Home Icon" className="home-avatar" />
                 </button>
                 </Link>
+<<<<<<< HEAD
+=======
+                </div>
+                {/* <Link to = "/">
+                <button className = "returnH">
+                <img src="/images/home.svg" alt="Home Icon" className="homeavatar" />
+                </button>
+                </Link> */}
+>>>>>>> 3fbfc70a73f3959dc2f3fefbcb1481893ab7ce6f
             </form>
          </div>  
     </div>

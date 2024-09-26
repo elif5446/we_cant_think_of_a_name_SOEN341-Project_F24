@@ -9,8 +9,8 @@ const StudentLogin = () => (
     <div className="student-login-container">
         <img src="/images/loginStudent.svg" alt="Sign Up Icon" className="student-icon" />
         <div id = "login-section"><br></br>
-        <h1 className="maintitle">STUDENT</h1>
-        <h1 className="maintitle">LOGIN</h1>
+        <h1 className="main-title">STUDENT</h1>
+        <h1 className="main-title">LOGIN</h1>
 
 
             <form id="form-group">
@@ -30,11 +30,19 @@ const StudentLogin = () => (
                     <button className="button">Login</button>
                 </Link>
                 </div>
+<<<<<<< HEAD
                 <Link to = "/">
                 <button className = "returnH">
                 <img src="/images/home.svg" alt="Home Icon" className="home-avatar" />
                 </button>
                 </Link>
+=======
+                {/* <Link to = "/">
+                <button className = "returnHome">
+                <img src="/images/home.svg" alt="Home Icon" className="homeavatar" />
+                </button>
+                </Link> */}
+>>>>>>> 3fbfc70a73f3959dc2f3fefbcb1481893ab7ce6f
             </form>
          </div>  
     </div>
