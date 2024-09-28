@@ -1,72 +1,83 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/createPage.css';
 
 const CreateAccount = () => {
-    async function createUser() {
-        const email = document.querySelector('#studentid')
-        const password = document.querySelector('#password')
+    const [formData, setFormData] = useState({
+        email: '',
+        password: '',
+        firstname: '',
+        lastname: '',
+        usertype: ''
+    });
 
-        console.log(password)
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prevData) => ({ ...prevData, [name]: value }));
+    };
 
-        await fetch('/api/create-account', {
-            method: 'POST',
-            body: JSON.stringify({
-              email: email,
-              password: password
-            }),
-            headers: {
-              'Content-Type': 'application/json'
+    const createUser = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await fetch('http://localhost:5000/api/create-account', { // Change this URL if backend is running elsewhere
+                method: 'POST',
+                body: JSON.stringify(formData),
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                console.log(result.message); // Success message
+                // Handle success (e.g., redirect or show success message)
+            } else {
+                const error = await response.json();
+                console.error(error.message); // Handle error
             }
-        })
-    }
+        } catch (err) {
+            console.error("An error occurred:", err);
+        }
+    };
 
     return (
-    <div className="create-login-page">
-        <div className="create-login-container">
-            <img src="/images/loginimg.svg" alt="Sign Up Icon" className="newuser-icon" />
-            <div id="login-section"><br></br>
-                <h3 className="main_title">CREATE ACCOUNT</h3>
+        <div className="create-login-page">
+            <div className="create-login-container">
+                <img src="/images/loginimg.svg" alt="Sign Up Icon" className="newuser-icon" />
+                <div id="login-section">
+                    <h3 className="main_title">CREATE ACCOUNT</h3>
 
+                    <form id="form-group" onSubmit={createUser}>
+                        {['email', 'password', 'firstname', 'lastname', 'usertype'].map((field) => (
+                            <div className="formgroup" key={field}>
+                                <label htmlFor={field}>
+                                    {field.charAt(0).toUpperCase() + field.slice(1)}:
+                                </label>
+                                <input
+                                    type={field === 'password' ? 'password' : 'text'}
+                                    id={field}
+                                    name={field}
+                                    required
+                                    value={formData[field]}
+                                    onChange={handleChange}
+                                />
+                            </div>
+                        ))}
 
-                <form id="form-group">
-                    <div className="formgroup">
-                        <label htmlFor="email">Username: </label>
-                        <input type="text" id="email" name="email" required/>
-                    </div>
-                    <div className="formgroup">
-                        <label htmlFor="password">Password: </label>
-                        <input type="password" id="password" name="pwd" required/>
-                    </div>
-
-                    <div className="formgroup">
-                        <label htmlFor="firstname">First Name: </label>
-                        <input type="text" id="firstname" name="firstname" required/>
-                    </div>
-                    <div className="formgroup">
-                        <label htmlFor="lastname">Last Name: </label>
-                        <input type="text" id="lastname" name="lastname" required/>
-                    </div>
-                    <div className="formgroup">
-                        <label htmlFor="usertype">Instructor or Student?: </label>
-                        <input type="text" id="usertype" name="usertype" required/>
-                    </div>
-
-                    <div className="formgroup">
-                        <Link to="/">
-                            <button type="submit" className="signin" onClick={createUser}>Create Account</button>
-                        </Link>
-                        <Link to="/">
-                            <button className="returnHome">
-                                <img src="/images/home.svg" alt="Home Icon" className="homeavatar"/>
-                            </button>
-                        </Link>
-                    </div>
-
-                </form>
+                        <div className="formgroup">
+                            <button type="submit" className="signin">Create Account</button>
+                            <Link to="/">
+                                <button type="button" className="returnHome">
+                                    <img src="/images/home.svg" alt="Home Icon" className="homeavatar" />
+                                </button>
+                            </Link>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>)
+    );
 };
 
 export default CreateAccount;

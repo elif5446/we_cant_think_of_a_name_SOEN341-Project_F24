@@ -1,4 +1,4 @@
-import mongoose from "mongoose"
+import mongoose from 'mongoose';
 
 const UserSchema = new mongoose.Schema({
     email: {
@@ -23,7 +23,16 @@ const UserSchema = new mongoose.Schema({
         enum: ['student', 'instructor'],
         default: 'student',
     },
+    courses: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Course' }],
+    teams: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Team'
+    }],
 });
 
-let userModel = mongoose.model('user', UserSchema, "users");
-export default {userModel};
+const userModel = mongoose.model('user', UserSchema, 'users');
+
+// Use default export
+export default userModel;

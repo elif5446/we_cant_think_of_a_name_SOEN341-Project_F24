@@ -23,7 +23,6 @@ function App() {
         <Route path = "/newuser-login" element = {<CreateAccount />} />
         <Route path = "/student-courses" element = {<StudentCourses/>} />
         <Route path = "/student-profile" element = {<StudentProfile/>} />
-
       </Routes>
     </Router>
   );

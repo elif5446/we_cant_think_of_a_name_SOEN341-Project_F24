@@ -2,7 +2,7 @@ import dotenv from "dotenv"
 import mongoose from "mongoose"
 import readline from "readline-sync"
 import bcrypt from "bcryptjs"
-import userModel from "./models/user.mjs"
+import userModel from "../routes/models/user.mjs"
 
 // require('dotenv').config();
 // const mongoose = require('mongoose');
@@ -61,6 +61,8 @@ class Database {
         } else {
             return {}
         }
+
+
     }
 }
 
