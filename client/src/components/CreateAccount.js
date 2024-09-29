@@ -4,16 +4,17 @@ import '../styles/createPage.css';
 
 const CreateAccount = () => {
     async function createUser() {
-        const email = document.querySelector('#studentid')
-        const password = document.querySelector('#password')
+        const email = document.querySelector('#email').value
+        const password = document.querySelector('#password').value
 
         console.log(password)
 
-        await fetch('/api/create-account', {
+        await fetch('http://localhost:3001/api/create-account', {
             method: 'POST',
             body: JSON.stringify({
               email: email,
-              password: password
+              password: password,
+              userType: "Instructor"
             }),
             headers: {
               'Content-Type': 'application/json'
@@ -32,8 +33,8 @@ const CreateAccount = () => {
 
                 <form id="form-group">
                     <div className="formgroup"><br></br>
-                        <label htmlFor="studentid">Username:</label><br></br>
-                        <input type="text" id="studentid" name="studentID" required />
+                        <label htmlFor="email">EMAIL:</label><br></br>
+                        <input type="email" id="email" name="email" required />
                     </div>
                     <div className="formgroup">
                         <label htmlFor="password">Password:</label><br></br>

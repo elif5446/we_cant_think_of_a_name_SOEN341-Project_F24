@@ -38,12 +38,13 @@ router.get('/user', (req, res) => {
 });
 
 router.post('/create-account', (req, res) => {
-
-    const { email, password, firstName, lastName, userType } = req.body;
     try{
+        const { email, password, userType } = req.body;
+        // const { email, password, firstName, lastName, userType } = req.body;
+
         if (email === "test@example.com" && password === "password" (userType === "Student" || userType === "Instructor")) {
         // if (email === "test@example.com" && password === "password" && firstName != null && lastName != null && (userType === "Student" || userType === "Instructor")) {
-            database.createUser(email, firstName, lastName, password, userType)
+            database.createUser(email, "firstName", "lastName", password, userType)
             return res.status(200).json({ message: "Login successful!" });
         } else {
             return res.status(401).json({ message: "Invalid credentials" });

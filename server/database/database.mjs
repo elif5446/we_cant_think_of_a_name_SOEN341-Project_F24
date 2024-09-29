@@ -38,6 +38,7 @@ class Database {
     async createUser(email, firstname, lastname, password, usertype) {
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
+        console.log(hashedPassword)
 
         const user = new this.UserModel({
             email: email,
