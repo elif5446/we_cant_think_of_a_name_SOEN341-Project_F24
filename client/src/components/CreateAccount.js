@@ -1,8 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../styles/createPage.css';
 
 const CreateAccount = () => {
+    const navigate = useNavigate()
+    
     async function createUser() {
         const email = document.querySelector('#email').value
         const password = document.querySelector('#password').value
@@ -21,6 +23,18 @@ const CreateAccount = () => {
             }),
             headers: {
               'Content-Type': 'application/json'
+            }
+        }).then(response => {
+            if (!response.ok) {
+                throw new Error("Account creation failed.");
+            }
+
+            return response.json();
+        }).then(successObj => {
+            if (userType.toLowerCase() === "student") {
+                navigate("/student-menu")
+            } else {
+                navigate("/instructor-page")
             }
         })
     }
@@ -57,9 +71,7 @@ const CreateAccount = () => {
                     </div>
 
                     <div className="formgroup">
-                        <Link to="/">
-                            <button type="submit" className="signin" onClick={createUser}>Create Account</button>
-                        </Link>
+                        <button type="submit" className="signin" onClick={createUser}>Create Account</button>
                         <Link to="/">
                             <button className="returnHome">
                                 <img src="/images/home.svg" alt="Home Icon" className="homeavatar"/>

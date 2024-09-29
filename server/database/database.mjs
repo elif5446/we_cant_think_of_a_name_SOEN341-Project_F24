@@ -56,11 +56,15 @@ class Database {
 
     async getUser(email, password) {
         let user = await this.UserModel.findOne({ email: email })
-        if (user.password === password) {
-            return user
-        } else {
-            return {}
-        }
+        bcrypt.compare(password, user.password, (e, result) => {
+            if (e) {
+                return {result: "error", user: null}
+            } else if (result) {
+                return {result: "success", user: user}
+            } else {
+                return {result: "fail", user: null}
+            }
+        })
     }
 }
 

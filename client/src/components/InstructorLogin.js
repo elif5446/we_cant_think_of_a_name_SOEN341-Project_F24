@@ -14,8 +14,8 @@ const InstructorLogin = () => (
 
             <form id="form-group">
                 <div className = "form-group"><br></br>
-                    <label htmlFor="studentid">Instructor ID:</label><br></br>
-                    <input type="text" id="studentid" name="studentid" required />
+                    <label htmlFor="email">Email:</label><br></br>
+                    <input type="text" id="email" name="email" required />
                 </div>
                 <div className="form-group">
                     <label htmlFor="password">Password:</label><br></br>

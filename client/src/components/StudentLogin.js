@@ -3,8 +3,13 @@ import { Link } from 'react-router-dom';
 
 import '../styles/StudentLogin.css'; 
 
-const StudentLogin = () => (
+const StudentLogin = () => {
+    async function login() {
+        const email = document.querySelector('#email').value
+        const password = document.querySelector('#password').value
+    }
     
+return (
 <div className="student-login-page">
     <div className="student-login-container">
         <img src="/images/loginStudent.svg" alt="Sign Up Icon" className="student-icon" />
@@ -23,14 +28,7 @@ const StudentLogin = () => (
                     <input type="password" id="password" name="PWD" required />
                 </div>
                 <div className="form-group">
-                <Link to = "/student-page">
-                    <button className="loginbutton">Login</button>
-                </Link>
-                </div>
-                <div className="form-group"><br></br>
-                <Link to = "/student-menu">
-                    <button className="button">Login</button>
-                </Link>
+                    <button className="loginbutton" onClick={login}>Login</button>
                 </div>
                 <Link to = "/">
                 <button className = "returnH">
@@ -40,7 +38,7 @@ const StudentLogin = () => (
             </form>
          </div>  
     </div>
-</div>
-);
+</div>)
+};
 
 export default StudentLogin;
