@@ -8,16 +8,16 @@ const clientError = 400
 const noAuthAccess = 401
 const serverError = 500
 
-router.post('/login', (req, res) => {
+router.post('/login', async (req, res) => {
     try {
         const { email, password } = req.body;
-        const result = database.getUser(email, password)
-        if (result.user !== null) {
-            return res.status(200).json({ message: "Login Successful!" });
+        const result = await database.getUser(email, password)
+        if (result.result === "success") {
+            return res.status(success).json({ message: "Login Successful!", user: result.user});
         } else if (result.result === "fail") {
-            return res.status(401).json({ message: "Invalid Credentials" });
+            return res.status(noAuthAccess).json({ message: "Invalid Credentials" });
         } else {
-            return res.status(401).json({ message: "User Not Found" });
+            return res.status(clientError).json({ message: "User Not Found" });
         }
     } catch (e) {
         res.send(e).status(serverError)
@@ -25,26 +25,26 @@ router.post('/login', (req, res) => {
 
 });
 
-router.get('/user', (req, res) => {
-    try {
-        const user = {
-            name: "Test User",
-            email: "test@example.com",
-        };
+// router.get('/user', (req, res) => {
+//     try {
+//         const user = {
+//             name: "Test User",
+//             email: "test@example.com",
+//         };
 
-        return res.status(200).json(user);
-    } catch (e) {
-        res.send(e).status(serverError)
-    }
+//         return res.status(200).json(user);
+//     } catch (e) {
+//         res.send(e).status(serverError)
+//     }
 
-});
+// });
 
-router.post('/create-account', (req, res) => {
+router.post('/create-account', async (req, res) => {
     try{
         const { email, password, firstName, lastName, userType } = req.body;
 
-        database.createUser(email, firstName, lastName, password, userType)
-        return res.status(200).json({ message: "Login successful!" });
+        await database.createUser(email, firstName, lastName, password, userType)
+        return res.status(success).json({ message: "Login successful!" });
         // return res.status(401).json({ message: "Invalid credentials" });
     }catch(e){
         res.send(e).status(serverError)
