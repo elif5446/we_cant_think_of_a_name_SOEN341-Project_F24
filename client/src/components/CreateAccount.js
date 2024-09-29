@@ -27,29 +27,43 @@ const CreateAccount = () => {
         <div className="create-login-container">
             <img src="/images/loginimg.svg" alt="Sign Up Icon" className="newuser-icon" />
             <div id="login-section"><br></br>
-                <h1 className="main_title">CREATE AN</h1>
-                <h1 className="main_title">ACCOUNT</h1>
+                <h3 className="main_title">CREATE ACCOUNT</h3>
 
 
                 <form id="form-group">
-                    <div className="formgroup"><br></br>
-                        <label htmlFor="email">EMAIL:</label><br></br>
-                        <input type="email" id="email" name="email" required />
+                    <div className="formgroup">
+                        <label htmlFor="email">Email: </label>
+                        <input type="text" id="email" name="email" required/>
                     </div>
                     <div className="formgroup">
-                        <label htmlFor="password">Password:</label><br></br>
-                        <input type="password" id="password" name="pwd" required />
+                        <label htmlFor="password">Password: </label>
+                        <input type="password" id="password" name="pwd" required/>
                     </div>
+
+                    <div className="formgroup">
+                        <label htmlFor="firstname">First Name: </label>
+                        <input type="text" id="firstname" name="firstname" required/>
+                    </div>
+                    <div className="formgroup">
+                        <label htmlFor="lastname">Last Name: </label>
+                        <input type="text" id="lastname" name="lastname" required/>
+                    </div>
+                    <div className="formgroup">
+                        <label htmlFor="usertype">Instructor or Student?: </label>
+                        <input type="text" id="usertype" name="usertype" required/>
+                    </div>
+
                     <div className="formgroup">
                         <Link to="/">
-                            <button type="submit" className="signin" onClick={createUser}>Login</button>
+                            <button type="submit" className="signin" onClick={createUser}>Create Account</button>
+                        </Link>
+                        <Link to="/">
+                            <button className="returnHome">
+                                <img src="/images/home.svg" alt="Home Icon" className="homeavatar"/>
+                            </button>
                         </Link>
                     </div>
-                    <Link to="/">
-                        <button className="returnHome">
-                            <img src="/images/home.svg" alt="Home Icon" className="homeavatar" />
-                        </button>
-                    </Link>
+
                 </form>
             </div>
         </div>
