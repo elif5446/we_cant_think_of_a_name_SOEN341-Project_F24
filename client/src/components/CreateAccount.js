@@ -6,15 +6,18 @@ const CreateAccount = () => {
     async function createUser() {
         const email = document.querySelector('#email').value
         const password = document.querySelector('#password').value
-
-        console.log(password)
+        const firstName = document.querySelector('#firstname').value
+        const lastName = document.querySelector('#lastname').value
+        const userType = document.querySelector('#usertype').value
 
         await fetch('http://localhost:3001/api/create-account', {
             method: 'POST',
             body: JSON.stringify({
               email: email,
               password: password,
-              userType: "Instructor"
+              firstName: firstName,
+              lastName: lastName,
+              userType: userType
             }),
             headers: {
               'Content-Type': 'application/json'

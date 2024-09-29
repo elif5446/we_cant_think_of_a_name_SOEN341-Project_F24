@@ -2,7 +2,7 @@ import dotenv from "dotenv"
 import mongoose from "mongoose"
 import readline from "readline-sync"
 import bcrypt from "bcryptjs"
-import userModel from "./models/user.mjs"
+import { userModel } from "./models/user.mjs"
 
 // require('dotenv').config();
 // const mongoose = require('mongoose');
@@ -38,7 +38,6 @@ class Database {
     async createUser(email, firstname, lastname, password, usertype) {
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
-        console.log(hashedPassword)
 
         const user = new this.UserModel({
             email: email,
@@ -50,13 +49,13 @@ class Database {
 
         try {
             user.save()
-          } catch (e) {
+        } catch (e) {
             throw 'Error trying to save ' + e
-          }      
+        }
     }
 
     async getUser(email, password) {
-        let user = await this.UserModel.findOne({email: email})
+        let user = await this.UserModel.findOne({ email: email })
         if (user.password === password) {
             return user
         } else {
