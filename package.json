@@ -1,0 +1,22 @@
+{
+  "name": "we_cant_think_of_a_name_soen341-project_f24",
+  "version": "1.0.0",
+  "description": "This project is a **Peer Assessment System** designed for university team projects, allowing students to evaluate their teammates' contributions across four key dimensions: Cooperation, Conceptual Contribution, Practical Contribution, and Work Ethic. It promotes accountability and provides valuable feedback to both students and instructors on team dynamics and individual efforts.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cd server && npm install && cd ../client && npm install && npm build",
+    "start": "cd server && npm start",
+    "dev": "cd server && npm run dev",
+    "run": "npm run start:both"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.21.0",
+    "express-session": "^1.18.0",
+    "jsonwebtoken": "^9.0.2",
+    "nodemon": "^3.1.7"
+  }
+}
