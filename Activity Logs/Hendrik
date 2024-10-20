@@ -1,0 +1,40 @@
+Name: Hendrik Tebeng
+Student ID: 40282196
+
+Sprint 1 ---------------------------------------------------------
+Roles: Authentication, Database assistance, Full stack integration
+Most collaboration with: every member
+
+* Activities *
+
+- Meetings with whole team: 24+ hours - Present for every meeting
+- Refactor the database implementation: 1.5h
+- Add error code consistency to the API routes: 1h
+- Create API calls within the frontend: 4h
+- Adjust the frontend for reactivity upon login: 1.5h
+- Coordinate with frontend team to ensure smooth API communication: 2 hours
+- Handle merge / pull requests: 2h
+- Debugging: 2h
+
+
+Sprint 2 ---------------------------------------------------------
+Roles: Testing, Full stack integration
+Most collaboration with: every member
+
+Activities
+
+- Meetings with whole team: Continuing, around X hours
+- Create unit tests before thhe coding phase: X hours
+- Implement the new API routes in the frontend: X hours
+- Create automated UI tests: X hours
+- Run AB tests with test users: X hours
+- Run performance tests and improve with cache and more: X hours
+
+
+Sprint 3 ---------------------------------------------------------
+Roles:
+Most collaboration with:
+
+Activities
+
+-
