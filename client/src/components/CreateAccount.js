@@ -47,45 +47,40 @@ const CreateAccount = () => {
                 <h3 className="main_title">CREATE ACCOUNT</h3>
 
 
-                <form id="form-group">
-                    <div className="formgroup">
-                        <label htmlFor="email">Email:  </label>
-                        <input type="text" id="email" name="email" required/>
-                    </div>
-                    <div className="formgroup">
-                        <label htmlFor="password">Password:  </label>
-                        <input type="password" id="password" name="pwd" required/>
-                    </div>
+            <form id="form-group">
+                <div className = "formgroup"><br></br>
+                    <label htmlFor="studentid">Username:</label><br></br>
+                    <input type="text" id="studentid" name="studentID" required />
+                </div>
+                <div className="formgroup">
+                    <label htmlFor="password">Password:</label><br></br>
+                    <input type="password" id="password" name="pwd" required />
+                </div>
+                <div className="formgroup">
+                <Link to = "/">
+                    <button type="submit" className = "signin">Login</button>
+<<<<<<< HEAD
 
-                    <div className="formgroup">
-                        <label htmlFor="firstname">First Name:  </label>
-                        <input type="text" id="firstname" name="firstname" required/>
-                    </div>
-                    <div className="formgroup">
-                        <label htmlFor="lastname">Last Name:  </label>
-                        <input type="text" id="lastname" name="lastname" required/>
-                    </div>
-                    <div className="formgroup">
-                        <label htmlFor="usertype">Account type:  </label>
-                        <select id="usertype" name="usertype" required>
-                            <option value="instructor">Instructor</option>
-                            <option value="student">Student</option>
-                        </select>
-                    </div>
-
-                    <div className="formgroup">
-                        <button type="submit" className="signin" onClick={createUser}>Create Account</button>
-                        <Link to="/">
-                            <button className="returnHome">
-                                <img src="/images/home.svg" alt="Home Icon" className="homeavatar"/>
-                            </button>
-                        </Link>
-                    </div>
-
-                </form>
-            </div>
-        </div>
-    </div>)
-};
+                </Link>
+                </div>
+                <Link to = "/">
+                <button className = "returnHome">
+                <img src="/images/home.svg" alt="Home Icon" className="homeavatar" />
+                </button>
+                </Link>
+=======
+                </Link>
+                </div>
+                {/* <Link to = "/">
+                <button className = "returnHome">
+                <img src="/images/home.svg" alt="Home Icon" className="homeavatar" />
+                </button>
+                </Link> */}
+>>>>>>> 3fbfc70a73f3959dc2f3fefbcb1481893ab7ce6f
+            </form>
+         </div>  
+    </div>
+</div>
+);
 
 export default CreateAccount;

@@ -9,7 +9,6 @@ import CreateAccount from './components/CreateAccount';
 import StudentMenu from './components/studentMenu';
 import StudentCourses from './components/StudentCourses';
 import StudentProfile from './components/StudentProfile';
-import CreateAccount from './components/CreateAccount';
 
 function App() {
   return (

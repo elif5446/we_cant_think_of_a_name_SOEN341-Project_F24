@@ -37,4 +37,6 @@ We will hold regular team meetings to discuss progress, address any blockers, an
 ---
 
 ## How to Run the Project
-(To be updated as the project progresses)
+In the root directory, run the following commands:
+- npm run build
+- npm start
