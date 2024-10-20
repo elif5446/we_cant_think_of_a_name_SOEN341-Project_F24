@@ -98,7 +98,7 @@ button:hover {
 }
 .return {
     margin-bottom: 300px;
-    margin-left: 310px;
+    margin-right: 300px;
     background: linear-gradient(135deg, #ffd6d2, #fdbbb3);
     transition: all 0.3s ease;
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
@@ -108,7 +108,7 @@ button:hover {
 
 
 .title {
-    font-size: 3rem;
+    font-size: 3rem !important;
     font-weight: bold;
     margin-top: 30px;
     color: #333;
@@ -127,7 +127,62 @@ button:hover {
 } 
   
 
-  
+  /* media queries */
+  @media (max-width: 600px) {
+    .instructor-login-page {
+        justify-content: center;
+        padding-right: 10px;
+    }
+
+    #login-section {
+        width: 80vw; 
+        height: auto;
+    }
+
+    .instructor-icon, .newuser-icon {
+        width: 80vw;
+        height: auto; 
+    }
+
+    button.login, button.return {
+        width: 100%; 
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+    .instructor-login-page {
+        padding-right: 30px;
+    }
+
+    #login-section {
+        width: 60vw;
+    }
+
+    .instructor-icon, .newuser-icon {
+        width: 50vw;
+        height: auto;
+    }
+
+    button.login, button.return {
+        width: 80%; 
+    }
+}
+
+@media (min-width: 1025px) {
+    .instructor-login-page {
+        padding-right: 50px;
+    }
+
+    #login-section {
+        width: 400px; 
+        height: 550px;
+    }
+
+    .instructor-icon, .newuser-icon {
+        width: 600px;
+        height: 500px;
+    }
+}
 
   
 

@@ -99,7 +99,7 @@ button:hover.signin, button:hover.returnHome {
 }
 .returnHome {
     margin-bottom: 300px;
-    margin-left: 200px;
+    margin-right: 300px;
     background: linear-gradient(135deg, #ededed, #d3d3d3);
     transition: all 0.3s ease;
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
@@ -126,15 +126,3 @@ button:hover.signin, button:hover.returnHome {
     line-height:0px;
 
 } 
-  
-
-  
-
-  
-
-  
- 
-
-
-  
-
