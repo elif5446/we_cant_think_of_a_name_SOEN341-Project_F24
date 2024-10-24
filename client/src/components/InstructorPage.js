@@ -1,6 +1,5 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/InstructorPage.css';
-
 
 const InstructorPage = () => {
     const [showCreateCourse, setShowCreateCourse] = useState(false);
@@ -12,12 +11,18 @@ const InstructorPage = () => {
     const [teamName, setTeamName] = useState('');
     const [teamMembers, setTeamMembers] = useState('');
     const [students, setStudents] = useState([]);
-
+    const [selectedStudent, setSelectedStudent] = useState([]);
+    const [teams, setTeams] = useState([]);
+    const [selectedTeam, setSelectedTeam] = useState('');
+    const [courseStudents, setCourseStudents] = useState([]);
+    const [selectedTeamMembers, setSelectedTeamMembers] = useState([]);
+    const [selectedStudentsForTeam, setSelectedStudentsForTeam] = useState([]);
 
     useEffect(() => {
         fetchCourses();
         fetchStudents();
     }, []);
+
     useEffect(() => {
         if (selectedCourse) {
             fetchTeams(selectedCourse);
@@ -44,7 +49,7 @@ const InstructorPage = () => {
         const teamMemberIds = team.members.map(member => member._id);
         return courseStudents.filter(student => !teamMemberIds.includes(student._id));
     };
-    
+
     const fetchStudents = async () => {
         try {
             const response = await fetch('http://localhost:3001/api/students');
@@ -61,6 +66,7 @@ const InstructorPage = () => {
             setStudents([]);
         }
     };
+
     const getAvailableStudents = () => {
         return students.filter(student => 
             !courseStudents.some(courseStudent => courseStudent._id === student._id)
@@ -268,7 +274,7 @@ const InstructorPage = () => {
                 </form>
             )}
 
-        <h3>Manage Courses</h3>
+            <h3>Manage Courses</h3>
             <select value={selectedCourse} onChange={(e) => setSelectedCourse(e.target.value)}>
                 <option value="">Select a course</option>
                 {courses.map(course => (
@@ -331,7 +337,6 @@ const InstructorPage = () => {
     <button type="submit">Create Team</button>
 </form>
 
-    
 <h4>Add Student to Team</h4>
 <form onSubmit={handleAddStudentToTeam}>
     <div>
