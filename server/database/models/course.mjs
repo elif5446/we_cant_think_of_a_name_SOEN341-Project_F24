@@ -8,8 +8,6 @@ const courseSchema = new mongoose.Schema({
     teams: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Team' }]
 });
 
+const courseModel = mongoose.model('Course', courseSchema, 'courses');
 
-const teamModel = mongoose.model('team', teamSchema, 'teams');
-
-// Use default export
-export default teamModel;
+export default courseModel;
