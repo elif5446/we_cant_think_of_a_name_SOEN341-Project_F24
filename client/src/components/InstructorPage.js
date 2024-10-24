@@ -7,7 +7,9 @@ const InstructorPage = () => {
     const [courseCode, setCourseCode] = useState('');
     const [courseName, setCourseName] = useState('');
     const [courses, setCourses] = useState([]);
-    
+    const [selectedCourse, setSelectedCourse] = useState('');
+    const [studentEmail, setStudentEmail] = useState('');
+
 
     useEffect(() => {
         fetchCourses();
@@ -40,6 +42,28 @@ const InstructorPage = () => {
         return courseStudents.filter(student => !teamMemberIds.includes(student._id));
     };
     
+    const fetchStudents = async () => {
+        try {
+            const response = await fetch('http://localhost:3001/api/students');
+            if (response.ok) {
+                const data = await response.json();
+                console.log('Fetched students data:', data);
+                setStudents(Array.isArray(data.students) ? data.students : []);
+            } else {
+                console.error('Error fetching students:', response.statusText);
+                setStudents([]);
+            }
+        } catch (error) {
+            console.error('Error fetching students:', error);
+            setStudents([]);
+        }
+    };
+    const getAvailableStudents = () => {
+        return students.filter(student => 
+            !courseStudents.some(courseStudent => courseStudent._id === student._id)
+        );
+    };
+
 
 
 }
