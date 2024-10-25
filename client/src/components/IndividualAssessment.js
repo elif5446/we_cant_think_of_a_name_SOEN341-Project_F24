@@ -4,10 +4,10 @@ import { useParams, useNavigate } from 'react-router-dom';
 const IndividualAssessment = () => {
     const [teammate, setTeammate] = useState(null);
     const [assessment, setAssessment] = useState({
-        cooperation: 0,
-        conceptualContribution: 0,
-        practicalContribution: 0,
-        workEthic: 0,
+        cooperation: 1,
+        conceptualContribution: 1,
+        practicalContribution: 1,
+        workEthic: 1,
         comments: ''
     });
     const { teammateId } = useParams();
