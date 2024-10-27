@@ -37,6 +37,6 @@ We will hold regular team meetings to discuss progress, address any blockers, an
 ---
 
 ## How to Run the Project
-In the root directory, run the following commands:
+In the root directory, copy the submitted .env file; run the following commands:
 - npm run build
 - npm start
