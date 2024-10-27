@@ -35,6 +35,10 @@ class Database {
         }
     }
 
+    async close() {
+        mongoose.connection.close()
+    }
+
     async createUser(email, firstname, lastname, password, usertype) {
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
