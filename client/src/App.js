@@ -9,7 +9,6 @@ import StudentMenu from './components/studentMenu';
 import StudentCourses from './components/StudentCourses';
 import StudentProfile from './components/StudentProfile';
 import StudentDashboard from './components/StudentDashboard';
-import PeerAssessment from './components/PeerAssessment';
 import IndividualAssessment from './components/IndividualAssessment';
 import AssessmentConfirmation from './components/AssessmentConfirmation';
 
@@ -27,7 +26,6 @@ function App() {
         <Route path = "/student-courses" element = {<StudentCourses/>} />
         <Route path = "/student-profile" element = {<StudentProfile/>} />
         <Route path="/student-dashboard" element={<StudentDashboard />} />
-        <Route path="/peer-assessment" element={<PeerAssessment />} />
         <Route path="/peer-assessment/:teammateId" element={<IndividualAssessment />}/>
         <Route path="/individual-assessment" element={<IndividualAssessment />} />
         <Route path="/assessment-confirmation" element={<AssessmentConfirmation />} />
