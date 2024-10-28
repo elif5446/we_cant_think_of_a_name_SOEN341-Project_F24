@@ -2,7 +2,11 @@ import dotenv from "dotenv"
 import mongoose from "mongoose"
 import readline from "readline-sync"
 import bcrypt from "bcryptjs"
-import { userModel } from "./models/user.mjs"
+import userModel from "./models/user.mjs"
+import courseModel from './models/course.mjs';
+import teamModel from './models/team.mjs';
+import assessmentModel from './models/assessment.mjs';
+
 
 // require('dotenv').config();
 // const mongoose = require('mongoose');
@@ -23,6 +27,7 @@ class Database {
         return instance
     }
 
+
     async connect() {
         try {
             mongoose.set('strictQuery', false)
@@ -32,6 +37,40 @@ class Database {
             await mongoose.connect(instance.url, options)
         } catch (e) {
             throw 'Error trying to connect: ' + e
+        }
+    }
+
+    async getTeammate(teammateId) {
+        try {
+            const teammate = await userModel.findById(teammateId, 'firstname lastname email');
+            return { result: "success", data: { teammate } };
+        } catch (e) {
+            console.error('Error fetching teammate:', e);
+            return { result: "error", message: e.message };
+        }
+    }
+    
+    async submitAssessment(evaluatorId, evaluateeId, assessment) {
+        try {
+            const newAssessment = await assessmentModel.create({
+                evaluator: evaluatorId,
+                evaluatee: evaluateeId,
+                ...assessment
+            });
+            return { result: "success", assessment: newAssessment };
+        } catch (e) {
+            console.error('Error submitting assessment:', e);
+            return { result: "error", message: e.message };
+        }
+    }
+
+    async getTeammate(teammateId) {
+        try {
+            const teammate = await userModel.findById(teammateId, 'firstname lastname email');
+            return { result: "success", data: { teammate } };
+        } catch (e) {
+            console.error('Error fetching teammate:', e);
+            return { result: "error", message: e.message };
         }
     }
 
@@ -54,6 +93,35 @@ class Database {
         }
     }
 
+    async getStudentTeammates(studentId) {
+        try {
+            const teams = await teamModel.find({ members: studentId })
+                .populate('members', 'firstname lastname email');
+            const teammates = teams.flatMap(team => team.members.filter(member => member._id.toString() !== studentId));
+            return { result: "success", data: { teammates } };
+        } catch (e) {
+            console.error('Error fetching student teammates:', e);
+            return { result: "error", message: e.message };
+        }
+    }
+    
+    async submitAssessments(evaluatorId, assessments) {
+        try {
+            const assessmentPromises = Object.entries(assessments).map(([evaluateeId, assessment]) => {
+                return assessmentModel.create({
+                    evaluator: evaluatorId,
+                    evaluatee: evaluateeId,
+                    ...assessment
+                });
+            });
+            await Promise.all(assessmentPromises);
+            return { result: "success" };
+        } catch (e) {
+            console.error('Error submitting assessments:', e);
+            return { result: "error", message: e.message };
+        }
+    }
+
     async getUser(email, password) {
         try {
             let user = await this.UserModel.findOne({ email: email })
@@ -73,6 +141,143 @@ class Database {
             return { result: "error", user: null }
         }
     }
+
+    async getAllStudents() {
+        try {
+            const students = await this.UserModel.find({ usertype: 'student' }, '-password');
+            return { result: "success", students: students };
+        } catch (e) {
+            console.error('Error fetching students:', e);
+            return { result: "error", message: e.message };
+        }
+    }
+    async authenticateStudent(email, password) {
+        try {
+            const student = await userModel.findOne({ email, role: 'student' });
+            if (student && await bcrypt.compare(password, student.password)) {
+                return { result: "success", student: { _id: student._id, email: student.email } };
+            } else {
+                return { result: "error", message: "Invalid credentials" };
+            }
+        } catch (e) {
+            console.error('Error authenticating student:', e);
+            return { result: "error", message: e.message };
+        }
+    }
+    
+    async getStudentData(studentId) {
+        try {
+            const courses = await courseModel.find({ students: studentId });
+            const teams = await teamModel.find({ members: studentId })
+                .populate('course', 'courseCode')
+                .populate('members', 'firstname lastname email');
+            return { result: "success", data: { courses, teams } };
+        } catch (e) {
+            console.error('Error fetching student data:', e);
+            return { result: "error", message: e.message };
+        }
+    }
+    
+    async createCourse(courseCode, courseName) {
+        const course = new courseModel({
+            courseCode,
+            courseName,
+        });
+    
+        try {
+            await course.save();
+            return { result: "success", course };
+        } catch (e) {
+            console.error('Error creating course:', e);
+            return { result: "error", message: e.message };
+        }
+    }
+
+    async addStudentToCourse(courseId, studentId) {
+        try {
+            const course = await courseModel.findByIdAndUpdate(
+                courseId,
+                { $addToSet: { students: studentId } },
+                { new: true }
+            );
+            return { result: "success", course };
+        } catch (e) {
+            console.error('Error adding student to course:', e);
+            return { result: "error", message: e.message };
+        }
+    }
+    
+    async createTeamForCourse(courseId, teamName, memberIds) {
+        try {
+            const team = new teamModel({
+                teamName,
+                course: courseId,
+                members: memberIds
+            });
+            await team.save();
+    
+            const course = await courseModel.findByIdAndUpdate(
+                courseId,
+                { $push: { teams: team._id } },
+                { new: true }
+            );
+    
+            return { result: "success", team, course };
+        } catch (e) {
+            console.error('Error creating team for course:', e);
+            return { result: "error", message: e.message };
+        }
+    }
+
+    async getAllCourses() {
+        try {
+            const courses = await courseModel.find({});
+            return { result: "success", courses };
+        } catch (e) {
+            console.error('Error fetching courses:', e);
+            return { result: "error", message: e.message };
+        }
+    }
+
+    async addStudentToCourse(courseId, studentId) {
+        try {
+            const course = await courseModel.findByIdAndUpdate(
+                courseId,
+                { $addToSet: { students: studentId } },
+                { new: true }
+            );
+            return { result: "success", course };
+        } catch (e) {
+            console.error('Error adding student to course:', e);
+            return { result: "error", message: e.message };
+        }
+    }
+    
+    async addStudentToTeam(teamId, studentId) {
+        try {
+            const team = await teamModel.findByIdAndUpdate(
+                teamId,
+                { $addToSet: { members: studentId } },
+                { new: true }
+            );
+            return { result: "success", team };
+        } catch (e) {
+            console.error('Error adding student to team:', e);
+            return { result: "error", message: e.message };
+        }
+    }
+
+    async getTeamsForCourse(courseId) {
+        try {
+            const teams = await teamModel.find({ course: courseId })
+                .populate('members', 'firstname lastname email');
+            return { result: "success", teams };
+        } catch (e) {
+            console.error('Error fetching teams for course:', e);
+            return { result: "error", message: e.message };
+        }
+    }
+
 }
 
 // // Connect to MongoDB
@@ -162,3 +367,5 @@ class Database {
 // }
 
 export default Database
+
+
