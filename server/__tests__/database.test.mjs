@@ -1,3 +1,4 @@
+import { expect, test } from '@jest/globals';
 import Database from "../database/database.mjs"
 
 test("------ CONNECTION TEST ------", async () => {
@@ -5,7 +6,10 @@ test("------ CONNECTION TEST ------", async () => {
     try{
         await database.connect()
     } catch(e) {
-        fail("Database connection unsuccesful.")
+        // Replace fail() with expect().toThrow()
+        expect(() => {
+            throw new Error("Database connection unsuccessful.")
+        }).toThrow();
     }  finally {
         expect(true).toBe(true)
         database.close()
@@ -23,6 +27,10 @@ test("------ CREATION/RETRIEVAL TEST ------", async () => {
         expect(badUser.result).toBe("fail")
         expect(returnUser.user.firstname).toBe("Test")
         expect(badUser.user).toBe(null)
+    } catch(e) {
+        expect(() => {
+            throw new Error("Test failed: " + e.message)
+        }).toThrow();
     } finally {
         database.close()
     }
