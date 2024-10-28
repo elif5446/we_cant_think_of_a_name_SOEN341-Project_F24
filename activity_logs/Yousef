@@ -21,9 +21,8 @@ Most collaboration with: Othmane & Hendrik & Robert
 
 *Activities*
 - Meetings with whole team: Continuing, over 24 hours
-- Developing secure login system with password encryption: X hours
-- Ensuring API handles authentication and user session management: X hours
-- Expanding API functionality to manage role-based access: X hours
+- Added a confirmation page for assessments: 2 hours
+- Implemented Continuous Integration and Continuous Deployment (CI/CD) pipeline: 2 hours
 
 Sprint 3-------------------------------------------------------------------------------
 Roles: Backend Optimization, API Maintenance  
