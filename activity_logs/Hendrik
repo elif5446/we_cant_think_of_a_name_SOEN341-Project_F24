@@ -18,17 +18,15 @@ Most collaboration with: every member
 
 
 Sprint 2 ---------------------------------------------------------
-Roles: Testing, Full stack integration
+Roles: Testing, Full stack integration, API
 Most collaboration with: every member
 
 Activities
 
-- Meetings with whole team: Continuing, around X hours
-- Create unit tests before thhe coding phase: X hours
-- Implement the new API routes in the frontend: X hours
-- Create automated UI tests: X hours
-- Run AB tests with test users: X hours
-- Run performance tests and improve with cache and more: X hours
+- Meetings with whole team: Continuing, around 24+ hours
+- Create API routes to interact with courses: 3 hours
+- Create API routes to create/edit teams: 3 hours
+- Refactor code: 1 hours
 
 
 Sprint 3 ---------------------------------------------------------

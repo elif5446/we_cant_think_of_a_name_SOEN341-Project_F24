@@ -12,7 +12,6 @@ The development process follows the Agile Scrum methodology, with four sprints o
 
 Team Members:  
 **Yousef Bisharah** | Backend Developer (Login/Team Management)[40151411]  
-**Othmane el Hajhouj** | Backend Developer (DataBase) [40260055]   
 **Elif Sag Sesen** | Frontend Developer (UI/UX - Login) [40283343]  
 **Robert Stacey** | Quality Assurance (QA) [40228769]   
 **Hendrik Nelson Tebeng Nzodoum** | Backend Developer (Server/Authentication) [40282196]  

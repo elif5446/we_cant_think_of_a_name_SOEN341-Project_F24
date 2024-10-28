@@ -40,6 +40,10 @@ class Database {
         }
     }
 
+    async close() {
+        mongoose.connection.close()
+    }
+
     async getTeammate(teammateId) {
         try {
             const teammate = await userModel.findById(teammateId, 'firstname lastname email');
