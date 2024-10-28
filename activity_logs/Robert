@@ -17,9 +17,31 @@ Most collaboration with: Jana, Elif, Hendrik
 Sprint 2 ---------------------------------------------------------------------------------------------------
 
 Roles: 
-Most collaboration with:
+Most collaboration with: Jana, Elif, Hendrik
 
-- Meetings with whole team: 
+* Activities *
+
+Create new schemas for the courses, teams and assessments (2 hours)
+     Create model schemas for courses and teams:
+        Courses Schema
+        Teams Schema
+        Assessments Schema
+
+ Add new functions to interact with the MongoDB Database  (6 hours)
+     - createTeamForCourse(courseId, teamName, memberIds):
+     - getAllCoursesForInstructor(instructorId):
+     - getTeamsForCourse(courseId):
+     - addStudentToTeam(teamId, studentId):
+     - getAvailableStudentsForCourse(courseId):
+     - createCourse(courseCode, courseName, instructorId):
+     - addStudentToCourse(courseId, studentId):
+     - getTeammate(teammateId): 
+     - getStudentTeammates(studentId):
+     - submitAssessment(evaluatorId, evaluateeId, assessment):
+
+Front-End Tasks (1 hour)
+ Create an individual assessment page to allow students to submit peer evaluations.
+
 
 
 Sprint 3 ---------------------------------------------------------------------------------------------------
