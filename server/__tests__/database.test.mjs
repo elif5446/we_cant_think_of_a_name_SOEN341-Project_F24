@@ -18,8 +18,11 @@ test("------ CREATION/RETRIEVAL TEST ------", async () => {
         await database.connect()
         // await database.createUser("testemail@xyz.com", "Test", "User", "testpassword", "instructor")
         const returnUser = await database.getUser("testemail@xyz.com", "testpassword")
+        const badUser = await database.getUser("testemail@xyz.com", "wrongpassword")
         expect(returnUser.result).toBe("success")
+        expect(badUser.result).toBe("fail")
         expect(returnUser.user.firstname).toBe("Test")
+        expect(badUser.user).toBe(null)
     } finally {
         database.close()
     }
