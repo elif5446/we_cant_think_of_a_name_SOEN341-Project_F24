@@ -12,6 +12,7 @@ import StudentProfile from './components/StudentProfile';
 import StudentDashboard from './components/StudentDashboard';
 import PeerAssessment from './components/PeerAssessment';
 import IndividualAssessment from './components/IndividualAssessment';
+import AssessmentConfirmation from './components/AssessmentConfirmation';
 
 function App() {
   return (
@@ -30,7 +31,7 @@ function App() {
         <Route path="/peer-assessment" element={<PeerAssessment />} />
         <Route path="/peer-assessment/:teammateId" element={<IndividualAssessment />}/>
         <Route path="/individual-assessment" element={<IndividualAssessment />} />
-
+        <Route path="/assessment-confirmation" element={<AssessmentConfirmation />} />
       </Routes>
     </Router>
   );

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import '../styles/IndividualAssessment.css';
 
 const IndividualAssessment = () => {
     const [teammate, setTeammate] = useState(null);
+    const [showConfirmation, setShowConfirmation] = useState(false);
     const [assessment, setAssessment] = useState({
         cooperation: 1,
         conceptualContribution: 1,
@@ -43,8 +45,12 @@ const IndividualAssessment = () => {
         }));
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmitClick = (e) => {
         e.preventDefault();
+        setShowConfirmation(true);
+    };
+
+    const handleConfirmSubmit = async () => {
         const studentId = localStorage.getItem('studentId');
         try {
             const response = await fetch('http://localhost:3001/api/submit-assessment', {
@@ -60,8 +66,7 @@ const IndividualAssessment = () => {
             });
 
             if (response.ok) {
-                alert('Assessment submitted successfully!');
-                navigate('/student-dashboard');
+                navigate('/assessment-confirmation');
             } else {
                 alert('Error submitting assessment');
             }
@@ -71,6 +76,10 @@ const IndividualAssessment = () => {
         }
     };
 
+    const handleCancelSubmit = () => {
+        setShowConfirmation(false);
+    };
+
     if (!teammate) {
         return <div>Loading...</div>;
     }
@@ -78,7 +87,7 @@ const IndividualAssessment = () => {
     return (
         <div className="individual-assessment">
             <h1>Peer Assessment for {teammate.firstname} {teammate.lastname}</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmitClick}>
                 {['cooperation', 'conceptualContribution', 'practicalContribution', 'workEthic'].map(dimension => (
                     <div key={dimension}>
                         <label>{dimension.charAt(0).toUpperCase() + dimension.slice(1)}:</label>
@@ -101,6 +110,19 @@ const IndividualAssessment = () => {
                 </div>
                 <button type="submit">Submit Assessment</button>
             </form>
+
+            {showConfirmation && (
+                <div className="confirmation-overlay">
+                    <div className="confirmation-dialog">
+                        <h2>Confirm Submission</h2>
+                        <p>Are you sure you want to submit this assessment?</p>
+                        <div className="confirmation-buttons">
+                            <button onClick={handleConfirmSubmit}>Yes, Submit</button>
+                            <button onClick={handleCancelSubmit}>No, Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

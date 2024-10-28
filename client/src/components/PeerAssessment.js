@@ -70,8 +70,7 @@ const PeerAssessment = () => {
             });
 
             if (response.ok) {
-                alert('Assessments submitted successfully!');
-                navigate('/student-dashboard');
+                navigate('/assessment-confirmation');
             } else {
                 alert('Error submitting assessments');
             }
