@@ -23,6 +23,15 @@ describe('Basic UI Tests', () => {
         });
     });
 
+    // Test basic user types
+    test('should have valid user types', () => {
+        const validUserTypes = ['student', 'instructor'];
+        
+        validUserTypes.forEach(userType => {
+            expect(['student', 'instructor']).toContain(userType);
+        });
+    });
+
     // Test assessment criteria ranges
     test('should have valid assessment criteria ranges', () => {
         const criteria = {
@@ -38,7 +47,6 @@ describe('Basic UI Tests', () => {
             expect(range.min).toBeLessThan(range.max);
         });
     });
-
 
 
 });

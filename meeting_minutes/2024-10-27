@@ -17,6 +17,8 @@ Tasks completeed in sprintt 2:
 -New schemas for courses, teams, and assessments created.
 -New API routes added
 -New MongoDb functions added
+-Basic UI tests added
+-Added CI/CD Pipeline
 
 * Next Meeting: *
 - Date, time, location
