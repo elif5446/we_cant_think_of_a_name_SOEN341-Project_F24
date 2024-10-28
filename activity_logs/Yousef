@@ -1,0 +1,35 @@
+Name: Yousef Bisharah  
+Student ID: 40151411  
+
+Sprint 1--------------------------------------------------------------------------------
+Roles: Backend Development, API Integration between Frontend & Backend  
+Most collaboration with: Othmane & Hendrik & Robert  
+
+*Activities*
+- Meetings with whole team: 24+ hours - Present for every meeting
+- Setting up the basic backend server: 2 hours
+- Implementing API routes for login (GET and POST requests): 3 hours
+- Testing server connections and API responses: 1.5 hours
+- Integrating Mongoose for database setup and connection: 2 hours
+- Coordinating with frontend team to ensure smooth API communication: 2 hours
+- Resolving conflicts in pull requests: 1 hour
+- Debugging login functionality with server and database: 1.5 hours
+
+Sprint 2-------------------------------------------------------------------------------
+Roles: Backend Development, API Enhancements  
+Most collaboration with: Othmane & Hendrik & Robert  
+
+*Activities*
+- Meetings with whole team: Continuing, over 24 hours
+- Developing secure login system with password encryption: X hours
+- Ensuring API handles authentication and user session management: X hours
+- Expanding API functionality to manage role-based access: X hours
+
+Sprint 3-------------------------------------------------------------------------------
+Roles: Backend Optimization, API Maintenance  
+Most collaboration with: Othmane & Hendrik & Robert  
+
+*Activities*
+- Meetings with whole team: Continuing, around X hours
+- Improving API efficiency and error handling: X hours
+- Implementing further database interactions for team management: X hours

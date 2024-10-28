@@ -1,0 +1,54 @@
+Name: Robert Stacey
+Student ID: 40228769
+
+Sprint 1 ---------------------------------------------------------------------------------------------------
+
+Roles: Backend, Database
+Most collaboration with: Jana, Elif, Hendrik
+
+* Activities *
+
+-Implemented database and API routes: 10 hours
+-Created database schema: 2 hours
+-Created API routes: 2 hours
+-Debugging: 2 hours
+-creating login and signup routes: 2 hours 
+
+Sprint 2 ---------------------------------------------------------------------------------------------------
+
+Roles: 
+Most collaboration with: Jana, Elif, Hendrik
+
+* Activities *
+
+Meetings with whole team: Present for every meeting (24 hours)
+
+Create new schemas for the courses, teams and assessments (2 hours)
+     Create model schemas for courses and teams:
+        Courses Schema
+        Teams Schema
+        Assessments Schema
+
+ Add new functions to interact with the MongoDB Database  (6 hours)
+     - createTeamForCourse(courseId, teamName, memberIds):
+     - getAllCoursesForInstructor(instructorId):
+     - getTeamsForCourse(courseId):
+     - addStudentToTeam(teamId, studentId):
+     - getAvailableStudentsForCourse(courseId):
+     - createCourse(courseCode, courseName, instructorId):
+     - addStudentToCourse(courseId, studentId):
+     - getTeammate(teammateId): 
+     - getStudentTeammates(studentId):
+     - submitAssessment(evaluatorId, evaluateeId, assessment):
+
+Front-End Tasks (1 hour)
+ Create an individual assessment page to allow students to submit peer evaluations.
+
+
+
+Sprint 3 ---------------------------------------------------------------------------------------------------
+
+Roles: 
+Most collaboration with:
+
+- Meetings with whole team: 

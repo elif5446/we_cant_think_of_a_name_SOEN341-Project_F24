@@ -49,25 +49,28 @@ const CreateAccount = () => {
 
                 <form id="form-group">
                     <div className="formgroup">
-                        <label htmlFor="email">Email: </label>
+                        <label htmlFor="email">Email:  </label>
                         <input type="text" id="email" name="email" required/>
                     </div>
                     <div className="formgroup">
-                        <label htmlFor="password">Password: </label>
+                        <label htmlFor="password">Password:  </label>
                         <input type="password" id="password" name="pwd" required/>
                     </div>
 
                     <div className="formgroup">
-                        <label htmlFor="firstname">First Name: </label>
+                        <label htmlFor="firstname">First Name:  </label>
                         <input type="text" id="firstname" name="firstname" required/>
                     </div>
                     <div className="formgroup">
-                        <label htmlFor="lastname">Last Name: </label>
+                        <label htmlFor="lastname">Last Name:  </label>
                         <input type="text" id="lastname" name="lastname" required/>
                     </div>
                     <div className="formgroup">
-                        <label htmlFor="usertype">Instructor or Student?: </label>
-                        <input type="text" id="usertype" name="usertype" required/>
+                        <label htmlFor="usertype">Account type:  </label>
+                        <select id="usertype" name="usertype" required>
+                            <option value="instructor">Instructor</option>
+                            <option value="student">Student</option>
+                        </select>
                     </div>
 
                     <div className="formgroup">
