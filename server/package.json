@@ -28,13 +28,13 @@
   "jest": {
     "transform": {},
     "testEnvironment": "node",
-    "extensionsToTreatAsEsm": [".js", ".mjs"],
+    "extensionsToTreatAsEsm": [".mjs"],
     "moduleNameMapper": {
-      "^(\\.{1,2}/.*)\\.js$": "$1"
+      "^(\\.{1,2}/.*)\\.mjs$": "$1"
     },
     "testMatch": [
-      "**/__tests__/**/*.?(m)js?(x)",
-      "**/?(*.)(spec|test).?(m)js?(x)"
+      "**/__tests__/**/*.mjs",
+      "**/?(*.)+(spec|test).mjs"
     ]
   }
 }
