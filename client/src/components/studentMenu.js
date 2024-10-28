@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/StudentMenu.css';
-import { useState, useEffect } from 'react';
 
 const StudentMenu = () => (
     <section className='main-container'>

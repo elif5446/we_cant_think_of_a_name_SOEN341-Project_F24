@@ -7,9 +7,7 @@ const InstructorPage = () => {
     const [courseName, setCourseName] = useState('');
     const [courses, setCourses] = useState([]);
     const [selectedCourse, setSelectedCourse] = useState('');
-    const [studentEmail, setStudentEmail] = useState('');
     const [teamName, setTeamName] = useState('');
-    const [teamMembers, setTeamMembers] = useState('');
     const [students, setStudents] = useState([]);
     const [selectedStudent, setSelectedStudent] = useState([]);
     const [teams, setTeams] = useState([]);
