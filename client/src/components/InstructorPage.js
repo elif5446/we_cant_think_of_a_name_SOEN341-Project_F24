@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/InstructorPage.css';
+import { Link } from 'react-router-dom';
 
 const InstructorPage = () => {
     const [showCreateCourse, setShowCreateCourse] = useState(false);
@@ -242,6 +243,14 @@ const InstructorPage = () => {
         <section className="instructor-page">
             <div className="title-container">
                 <h2 className="title">Instructor</h2>
+                <div className="assessment-links">
+                    <Link to="/instructor/assessment-summary" className="assessment-link">
+                        View Summary Assessment
+                    </Link>
+                    <Link to="/instructor/detailed-assessment" className="assessment-link">
+                        View Detailed Assessment
+                    </Link>
+                </div>
             </div>
             <button onClick={() => setShowCreateCourse(!showCreateCourse)}>
                 {showCreateCourse ? 'Cancel' : 'Create Course'}
