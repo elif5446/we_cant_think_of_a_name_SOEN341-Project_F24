@@ -49,3 +49,42 @@
 .confirmation-buttons button:hover {
     opacity: 0.9;
 }
+
+.assessment-dimension {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.assessment-dimension h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.score-input {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.comments-input {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.comments-input textarea {
+    min-height: 80px;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+.comments-input label {
+    font-weight: bold;
+    color: #555;
+}
