@@ -267,6 +267,79 @@ router.get('/course-students/:courseId', async (req, res) => {
     }
 });
 
+router.get('/instructor/assessment-summary', async (req, res) => {
+    try {
+        // First fetch courses without population
+        const courses = await courseModel.find();
+        const summaryData = [];
+
+        for (const course of courses) {
+            const courseData = [];
+            
+            // Get students for this course
+            const students = await userModel.find({ 
+                _id: { $in: course.students }
+            }, 'firstname lastname email');
+
+            for (const student of students) {
+                // Get all assessments where this student was evaluated
+                const assessments = await assessmentModel.find({ evaluatee: student._id })
+                    .populate('evaluator', 'firstname lastname email');
+
+                if (assessments.length > 0) {
+                    // Calculate averages
+                    const cooperationAvg = assessments.reduce((sum, a) => sum + a.cooperation.score, 0) / assessments.length;
+                    const conceptualAvg = assessments.reduce((sum, a) => sum + a.conceptualContribution.score, 0) / assessments.length;
+                    const practicalAvg = assessments.reduce((sum, a) => sum + a.practicalContribution.score, 0) / assessments.length;
+                    const workEthicAvg = assessments.reduce((sum, a) => sum + a.workEthic.score, 0) / assessments.length;
+                    const overallAvg = (cooperationAvg + conceptualAvg + practicalAvg + workEthicAvg) / 4;
+
+                    // Get student's team
+                    const team = await teamModel.findOne({ 
+                        course: course._id, 
+                        members: student._id 
+                    });
+
+                    // Get evaluator names
+                    const evaluators = assessments.map(a => ({
+                        firstname: a.evaluator.firstname,
+                        lastname: a.evaluator.lastname,
+                        email: a.evaluator.email
+                    }));
+
+                    courseData.push({
+                        studentId: student._id,
+                        email: student.email,
+                        firstname: student.firstname,
+                        lastname: student.lastname,
+                        team: team ? team.teamName : 'No Team',
+                        cooperationAvg: cooperationAvg.toFixed(2),
+                        conceptualAvg: conceptualAvg.toFixed(2),
+                        practicalAvg: practicalAvg.toFixed(2),
+                        workEthicAvg: workEthicAvg.toFixed(2),
+                        overallAvg: overallAvg.toFixed(2),
+                        evaluators: evaluators
+                    });
+                }
+            }
+
+            if (courseData.length > 0) {
+                summaryData.push({
+                    courseId: course._id,
+                    courseCode: course.courseCode,
+                    courseName: course.courseName,
+                    students: courseData
+                });
+            }
+        }
+
+        res.json({ result: "success", data: summaryData });
+    } catch (error) {
+        console.error('Error fetching assessment summary:', error);
+        res.status(500).json({ result: "error", message: error.message });
+    }
+});
+
 router.post('/add-student-to-team', async (req, res) => {
     try {
         const { teamId, studentId } = req.body;
