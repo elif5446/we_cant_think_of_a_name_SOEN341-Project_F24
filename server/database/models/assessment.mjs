@@ -5,10 +5,22 @@ const assessmentSchema = new mongoose.Schema({
     evaluatee: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     course: { type: mongoose.Schema.Types.ObjectId, ref: 'Course' },
     team: { type: mongoose.Schema.Types.ObjectId, ref: 'Team' },
-    cooperation: { type: Number, min: 1, max: 7, required: true },
-    conceptualContribution: { type: Number, min: 1, max: 7, required: true },
-    practicalContribution: { type: Number, min: 1, max: 7, required: true },
-    workEthic: { type: Number, min: 1, max: 7, required: true },
+    cooperation: { 
+        score: { type: Number, min: 1, max: 7, required: true },
+        comments: { type: String }
+    },
+    conceptualContribution: { 
+        score: { type: Number, min: 1, max: 7, required: true },
+        comments: { type: String }
+    },
+    practicalContribution: { 
+        score: { type: Number, min: 1, max: 7, required: true },
+        comments: { type: String }
+    },
+    workEthic: { 
+        score: { type: Number, min: 1, max: 7, required: true },
+        comments: { type: String }
+    },
     comments: { type: String },
     createdAt: { type: Date, default: Date.now },
 });
