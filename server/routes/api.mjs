@@ -355,4 +355,82 @@ router.post('/add-student-to-team', async (req, res) => {
     }
 });
 
+router.get('/instructor/detailed-assessment', async (req, res) => {
+    try {
+        const teams = await teamModel.find()
+            .populate('course', 'courseCode courseName')
+            .populate('members', 'firstname lastname');
+
+        const detailedData = await Promise.all(teams.map(async (team) => {
+            const membersData = await Promise.all(team.members.map(async (member) => {
+                const assessments = await assessmentModel.find({ evaluatee: member._id });
+                
+                if (assessments.length === 0) {
+                    return {
+                        studentId: member._id,
+                        firstname: member.firstname,
+                        lastname: member.lastname,
+                        cooperationAvg: 'N/A',
+                        conceptualAvg: 'N/A',
+                        practicalAvg: 'N/A',
+                        workEthicAvg: 'N/A',
+                        overallAvg: 'N/A',
+                        assessments: []
+                    };
+                }
+
+                const cooperationAvg = assessments.reduce((sum, a) => sum + a.cooperation.score, 0) / assessments.length;
+                const conceptualAvg = assessments.reduce((sum, a) => sum + a.conceptualContribution.score, 0) / assessments.length;
+                const practicalAvg = assessments.reduce((sum, a) => sum + a.practicalContribution.score, 0) / assessments.length;
+                const workEthicAvg = assessments.reduce((sum, a) => sum + a.workEthic.score, 0) / assessments.length;
+                const overallAvg = (cooperationAvg + conceptualAvg + practicalAvg + workEthicAvg) / 4;
+
+                const formattedAssessments = assessments.map(assessment => ({
+                    cooperation: {
+                        score: assessment.cooperation.score,
+                        comments: assessment.cooperation.comments
+                    },
+                    conceptual: {
+                        score: assessment.conceptualContribution.score,
+                        comments: assessment.conceptualContribution.comments
+                    },
+                    practical: {
+                        score: assessment.practicalContribution.score,
+                        comments: assessment.practicalContribution.comments
+                    },
+                    workEthic: {
+                        score: assessment.workEthic.score,
+                        comments: assessment.workEthic.comments
+                    }
+                }));
+
+                return {
+                    studentId: member._id,
+                    firstname: member.firstname,
+                    lastname: member.lastname,
+                    cooperationAvg: cooperationAvg.toFixed(2),
+                    conceptualAvg: conceptualAvg.toFixed(2),
+                    practicalAvg: practicalAvg.toFixed(2),
+                    workEthicAvg: workEthicAvg.toFixed(2),
+                    overallAvg: overallAvg.toFixed(2),
+                    assessments: formattedAssessments
+                };
+            }));
+
+            return {
+                _id: team._id,
+                teamName: team.teamName,
+                course: team.course,
+                members: membersData
+            };
+        }));
+
+        res.json({ result: "success", data: detailedData });
+    } catch (error) {
+        console.error('Error fetching detailed assessment:', error);
+        res.status(500).json({ result: "error", message: error.message });
+    }
+});
+
+
 export default router;
