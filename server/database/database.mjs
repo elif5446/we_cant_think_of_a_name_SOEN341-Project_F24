@@ -57,6 +57,13 @@ class Database {
     
     async submitAssessment(evaluatorId, evaluateeId, assessment) {
         try {
+            if (evaluatorId.toString() === evaluateeId.toString()) {
+                return { 
+                    result: "error", 
+                    message: "Self-assessment is not allowed" 
+                };
+            }
+
             const newAssessment = await assessmentModel.create({
                 evaluator: evaluatorId,
                 evaluatee: evaluateeId,
