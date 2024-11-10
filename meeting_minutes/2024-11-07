@@ -12,5 +12,12 @@
 - Showing what was done so far & putting everything together
 - Preparing for demo
 
+-Demoed the summary of assessements page, and the detailed assessment page
+-Discussed two features to implement
+  -We will be implementing a chat feature so that the teacher and students can commuinicate with eachother
+  -We will be implemented a feature where the data from the summary page can be exported to an excel sheet with graphical charts.
+
+-Discussed adding ci/cd tests for sprint1 and sprint 2
+
 * Next Meeting: *
-- 
+- 2024/11/10 ONLINE
