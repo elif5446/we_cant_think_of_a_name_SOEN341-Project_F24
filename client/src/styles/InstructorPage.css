@@ -76,3 +76,23 @@ tr:nth-child(even) {
     color: #666;
     font-style: italic;
 }
+
+.title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.summary-link {
+    padding: 0.5rem 1rem;
+    background-color: #2196F3;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.summary-link:hover {
+    background-color: #1976D2;
+}

@@ -1,0 +1,134 @@
+.detailed-assessment {
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.team-section {
+    margin-bottom: 3rem;
+    padding: 2rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.team-section h2 {
+    color: #2196F3;
+    border-bottom: 2px solid #2196F3;
+    padding-bottom: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.student-section {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+}
+
+.student-section h3 {
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+.scores-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+    background-color: white;
+}
+
+.scores-table th,
+.scores-table td {
+    padding: 0.75rem;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.scores-table th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+}
+
+.average-row {
+    background-color: #f8f9fa;
+}
+
+.average-row td {
+    border-top: 2px solid #2196F3;
+}
+
+.comments-section {
+    margin-top: 2rem;
+}
+
+.comments-section h4 {
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.peer-comments {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+
+.peer-comments h5 {
+    color: #2196F3;
+    margin-bottom: 1rem;
+}
+
+.comments-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.comment-box {
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+}
+
+.comment-box strong {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+.comment-box p {
+    margin: 0;
+    color: #666;
+    font-style: italic;
+}
+
+.no-assessments {
+    color: #666;
+    font-style: italic;
+    text-align: center;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+    .detailed-assessment {
+        padding: 1rem;
+    }
+
+    .team-section {
+        padding: 1rem;
+    }
+
+    .scores-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .comments-grid {
+        grid-template-columns: 1fr;
+    }
+}

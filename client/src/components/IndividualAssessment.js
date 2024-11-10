@@ -6,11 +6,10 @@ const IndividualAssessment = () => {
     const [teammate, setTeammate] = useState(null);
     const [showConfirmation, setShowConfirmation] = useState(false);
     const [assessment, setAssessment] = useState({
-        cooperation: 1,
-        conceptualContribution: 1,
-        practicalContribution: 1,
-        workEthic: 1,
-        comments: ''
+        cooperation: { score: 1, comments: '' },
+        conceptualContribution: { score: 1, comments: '' },
+        practicalContribution: { score: 1, comments: '' },
+        workEthic: { score: 1, comments: '' }
     });
     const { teammateId } = useParams();
     const navigate = useNavigate();
@@ -38,10 +37,13 @@ const IndividualAssessment = () => {
         }
     };
 
-    const handleAssessmentChange = (dimension, value) => {
+    const handleAssessmentChange = (dimension, field, value) => {
         setAssessment(prev => ({
             ...prev,
-            [dimension]: value
+            [dimension]: {
+                ...prev[dimension],
+                [field]: value
+            }
         }));
     };
 
@@ -80,6 +82,13 @@ const IndividualAssessment = () => {
         setShowConfirmation(false);
     };
 
+    const dimensionLabels = {
+        cooperation: 'Cooperation',
+        conceptualContribution: 'Conceptual Contribution',
+        practicalContribution: 'Practical Contribution',
+        workEthic: 'Work Ethic'
+    };
+
     if (!teammate) {
         return <div>Loading...</div>;
     }
@@ -88,26 +97,30 @@ const IndividualAssessment = () => {
         <div className="individual-assessment">
             <h1>Peer Assessment for {teammate.firstname} {teammate.lastname}</h1>
             <form onSubmit={handleSubmitClick}>
-                {['cooperation', 'conceptualContribution', 'practicalContribution', 'workEthic'].map(dimension => (
-                    <div key={dimension}>
-                        <label>{dimension.charAt(0).toUpperCase() + dimension.slice(1)}:</label>
-                        <input
-                            type="range"
-                            min="1"
-                            max="7"
-                            value={assessment[dimension]}
-                            onChange={(e) => handleAssessmentChange(dimension, parseInt(e.target.value))}
-                        />
-                        <span>{assessment[dimension]}</span>
+                {Object.entries(dimensionLabels).map(([dimension, label]) => (
+                    <div key={dimension} className="assessment-dimension">
+                        <h3>{label}</h3>
+                        <div className="score-input">
+                            <label>Score:</label>
+                            <input
+                                type="range"
+                                min="1"
+                                max="7"
+                                value={assessment[dimension].score}
+                                onChange={(e) => handleAssessmentChange(dimension, 'score', parseInt(e.target.value))}
+                            />
+                            <span>{assessment[dimension].score}</span>
+                        </div>
+                        <div className="comments-input">
+                            <label>Comments for {label}:</label>
+                            <textarea
+                                value={assessment[dimension].comments}
+                                onChange={(e) => handleAssessmentChange(dimension, 'comments', e.target.value)}
+                                placeholder={`Enter your comments about ${label.toLowerCase()}...`}
+                            />
+                        </div>
                     </div>
                 ))}
-                <div>
-                    <label>Comments:</label>
-                    <textarea
-                        value={assessment.comments}
-                        onChange={(e) => handleAssessmentChange('comments', e.target.value)}
-                    />
-                </div>
                 <button type="submit">Submit Assessment</button>
             </form>
 
