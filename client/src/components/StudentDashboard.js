@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import Chat from './Chat';
 
 const StudentDashboard = () => {
     const [courses, setCourses] = useState([]);
     const [teams, setTeams] = useState([]);
     const navigate = useNavigate();
+    const studentId = localStorage.getItem('studentId');
 
     useEffect(() => {
         const studentId = localStorage.getItem('studentId');
@@ -33,6 +35,23 @@ const StudentDashboard = () => {
             console.error('Error:', error);
         }
     };
+
+    const fetchTeams = useCallback(async () => {
+        try {
+            const response = await fetch(`http://localhost:3001/api/student/teams/${studentId}`);
+            if (response.ok) {
+                const data = await response.json();
+                console.log('Fetched teams:', data.teams);
+                setTeams(data.teams || []);
+            }
+        } catch (error) {
+            console.error('Error fetching teams:', error);
+        }
+    }, [studentId]);
+
+    useEffect(() => {
+        fetchTeams();
+    }, [fetchTeams]);
 
     return (
         <div className="student-dashboard">
@@ -81,6 +100,13 @@ const StudentDashboard = () => {
             ) : (
                 <p>You are not part of any teams.</p>
             )}
+            <h2>Chat</h2>
+            <Chat 
+                courses={courses}
+                userId={studentId}
+                userType="student"
+                teams={teams}
+            />
         </div>
     );
 };

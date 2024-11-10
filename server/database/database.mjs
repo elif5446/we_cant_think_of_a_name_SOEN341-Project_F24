@@ -6,6 +6,7 @@ import userModel from "./models/user.mjs"
 import courseModel from './models/course.mjs';
 import teamModel from './models/team.mjs';
 import assessmentModel from './models/assessment.mjs';
+import messageModel from './models/message.mjs';
 
 
 // require('dotenv').config();
@@ -182,10 +183,11 @@ class Database {
         }
     }
     
-    async createCourse(courseCode, courseName) {
+    async createCourse(courseCode, courseName, instructorId) {
         const course = new courseModel({
             courseCode,
             courseName,
+            instructor: instructorId,
         });
     
         try {
@@ -233,9 +235,18 @@ class Database {
         }
     }
 
-    async getAllCourses() {
+    async getAllCourses(instructorId) {
         try {
-            const courses = await courseModel.find({});
+            // Validate instructorId
+            if (!instructorId || instructorId === 'null' || instructorId === 'undefined') {
+                return { 
+                    result: "error", 
+                    message: "Invalid instructor ID" 
+                };
+            }
+
+            const courses = await courseModel.find({ instructor: instructorId })
+                .populate('instructor', 'firstname lastname email');
             return { result: "success", courses };
         } catch (e) {
             console.error('Error fetching courses:', e);
@@ -274,11 +285,115 @@ class Database {
     async getTeamsForCourse(courseId) {
         try {
             const teams = await teamModel.find({ course: courseId })
-                .populate('members', 'firstname lastname email');
+                .populate('members', 'firstname lastname email')
+                .populate('course', 'courseCode courseName');
             return { result: "success", teams };
         } catch (e) {
             console.error('Error fetching teams for course:', e);
             return { result: "error", message: e.message };
+        }
+    }
+
+    async getChatMessages(courseId) {
+        try {
+            const messages = await messageModel.find({
+                $or: [
+                    // Course-specific messages (public or team)
+                    {
+                        courseId,
+                        recipientId: null // public messages for the course
+                    },
+                    {
+                        courseId,
+                        teamId: { $exists: true, $ne: null } // team messages for the course
+                    },
+                    // Direct messages (regardless of course)
+                    {
+                        recipientId: { $exists: true, $ne: null }, // private messages
+                        teamId: null // not team messages
+                    }
+                ]
+            })
+            .populate('senderId', 'firstname lastname')
+            .populate('teamId', 'teamName')
+            .sort({ timestamp: 1 });
+            
+            return messages.map(msg => ({
+                _id: msg._id,
+                senderId: msg.senderId._id,
+                senderName: msg.senderId ? `${msg.senderId.firstname} ${msg.senderId.lastname}` : 'Unknown',
+                senderType: msg.senderType,
+                message: msg.message,
+                timestamp: msg.timestamp,
+                recipientId: msg.recipientId,
+                teamId: msg.teamId?._id,
+                teamName: msg.teamId?.teamName,
+                courseId: msg.courseId
+            }));
+        } catch (e) {
+            console.error('Error getting chat messages:', e);
+            throw e;
+        }
+    }
+
+    async getChatRecipients(courseId) {
+        try {
+            const course = await courseModel.findById(courseId)
+                .populate('instructor', 'firstname lastname email usertype')
+                .populate('students', 'firstname lastname email usertype');
+            
+            if (!course) {
+                throw new Error('Course not found');
+            }
+
+            const recipients = [];
+            if (course.instructor) {
+                recipients.push(course.instructor);
+            }
+            if (course.students) {
+                recipients.push(...course.students);
+            }
+
+            return recipients;
+        } catch (e) {
+            console.error('Error getting chat recipients:', e);
+            throw e;
+        }
+    }
+
+    async saveChatMessage(courseId, senderId, recipientId, message, senderType, teamId) {
+        try {
+            const newMessage = new messageModel({
+                courseId: recipientId ? null : courseId, // Only set courseId for public/team messages
+                senderId,
+                recipientId,
+                message,
+                senderType,
+                teamId,
+                timestamp: new Date()
+            });
+
+            await newMessage.save();
+            return { result: "success", message: newMessage };
+        } catch (e) {
+            console.error('Error saving chat message:', e);
+            return { result: "error", message: e.message };
+        }
+    }
+
+    async getTeamsForStudent(studentId) {
+        try {
+            const teams = await teamModel.find({ 
+                members: studentId 
+            })
+            .populate('members', 'firstname lastname email _id')
+            .populate('course', 'courseCode courseName _id');
+            
+            console.log('Teams from database:', teams); // Debug log
+            return teams;
+        } catch (e) {
+            console.error('Error fetching teams for student:', e);
+            throw e;
         }
     }
 

@@ -96,13 +96,13 @@ router.post('/create-account', async (req, res) => {
 router.post('/create-course', async (req, res) => {
     console.log('Received request to create course:', req.body);
     try {
-        const { courseCode, courseName } = req.body;
+        const { courseCode, courseName, instructorId } = req.body;
 
-        if (!courseCode || !courseName) {
-            return res.status(400).json({ message: 'Course code and name are required' });
+        if (!courseCode || !courseName || !instructorId) {
+            return res.status(400).json({ message: 'Course code, name, and instructor ID are required' });
         }
 
-        const result = await database.createCourse(courseCode, courseName);
+        const result = await database.createCourse(courseCode, courseName, instructorId);
         if (result.result === "success") {
             return res.status(201).json({ message: "Course created successfully!", course: result.course });
         } else {
@@ -429,6 +429,125 @@ router.get('/instructor/detailed-assessment', async (req, res) => {
     } catch (error) {
         console.error('Error fetching detailed assessment:', error);
         res.status(500).json({ result: "error", message: error.message });
+    }
+});
+
+// Update the chat routes with better error handling
+router.get('/chat/messages/:courseId', async (req, res) => {
+    try {
+        const { courseId } = req.params;
+        const messages = await database.getChatMessages(courseId);
+        res.json({ messages });
+    } catch (error) {
+        console.error('Error in /chat/messages:', error);
+        res.status(500).json({ 
+            message: "Error fetching messages",
+            error: error.message 
+        });
+    }
+});
+
+router.get('/chat/recipients/:courseId', async (req, res) => {
+    try {
+        const { courseId } = req.params;
+        const recipients = await database.getChatRecipients(courseId);
+        res.json({ recipients });
+    } catch (error) {
+        console.error('Error in /chat/recipients:', error);
+        res.status(500).json({ 
+            message: "Error fetching recipients",
+            error: error.message 
+        });
+    }
+});
+
+router.post('/chat/send', async (req, res) => {
+    try {
+        const { courseId, senderId, recipientId, message, senderType, teamId } = req.body;
+        
+        if (!courseId || !senderId || !message || !senderType) {
+            return res.status(400).json({ 
+                message: "Missing required fields" 
+            });
+        }
+
+        const result = await database.saveChatMessage(
+            courseId, 
+            senderId, 
+            recipientId, 
+            message, 
+            senderType,
+            teamId
+        );
+        
+        if (result.result === "success") {
+            res.json({ message: "Message sent successfully" });
+        } else {
+            res.status(500).json({ message: "Failed to send message" });
+        }
+    } catch (error) {
+        console.error('Error in /chat/send:', error);
+        res.status(500).json({ 
+            message: "Error sending message",
+            error: error.message 
+        });
+    }
+});
+
+router.get('/courses/:instructorId', async (req, res) => {
+    try {
+        const { instructorId } = req.params;
+        
+        if (!instructorId || instructorId === 'null' || instructorId === 'undefined') {
+            return res.status(400).json({ 
+                message: "Invalid instructor ID provided" 
+            });
+        }
+
+        const result = await database.getAllCourses(instructorId);
+        if (result.result === "success") {
+            res.json({ courses: result.courses });
+        } else {
+            res.status(400).json({ message: result.message });
+        }
+    } catch (e) {
+        console.error('Error fetching courses:', e);
+        res.status(500).json({ 
+            message: "Internal server error",
+            error: e.message 
+        });
+    }
+});
+
+router.get('/student/teams/:studentId', async (req, res) => {
+    try {
+        const { studentId } = req.params;
+        const teams = await database.getTeamsForStudent(studentId);
+        res.json({ teams });
+    } catch (error) {
+        console.error('Error fetching student teams:', error);
+        res.status(500).json({ 
+            message: "Error fetching teams",
+            error: error.message 
+        });
+    }
+});
+
+router.get('/course/teams/:courseId', async (req, res) => {
+    try {
+        const { courseId } = req.params;
+        const result = await database.getTeamsForCourse(courseId);
+        if (result.result === "success") {
+            res.json(result);
+        } else {
+            res.status(400).json({ message: result.message });
+        }
+    } catch (error) {
+        console.error('Error fetching course teams:', error);
+        res.status(500).json({ 
+            message: "Error fetching teams",
+            error: error.message 
+        });
     }
 });
 

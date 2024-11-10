@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import '../styles/InstructorPage.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import Chat from './Chat';
 
 const InstructorPage = () => {
     const [showCreateCourse, setShowCreateCourse] = useState(false);
@@ -16,11 +17,17 @@ const InstructorPage = () => {
     const [courseStudents, setCourseStudents] = useState([]);
     const [selectedTeamMembers, setSelectedTeamMembers] = useState([]);
     const [selectedStudentsForTeam, setSelectedStudentsForTeam] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
+        const instructorId = localStorage.getItem('instructorId');
+        if (!instructorId) {
+            navigate('/instructor-login');
+            return;
+        }
         fetchCourses();
         fetchStudents();
-    }, []);
+    }, [navigate]);
 
     useEffect(() => {
         if (selectedCourse) {
@@ -32,13 +39,26 @@ const InstructorPage = () => {
 
     const fetchCourses = async () => {
         try {
-            const response = await fetch('http://localhost:3001/api/courses');
-            if (response.ok) {
-                const data = await response.json();
+            const instructorId = localStorage.getItem('instructorId');
+            if (!instructorId) {
+                console.error('No instructor ID found');
+                return;
+            }
+
+            const response = await fetch(`http://localhost:3001/api/courses/${instructorId}`);
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message || 'Failed to fetch courses');
+            }
+            
+            const data = await response.json();
+            if (data.courses) {
                 setCourses(data.courses);
             }
         } catch (error) {
             console.error('Error fetching courses:', error);
+            // Optionally show error to user
+            // alert('Error fetching courses: ' + error.message);
         }
     };
 
@@ -72,20 +92,17 @@ const InstructorPage = () => {
         );
     };
 
-    const fetchTeams = async (courseId) => {
+    const fetchTeams = useCallback(async (courseId) => {
         try {
-            const response = await fetch(`http://localhost:3001/api/teams/${courseId}`);
+            const response = await fetch(`http://localhost:3001/api/course/teams/${courseId}`);
             if (response.ok) {
                 const data = await response.json();
-                setTeams(data.teams.map(team => ({
-                    ...team,
-                    members: team.members || []
-                })));
+                setTeams(data.teams || []);
             }
         } catch (error) {
             console.error('Error fetching teams:', error);
         }
-    };
+    }, []);
 
     const fetchCourseStudents = async (courseId) => {
         try {
@@ -107,6 +124,7 @@ const InstructorPage = () => {
     const handleCreateCourse = async (e) => {
         e.preventDefault();
         try {
+            const instructorId = localStorage.getItem('instructorId');
             const response = await fetch('http://localhost:3001/api/create-course', {
                 method: 'POST',
                 headers: {
@@ -115,6 +133,7 @@ const InstructorPage = () => {
                 body: JSON.stringify({
                     courseCode,
                     courseName,
+                    instructorId
                 }),
             });
 
@@ -441,6 +460,16 @@ const InstructorPage = () => {
 ) : (
     <p>No teams in this course.</p>
 )}
+
+<h4>Course Chat</h4>
+<Chat 
+    courses={courses}
+    userId={localStorage.getItem('instructorId')}
+    userType="instructor"
+    teams={teams}
+    selectedCourse={selectedCourse}
+    onCourseSelect={setSelectedCourse}
+/>
                 </>
             )}
         </section>

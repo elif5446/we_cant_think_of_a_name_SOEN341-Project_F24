@@ -11,34 +11,31 @@ const InstructorLogin = () => {
         const email = document.querySelector('#email').value
         const password = document.querySelector('#password').value
 
-        await fetch('http://localhost:3001/api/login', {
-            method: 'POST',
-            body: JSON.stringify({
-                email: email,
-                password: password
-            }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(response => {
-            if (response.status === 401) {
-                throw new Error("Your password is wrong. Please try again.");
-            } else if (response.status === 400) {
-                throw new Error("User does not exist.");
-            } else if (!response.ok) {
-                throw new Error("Something Went Wrong")
+        try {
+            const response = await fetch('http://localhost:3001/api/login', {
+                method: 'POST',
+                body: JSON.stringify({ email, password }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error("Login failed");
             }
 
-            return response.json();
-        }).then(jsonResponse => {
-            if (jsonResponse.user.usertype !== "instructor") {
-                throw new Error("User type missmatch. Please login as an instructor.")
+            const data = await response.json();
+            
+            if (data.user.usertype !== "instructor") {
+                throw new Error("User type mismatch. Please login as a student.");
             }
-            navigate("/instructor-page")
-            console.log(jsonResponse)
-        }).catch(e => {
-            alert(e)
-        })
+
+            localStorage.setItem('instructorId', data.user._id);
+            navigate("/instructor-page");
+
+        } catch (error) {
+            alert(error.message);
+        }
     }
 
     return (
