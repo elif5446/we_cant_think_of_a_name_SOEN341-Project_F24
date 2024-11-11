@@ -12,11 +12,11 @@
 - Everyone committed their changes in order to allow for detailed assessments, and summary of assessements.
 - Showing what was done so far & putting everything together
 - Preparing for demo
-- Demoed the summary of assessements page, and the detailed assessment page
+- Demoed the summary of assessements page (elif, hendrik) and the detailed assessment page (jana, yousef)
 - Discussed two features to implement
-  -We will be implementing a chat feature so that the teacher and students can commuinicate with eachother
-  -We will be implemented a feature where the data from the summary page can be exported to an excel sheet with graphical charts.
--Discussed adding ci/cd tests for sprint1 and sprint 2
+  -We will be implementing a chat feature so that the teacher and students can commuinicate with eachother -> robert
+  -We will be implemented a feature where the data from the summary page can be exported to an excel sheet with graphical charts. -> yousef
+-Discussed adding ci/cd tests for sprint1 and sprint 2 -> robert
 
 * Next Meeting: *
 - 2024/11/10 ONLINE
