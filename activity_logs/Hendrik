@@ -30,9 +30,27 @@ Activities
 
 
 Sprint 3 ---------------------------------------------------------
-Roles:
+Roles: API Development
 Most collaboration with:
 
-Activities
+Meetings with whole team: Present for every meeting (24 hours)
 
--
+- Added API route to GET /instructor/assessment-summary (3 hours)
+  - Fetch All Courses:
+    - Retrieve all courses from the courseModel without populating related data.
+  - Process Each Course:
+    - For each course, initialize an array to store summary data for its students.
+  - Fetch and Process Students for Each Course:
+    - Retrieve students enrolled in the current course (identified by their firstname, lastname, and email).
+    - For each student, find all assessments where the student was evaluated, and include the evaluator's firstname, lastname, and email.
+  - Calculate Averages if Assessments Exist:
+    - If the student has assessments, calculate average scores for cooperation, conceptual contribution, practical contribution, and work ethic.
+    - Calculate an overall average from the four individual averages.
+  - Determine Student's Team and Evaluator Information:
+    - Identify the student's team within the course, if applicable, and include the team name.
+    - Create a list of evaluators, providing their firstname, lastname, and email.
+  - Compile Course Data for Each Student:
+    - Add each student's data, including their averages, team name, and evaluators, to the course summary.
+    - If there are any students with data, append this summary to the main result list for all courses.
+  - Return the Compiled Summary:
+    - Send the summary data as a JSON response with course and student information, or log an error and send an error response if an exception occurs.
