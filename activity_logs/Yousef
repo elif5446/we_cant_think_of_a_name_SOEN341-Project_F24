@@ -26,25 +26,4 @@ Most collaboration with: Hendrik & Robert
 - Testing the continuous integration workflow: 2 hours
 
 Sprint 3-------------------------------------------------------------------------------
-Roles: Backend Optimization, API Maintenance, PDF Export  
-Most collaboration with: Othmane & Hendrik & Robert  
-
-*Activities*
-Meetings with whole team: Present for every meeting (24 hours)
-
-Added API route to GET /instructor/detailed-assessment (3 hours)
--Fetch Teams and Related Data 
-  -Retrieve all teams from the teamModel database.
-  -Populate each team's data with course details (courseCode, courseName) and member names (firstname, lastname).
--Process Each Team's Members
-  -For each team, retrieve each member's assessment data from assessmentModel
-  -calculate average scores for four categories: cooperation, conceptual contribution, practical contribution, and work ethic.
--Format Assessment Details
-  -For each assessment, include scores and comments for each category (cooperation, conceptual, practical, and work ethic).
--Return Final Response
-  -Construct a response with team and course information, member details (including averages and individual assessments), and send it as a JSON response
-
-Added Excel Sheet Export option (3 hours)
--Added css for export button, charts section styling within a container in order to ensure that everything looks  (.team-chart-container, .charts-section, .team-charts) 
--Added a bar chart using react-chartjs-2 to display average scores
--Added Excel Export with Chart using ExcelJS to create an Excel file with student data and chart image.
+.
