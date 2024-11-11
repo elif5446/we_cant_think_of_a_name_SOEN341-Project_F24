@@ -1,0 +1,17 @@
+# Meeting Minutes - 2024/11/10
+
+*  Attendees:  *
+- Yousef Bisharah [40151411]
+- Elif Sag Sesen [40283343]
+- Robert Stacey [40228769]
+- Hendrik Nelson Tebeng Nzodoum [40282196]
+- Jana El Madhoun [40272201]
+
+* Minutes: *
+-Implemented the chat feature between teachers, students and their teammates and classmates.
+-Added an option to export the data from the summary of assessments page, in an excel sheet with graphs.
+-Added unit tests for features implemented in sprint 1 and sprint 2.
+-Finalizing the sprint in order to have it completed on time before the deadline at 2024/11/10 @ 12am.
+
+* Next Meeting: *
+- 2024-11-12 @ webster 1pm
