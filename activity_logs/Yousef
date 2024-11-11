@@ -48,3 +48,5 @@ Added Excel Sheet Export option (3 hours)
 -Added css for export button, charts section styling within a container in order to ensure that everything looks  (.team-chart-container, .charts-section, .team-charts) 
 -Added a bar chart using react-chartjs-2 to display average scores
 -Added Excel Export with Chart using ExcelJS to create an Excel file with student data and chart image.
+-Tested it to ensure it is stable and reliable
+-Added it to the website so that it interactively changes and looks nice instead of keeping it exclusive to pdf exports
