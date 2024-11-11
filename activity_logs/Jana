@@ -27,10 +27,40 @@ UI
 
 Sprint 3 -----------------------------------------------------------------------------------------------------
 
-Role.s: 
-Most collaboration with:
+Role.s: Front-end, dashboard: team management
+Most collaboration with: Elif and Robert
 
-- Meetings with whole team: 
+Meetings with whole team: Present for every meeting (24 hours)
+
+-Added new page for detailedassessmentview.js (6 hours)
+
+-Added state management for teamsData and loading
+
+-Added fetchDetailedData
+-Fetches data from the API endpoint /api/instructor/detailed-assessment and sets it’s data to teamsData
+
+-Display of Team Data
+	-displays a section for each team with the team’s name.
+	-team section contains student details, including their name and a breakdown of their scores and comments from peer assessments.
+
+-Added Score Table
+-For each student, a table is displayed with the following columns: Evaluator, Cooperation, Conceptual, Practical, Work Ethic and the average.
+-Shows individual peer scores, and at the bottom, a row with the student’s overall averages for each category.
+
+-Added Peer Comments Section
+	-Lists comments given by peers for each assessment category
+
+-Added Conditional rendering
+	-If no assessments are available for a student, it shows a message: "No assessments submitted for this student."
+
+-Update styling in detailedassessmentview.css (20 min)
+	-Styled sections, tables, peer comments.
+
+-Modified instructor page.js with the new routes (1 hour)
+
+-Modified instuctorpage.css (15 min)
+
+
 
 Sprint 4 -----------------------------------------------------------------------------------------------------
 
