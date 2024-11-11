@@ -20,6 +20,27 @@ Tasks completeed in sprintt 2:
 -Basic UI tests added
 -Added CI/CD Pipeline
 
+User Story #29: Team Management System
+-Points: 4
+-Priority: High – This feature is critical as it allows instructors to manually organize students into teams, an essential component for peer assessment.
+-Risk Level: Medium – Involves multiple API endpoints and database interactions, posing a moderate integration risk.
+-Rationale: Requires multiple API endpoints and a complex frontend for team and course management, with several database interactions. 
+-Estimated as 4 points due to time and complexity.
+
+User Story #30: Peer Assessment UI
+-Points: 4
+-Priority: High – The UI is crucial for students to provide peer feedback easily, which is central to the platform’s functionality.
+-Risk Level: Medium – Requires both frontend design and backend data handling, with moderate complexity in linking student evaluations.
+-Rationale: Involves frontend design and backend functionality for listing teammates and linking to assessments. 
+-We assigned 4 points for the dual complexity.
+
+User Story #36: 7-Point Peer-Assessment Scale
+-Points: 3
+-Priority: High – Adding a 7-point scale is vital for detailed peer evaluations, improving feedback accuracy.
+-Risk Level: Medium – Involves schema design and database storage, with manageable complexity in implementing the scale.
+-Rationale: This task involves creating a rating scale, storing evaluations, and designing a submission page. 
+-Estimated as 3 points due to moderate complexity.
+
 * Next Meeting: *
 - Date, time, location
 2024-10-29, 11:45am, FG B060
