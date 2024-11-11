@@ -32,10 +32,34 @@ Most collaboration with: Jana & Robert
 
 Sprint 3 -----------------------------------------------------------------------------------------------------
 
-Role.s: 
-Most collaboration with:
+Role.s: Assessment summary frontend
+Most collaboration with: Hendrik
 
-- Meetings with whole team: 
+- Meetings with whole team: Present for every meeting (24 hours)
+
+-Add new pages for assessmentsummary.js: 6 hours in total
+  -Added state management for summaryData. Loading, selected Course
+  -Added FetchSummaryData fetches data from the API endpoint /api/instructor/assessment-summary and sets its
+  data to summary Data, selecting first course by default.
+  -Added a Course Selection Dropdown
+  -Displays a dropdown populated with course options from summaryData
+	-When a course is selected, selectedCourse updates to show data for that specific course.
+  -Added a Display Table
+  	-After selecting a course, the component displays a table summarizing the assessment data for each student 
+    in the selected course.
+  	-Columns include student ID, first and last name, team, averages for different assessment metrics and the 
+    average along with the number of evaluators for each student
+	
+-Update Styling in assessmentsummary.css: 30 min in total
+	-Added Container styling for assessment summary, course selector
+	-Added Summary table styling
+
+-Updated routes in app.js: 30 min in total
+	-import AssessmentSummary, routed it
+	-import DetailedAssessmentView, routed it
+
+- Sprint planning and documentation (planning, issues, user stories, tasks & acceptance tests on GitHub): 1 hou
+- Writing Meeting Minutes: 30 min (in total)
 
 Sprint 4 -----------------------------------------------------------------------------------------------------
 
