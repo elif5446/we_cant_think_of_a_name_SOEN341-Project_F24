@@ -13,5 +13,33 @@
 -Added unit tests for features implemented in sprint 1 and sprint 2.
 -Finalizing the sprint in order to have it completed on time before the deadline at 2024/11/10 @ 12am.
 
+-User Story #63: Detailed Assessment Summary
+  -Story Points Assigned: 3
+  -Priority: High – This feature is essential for instructors to evaluate student performance effectively.
+  -Risk Level: Medium – Involves complex data handling and multiple API calls, which could lead to integration challenges.
+  -This task involved creating API routes to fetch detailed assessment data and building a frontend summary display. 
+  -The need to calculate averages and show scores for multiple criteria added complexity, so we estimated 3 points.
+
+User Story #64: Assessment Summary
+  -Story Points Assigned: 3
+  -Priority: High – Provides instructors with a quick view of assessments, crucial for tracking team contributions.
+  -Risk Level: Medium – Moderate data integration is needed, but complexity is lower than the detailed summary.
+  -The task required API calls to fetch summary data and a UI with filters for a quick view of assessment scores.
+  -Its moderate complexity and data handling needs made it a 3-point task
+
+User Story #65: Chat Feature for Peer Assessment System
+  -Story Points Assigned: 2
+  -Priority: High – Important for communication among students and instructors within the assessment platform.
+  -Risk Level: Medium – Involves standard chat implementation, but backend API and message storage add moderate risk.
+  -This feature involved standard chat functionalities and a basic UI. 
+  -Given the familiar implementation and moderate effort required, we estimated 2 points.
+
+User Story #66: Export Assessment Summary as a Spreadsheet
+  -Story Points Assigned: 2
+  -Priority: High – Enables instructors to save and analyze assessment data outside the system.
+  -Risk Level: Medium – Mostly involves data formatting and export, with minimal integration risks.
+  -This task was primarily about adding an export button and structuring data for Excel export. 
+  -With straightforward implementation, it was assigned 2 points.
+
 * Next Meeting: *
 - 2024-11-12 @ webster 1pm
