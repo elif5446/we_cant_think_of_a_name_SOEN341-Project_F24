@@ -49,6 +49,38 @@ Front-End Tasks (1 hour)
 Sprint 3 ---------------------------------------------------------------------------------------------------
 
 Roles: 
-Most collaboration with:
+Most collaboration with: Jana, Elif, Hendrik
+
+Meetings with whole team: Present for every meeting (24 hours)
+
+-Modified individual assessment page to included comments on each dimension (30 min)
+
+-Create new schema for message, Modifying schemas (1 hour)
+       -Message Schema
+       -Modified Teams Schema
+       -Modified assessment schema to have comments
+
+     -Updated database with new routes 2 hours)
+          -  async getChatMessages(courseId)
+          -  async getChatRecipients(courseId) 
+          -  async saveChatMessage(courseId, senderId, recipientId, message, senderType, teamId)
+          -  async getTeamsForStudent(studentId)
+
+     -Added new API routes (2 hours)
+          -router.get('/chat/messages/:courseId', async (req, res)
+          -router.get('/chat/recipients/:courseId', async (req, res)
+          -router.post('/chat/send', async (req, res)
+          -router.get('/courses/:instructorId', async (req, res)
+          -router.get('/student/teams/:studentId', async (req, res)
+          -router.get('/course/teams/:courseId', async (req, res) 
+
+     -Created Chatbox (3 hours)
+          - Lots of frontend work and testing to make usre it works with routes and database,
+          - Added chatbox to instructorpage.js and studentdashboard.js
+   
+     -Added CI/CD testing for features in sprint 1 and sprint 2 (3 hours)
+    
+
+
 
 - Meetings with whole team: 
