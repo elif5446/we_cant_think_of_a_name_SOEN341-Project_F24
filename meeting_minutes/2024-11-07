@@ -9,14 +9,13 @@
 
 * Minutes: *
 - Final touches before demo (for basic features)
+- Everyone committed their changes in order to allow for detailed assessments, and summary of assessements.
 - Showing what was done so far & putting everything together
 - Preparing for demo
-
--Demoed the summary of assessements page, and the detailed assessment page
--Discussed two features to implement
+- Demoed the summary of assessements page, and the detailed assessment page
+- Discussed two features to implement
   -We will be implementing a chat feature so that the teacher and students can commuinicate with eachother
   -We will be implemented a feature where the data from the summary page can be exported to an excel sheet with graphical charts.
-
 -Discussed adding ci/cd tests for sprint1 and sprint 2
 
 * Next Meeting: *
