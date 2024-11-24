@@ -404,6 +404,24 @@ class Database {
         }
     }
 
+    async retrieveComments(instructorId, assessmentID) {
+        try {
+            const comments = await commentModel.find({
+                teacher: instructorId,
+                assessment: assessmentID
+            })
+
+            if (!comments || comments.length === 0) {
+                return [];
+            }
+            
+            return comments;
+        } catch (e) {
+            console.error('Error fetching comments for teacher:', e);
+            throw e;
+        }
+    }
+
 }
 
 // // Connect to MongoDB
