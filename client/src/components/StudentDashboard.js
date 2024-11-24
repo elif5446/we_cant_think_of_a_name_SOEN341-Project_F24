@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import Chat from './Chat';
+import '../styles/StudentDashboard.css';
 
 const StudentDashboard = () => {
     const [courses, setCourses] = useState([]);
@@ -64,12 +65,12 @@ const StudentDashboard = () => {
                     ))}
                 </ul>
             ) : (
-                <p>You are not enrolled in any courses.</p>
+                <p className="empty-state">You are not enrolled in any courses.</p>
             )}
             <h2>Your Teams</h2>
             {teams.length > 0 ? (
                 teams.map(team => (
-                    <div key={team._id}>
+                    <div key={team._id} className="team-section">
                         <h3>{team.teamName} (Course: {team.course.courseCode})</h3>
                         <table>
                             <thead>
@@ -87,7 +88,10 @@ const StudentDashboard = () => {
                                         <td>{member.lastname}</td>
                                         <td>{member.email}</td>
                                         <td>
-                                            <Link to={`/peer-assessment/${member._id}`}>
+                                            <Link 
+                                                to={`/peer-assessment/${member._id}`}
+                                                className="assess-link"
+                                            >
                                                 Assess {member.firstname}
                                             </Link>
                                         </td>
@@ -98,15 +102,17 @@ const StudentDashboard = () => {
                     </div>
                 ))
             ) : (
-                <p>You are not part of any teams.</p>
+                <p className="empty-state">You are not part of any teams.</p>
             )}
             <h2>Chat</h2>
-            <Chat 
-                courses={courses}
-                userId={studentId}
-                userType="student"
-                teams={teams}
-            />
+            <div className="chat-section">
+                <Chat 
+                    courses={courses}
+                    userId={studentId}
+                    userType="student"
+                    teams={teams}
+                />
+            </div>
         </div>
     );
 };

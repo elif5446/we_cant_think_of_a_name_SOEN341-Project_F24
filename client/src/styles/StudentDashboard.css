@@ -1,0 +1,127 @@
+.student-dashboard {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #f9f5f2;
+}
+
+.student-dashboard h1 {
+    color: #772432;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.student-dashboard h2 {
+    color: #772432;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    border-bottom: 2px solid #FFB81C;  /* Stingers Gold */
+    padding-bottom: 0.5rem;
+}
+
+.student-dashboard h3 {
+    color: #333;
+    margin: 1.5rem 0;
+    font-size: 1.4rem;
+}
+
+/* Course list styling */
+.student-dashboard ul {
+    list-style: none;
+    padding: 0;
+}
+
+.student-dashboard li {
+    background-color: white;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #772432;  /* Stingers Maroon accent */
+}
+
+/* Team section styling */
+.team-section {
+    background-color: white;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid #eee;
+}
+
+/* Table styling */
+.student-dashboard table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.student-dashboard th {
+    background-color: #772432;  /* Stingers Maroon */
+    color: white;
+    padding: 1rem;
+    text-align: left;
+}
+
+.student-dashboard td {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.student-dashboard tr:last-child td {
+    border-bottom: none;
+}
+
+.student-dashboard tr:hover {
+    background-color: #fff9e6;  /* Light gold hover */
+}
+
+/* Assessment link styling */
+.assess-link {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #FFB81C;  /* Stingers Gold */
+    color: #000;  /* Black text for contrast */
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    width: 120px;  /* Fixed width */
+    text-align: center;  /* Center the text */
+}
+
+.assess-link:hover {
+    background-color: #772432;  /* Stingers Maroon */
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Empty state messages */
+.empty-state {
+    text-align: center;
+    color: #666;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 8px;
+    margin: 1rem 0;
+    border: 1px solid #FFB81C;  /* Stingers Gold */
+}
+
+/* Chat section */
+.chat-section {
+    margin-top: 2rem;
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid #eee;
+} 
