@@ -7,6 +7,7 @@ import courseModel from './models/course.mjs';
 import teamModel from './models/team.mjs';
 import assessmentModel from './models/assessment.mjs';
 import messageModel from './models/message.mjs';
+import commentModel from "./models/comment.mjs"
 
 
 // require('dotenv').config();
