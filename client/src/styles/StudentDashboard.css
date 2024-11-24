@@ -18,7 +18,7 @@
     margin-top: 2rem;
     margin-bottom: 1rem;
     font-size: 1.8rem;
-    border-bottom: 2px solid #FFB81C;  /* Stingers Gold */
+    border-bottom: 2px solid #FFB81C;
     padding-bottom: 0.5rem;
 }
 
@@ -28,7 +28,6 @@
     font-size: 1.4rem;
 }
 
-/* Course list styling */
 .student-dashboard ul {
     list-style: none;
     padding: 0;
@@ -40,7 +39,7 @@
     margin: 0.5rem 0;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-left: 4px solid #772432;  /* Stingers Maroon accent */
+    border-left: 4px solid #772432;
 }
 
 /* Team section styling */
@@ -65,7 +64,7 @@
 }
 
 .student-dashboard th {
-    background-color: #772432;  /* Stingers Maroon */
+    background-color: #772432;
     color: white;
     padding: 1rem;
     text-align: left;
@@ -81,31 +80,29 @@
 }
 
 .student-dashboard tr:hover {
-    background-color: #fff9e6;  /* Light gold hover */
+    background-color: #fff9e6;
 }
 
-/* Assessment link styling */
 .assess-link {
     display: inline-block;
     padding: 0.5rem 1rem;
-    background-color: #FFB81C;  /* Stingers Gold */
-    color: #000;  /* Black text for contrast */
+    background-color: #FFB81C;
+    color: #000;
     text-decoration: none;
     border-radius: 4px;
     font-weight: 500;
     transition: all 0.3s ease;
-    width: 120px;  /* Fixed width */
-    text-align: center;  /* Center the text */
+    width: 120px;
+    text-align: center;
 }
 
 .assess-link:hover {
-    background-color: #772432;  /* Stingers Maroon */
+    background-color: #772432;
     color: white;
     transform: translateY(-2px);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Empty state messages */
 .empty-state {
     text-align: center;
     color: #666;
@@ -113,10 +110,9 @@
     background-color: white;
     border-radius: 8px;
     margin: 1rem 0;
-    border: 1px solid #FFB81C;  /* Stingers Gold */
+    border: 1px solid #FFB81C;
 }
 
-/* Chat section */
 .chat-section {
     margin-top: 2rem;
     background-color: white;
