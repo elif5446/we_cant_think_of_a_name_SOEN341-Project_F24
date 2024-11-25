@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/DetailedAssessmentView.css';
+import { Link } from 'react-router-dom';
 
 const DetailedAssessmentView = () => {
     const [teamsData, setTeamsData] = useState([]);
@@ -95,19 +96,26 @@ const DetailedAssessmentView = () => {
                                     <div className="detailed-feedback">
                                         {member.assessments.map((assessment, index) => (
                                             <div key={index} className="feedback-card">
-                                                <h5>{assessment.evaluator.firstname} {assessment.evaluator.lastname}'s Feedback</h5>
-                                                {assessment.cooperation.comments && (
-                                                    <p><strong>Cooperation:</strong> {assessment.cooperation.comments}</p>
-                                                )}
-                                                {assessment.conceptual.comments && (
-                                                    <p><strong>Conceptual:</strong> {assessment.conceptual.comments}</p>
-                                                )}
-                                                {assessment.practical.comments && (
-                                                    <p><strong>Practical:</strong> {assessment.practical.comments}</p>
-                                                )}
-                                                {assessment.workEthic.comments && (
-                                                    <p><strong>Work Ethic:</strong> {assessment.workEthic.comments}</p>
-                                                )}
+                                                <div className="feedback-content">
+                                                    <h5>{assessment.evaluator.firstname} {assessment.evaluator.lastname}'s Feedback</h5>
+                                                    {assessment.cooperation.comments && (
+                                                        <p><strong>Cooperation:</strong> {assessment.cooperation.comments}</p>
+                                                    )}
+                                                    {assessment.conceptual.comments && (
+                                                        <p><strong>Conceptual:</strong> {assessment.conceptual.comments}</p>
+                                                    )}
+                                                    {assessment.practical.comments && (
+                                                        <p><strong>Practical:</strong> {assessment.practical.comments}</p>
+                                                    )}
+                                                    {assessment.workEthic.comments && (
+                                                        <p><strong>Work Ethic:</strong> {assessment.workEthic.comments}</p>
+                                                    )}
+                                                </div>
+                                                <div className="feedback-overlay">
+                                                    <Link to={`/instructor/comments/${assessment.evaluator._id}`} className="comments-button">
+                                                        Comments
+                                                    </Link>
+                                                </div>
                                             </div>
                                         ))}
                                     </div>
