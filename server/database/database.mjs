@@ -431,10 +431,25 @@ class Database {
                 body: body
             })
 
-            return { result: "success", comment: newComment}
+            return { status: "success", comment: newComment}
         } catch (e) {
             console.error('Error creating comments for teacher:', e);
-            return { result: "error", comment: null}
+            return { status: "error", comment: null}
+        }
+    }
+
+    async deleteCommentById(commentId) {
+        try {
+            const deletedComment = await commentModel.findByIdAndDelete(commentId);
+    
+            if (!deletedComment) {
+                return { status: "error"}
+            }
+    
+            return { status: "success"}
+        } catch (e) {
+            console.error('Error deleting comment:', e);
+            return { status: "error"}
         }
     }
 
