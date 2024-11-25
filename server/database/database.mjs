@@ -443,7 +443,7 @@ class Database {
         }
     }
 
-    async deleteCommentById(commentId, instructorId, assessmentID) {
+    async deleteComment(commentId, instructorId, assessmentID) {
         try {
             const deletedComment = await commentModel.findByIdAndDelete(commentId);
 
@@ -453,7 +453,7 @@ class Database {
             })
     
             if (!deletedComment) {
-                return { status: "error", comments: []}
+                return { status: "failure", comments: []}
             }
     
             return { status: "success", comments: allComments}

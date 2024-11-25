@@ -581,11 +581,11 @@ router.post('/comments/delete', async (req, res) => {
         const commentId = req.body.comment_id
         const instructorId = req.body.instructor_id
         const assessmentID = req.body.assessment_id
-        const commentObj = database.deleteCommentById(commentId, instructorId, assessmentID)
+        const commentObj = database.deleteComment(commentId, instructorId, assessmentID)
 
         if (commentObj.status === "error") {
             res.status(serverError).json({ 
-                message: "Error fetching comments",
+                message: "Error deleting comments",
                 error: error.message 
             })
         } else {
@@ -594,16 +594,38 @@ router.post('/comments/delete', async (req, res) => {
             })
         }
     } catch(e) {
-        console.error('Error fetching comments:', error);
+        console.error('Error deleting comments:', error);
         res.status(500).json({ 
-            message: "Error fetching comments",
+            message: "Error deleting comments",
             error: error.message 
         })
     }
 })
 
-router.post('/comments/create', async (req, res) => {
+router.post('/comments/create', async (req, res) => {   
+    try{
+        const instructorId = req.body.instructor_id
+        const assessmentID = req.body.assessment_id
+        const body = req.body.body
+        const commentObj = database.createComment(instructorId, assessmentID, body)
 
+        if (commentObj.status === "error") {
+            res.status(serverError).json({ 
+                message: "Error creating comments",
+                error: error.message 
+            })
+        } else {
+            res.status(success).json({
+                comments: commentObj.comments
+            })
+        }
+    } catch(e) {
+        console.error('Error creating comments:', error);
+        res.status(500).json({ 
+            message: "Error creating comments",
+            error: error.message 
+        })
+    }
 })
 
 
