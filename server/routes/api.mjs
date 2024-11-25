@@ -551,5 +551,29 @@ router.get('/course/teams/:courseId', async (req, res) => {
     }
 });
 
+router.get('/comment/', async (req, res) => {
+    const commentId = req.query._id
+    const commentObj = database.retrieveComments(commentId)
+
+    if (commentObj.status === "error") {
+        res.status(serverError).json({ 
+            message: "Error fetching comments",
+            error: error.message 
+        })
+    } else {
+        res.status(success).json({
+            comments: commentObj.comments
+        })
+    }
+})
+
+router.post('/comment/delete', async (req, res) => {
+
+})
+
+router.post('/comment/create', async (req, res) => {
+
+})
+
 
 export default router;

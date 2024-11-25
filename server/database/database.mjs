@@ -416,9 +416,9 @@ class Database {
                 return {status: "success", comments: []}
             }
             
-            return {status: "success", comments: comments};
+            return {status: "success", comments: comments}
         } catch (e) {
-            console.error('Error fetching comments for teacher:', e);
+            console.error('Error fetching comments for teacher:', e)
             return {status: "error", comments: []}
         }
     }
