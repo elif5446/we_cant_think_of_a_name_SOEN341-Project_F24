@@ -551,27 +551,58 @@ router.get('/course/teams/:courseId', async (req, res) => {
     }
 });
 
-router.get('/comment/', async (req, res) => {
-    const commentId = req.query._id
-    const commentObj = database.retrieveComments(commentId)
+router.get('/comments/', async (req, res) => {
+    try{
+        const instructorId = req.query.instructor_id
+        const assessmentID = req.query.assessment_id
+        const commentObj = database.retrieveComments(instructorId, assessmentID)
 
-    if (commentObj.status === "error") {
-        res.status(serverError).json({ 
+        if (commentObj.status === "error") {
+            res.status(serverError).json({ 
+                message: "Error fetching comments",
+                error: error.message 
+            })
+        } else {
+            res.status(success).json({
+                comments: commentObj.comments
+            })
+        }
+    } catch(e) {
+        console.error('Error fetching comments:', error);
+        res.status(500).json({ 
             message: "Error fetching comments",
             error: error.message 
-        })
-    } else {
-        res.status(success).json({
-            comments: commentObj.comments
         })
     }
 })
 
-router.post('/comment/delete', async (req, res) => {
+router.post('/comments/delete', async (req, res) => {
+    try{
+        const commentId = req.body.comment_id
+        const instructorId = req.body.instructor_id
+        const assessmentID = req.body.assessment_id
+        const commentObj = database.deleteCommentById(commentId, instructorId, assessmentID)
 
+        if (commentObj.status === "error") {
+            res.status(serverError).json({ 
+                message: "Error fetching comments",
+                error: error.message 
+            })
+        } else {
+            res.status(success).json({
+                comments: commentObj.comments
+            })
+        }
+    } catch(e) {
+        console.error('Error fetching comments:', error);
+        res.status(500).json({ 
+            message: "Error fetching comments",
+            error: error.message 
+        })
+    }
 })
 
-router.post('/comment/create', async (req, res) => {
+router.post('/comments/create', async (req, res) => {
 
 })
 

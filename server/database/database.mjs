@@ -425,31 +425,41 @@ class Database {
 
     async createComment(instructorId, assessmentID, body) {
         try {
-            const newComment = await commentModel.create({
+            await commentModel.create({
                 teacher: instructorId,
                 assessment: assessmentID,
                 body: body
             })
 
-            return { status: "success", comment: newComment}
+            const allComments = await commentModel.find({
+                teacher: instructorId,
+                assessment: assessmentID
+            })
+
+            return { status: "success", comments: allComments}
         } catch (e) {
             console.error('Error creating comments for teacher:', e);
-            return { status: "error", comment: null}
+            return { status: "error", comments: []}
         }
     }
 
-    async deleteCommentById(commentId) {
+    async deleteCommentById(commentId, instructorId, assessmentID) {
         try {
             const deletedComment = await commentModel.findByIdAndDelete(commentId);
+
+            const allComments = await commentModel.find({
+                teacher: instructorId,
+                assessment: assessmentID
+            })
     
             if (!deletedComment) {
-                return { status: "error"}
+                return { status: "error", comments: []}
             }
     
-            return { status: "success"}
+            return { status: "success", comments: allComments}
         } catch (e) {
             console.error('Error deleting comment:', e);
-            return { status: "error"}
+            return { status: "error", comments: []}
         }
     }
 
