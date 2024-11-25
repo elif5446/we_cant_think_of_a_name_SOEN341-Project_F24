@@ -27,23 +27,20 @@ const DetailedAssessmentView = () => {
     };
 
     const calculateOverallAverage = (student) => {
-        const scores = [
-            parseFloat(student.cooperationAvg) || 0,
-            parseFloat(student.conceptualAvg) || 0,
-            parseFloat(student.practicalAvg) || 0,
-            parseFloat(student.workEthicAvg) || 0
-        ];
+        if (student.cooperationAvg === 'N/A' || 
+            student.conceptualAvg === 'N/A' || 
+            student.practicalAvg === 'N/A' || 
+            student.workEthicAvg === 'N/A') {
+            return 'N/A';
+        }
         
-        const validScores = scores.filter(score => !isNaN(score));
-        if (validScores.length === 0) return 'N/A';
+        const cooperationAvg = parseFloat(student.cooperationAvg);
+        const conceptualAvg = parseFloat(student.conceptualAvg);
+        const practicalAvg = parseFloat(student.practicalAvg);
+        const workEthicAvg = parseFloat(student.workEthicAvg);
         
-        const average = validScores.reduce((a, b) => a + b, 0) / validScores.length;
-        return average.toFixed(2);
-    };
-
-    const formatScore = (score) => {
-        const parsed = parseFloat(score);
-        return isNaN(parsed) ? 'N/A' : parsed.toFixed(2);
+        return ((cooperationAvg + conceptualAvg + 
+                practicalAvg + workEthicAvg) / 4).toFixed(2);
     };
 
     if (loading) return <div className="loading-state">Loading...</div>;
@@ -69,19 +66,19 @@ const DetailedAssessmentView = () => {
                                 <div className="score-summary">
                                     <div className="metric">
                                         <span>Cooperation</span>
-                                        <span>{formatScore(member.cooperationAvg)}</span>
+                                        <span>{member.cooperationAvg}</span>
                                     </div>
                                     <div className="metric">
                                         <span>Conceptual</span>
-                                        <span>{formatScore(member.conceptualAvg)}</span>
+                                        <span>{member.conceptualAvg}</span>
                                     </div>
                                     <div className="metric">
                                         <span>Practical</span>
-                                        <span>{formatScore(member.practicalAvg)}</span>
+                                        <span>{member.practicalAvg}</span>
                                     </div>
                                     <div className="metric">
                                         <span>Work Ethic</span>
-                                        <span>{formatScore(member.workEthicAvg)}</span>
+                                        <span>{member.workEthicAvg}</span>
                                     </div>
                                 </div>
 
@@ -98,7 +95,7 @@ const DetailedAssessmentView = () => {
                                     <div className="detailed-feedback">
                                         {member.assessments.map((assessment, index) => (
                                             <div key={index} className="feedback-card">
-                                                <h5>Peer {index + 1} Feedback</h5>
+                                                <h5>{assessment.evaluator.firstname} {assessment.evaluator.lastname}'s Feedback</h5>
                                                 {assessment.cooperation.comments && (
                                                     <p><strong>Cooperation:</strong> {assessment.cooperation.comments}</p>
                                                 )}
