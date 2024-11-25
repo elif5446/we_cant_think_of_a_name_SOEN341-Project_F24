@@ -413,13 +413,28 @@ class Database {
             })
 
             if (!comments || comments.length === 0) {
-                return [];
+                return {status: "success", comments: []}
             }
             
-            return comments;
+            return {status: "success", comments: comments};
         } catch (e) {
             console.error('Error fetching comments for teacher:', e);
-            throw e;
+            return {status: "error", comments: []}
+        }
+    }
+
+    async createComment(instructorId, assessmentID, body) {
+        try {
+            const newComment = await commentModel.create({
+                teacher: instructorId,
+                assessment: assessmentID,
+                body: body
+            })
+
+            return { result: "success", comment: newComment}
+        } catch (e) {
+            console.error('Error creating comments for teacher:', e);
+            return { result: "error", comment: null}
         }
     }
 
