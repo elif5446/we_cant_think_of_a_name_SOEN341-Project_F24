@@ -7,6 +7,7 @@ import courseModel from './models/course.mjs';
 import teamModel from './models/team.mjs';
 import assessmentModel from './models/assessment.mjs';
 import messageModel from './models/message.mjs';
+import commentModel from "./models/comment.mjs"
 
 
 // require('dotenv').config();
@@ -401,6 +402,64 @@ class Database {
         } catch (e) {
             console.error('Error fetching teams for student:', e);
             throw e;
+        }
+    }
+
+    async retrieveComments(instructorId, assessmentID) {
+        try {
+            const comments = await commentModel.find({
+                teacher: instructorId,
+                assessment: assessmentID
+            })
+
+            if (!comments || comments.length === 0) {
+                return {status: "success", comments: []}
+            }
+            
+            return {status: "success", comments: comments}
+        } catch (e) {
+            console.error('Error fetching comments for teacher:', e)
+            return {status: "error", comments: []}
+        }
+    }
+
+    async createComment(instructorId, assessmentID, body) {
+        try {
+            await commentModel.create({
+                teacher: instructorId,
+                assessment: assessmentID,
+                body: body
+            })
+
+            const allComments = await commentModel.find({
+                teacher: instructorId,
+                assessment: assessmentID
+            })
+
+            return { status: "success", comments: allComments}
+        } catch (e) {
+            console.error('Error creating comments for teacher:', e);
+            return { status: "error", comments: []}
+        }
+    }
+
+    async deleteComment(commentId, instructorId, assessmentID) {
+        try {
+            const deletedComment = await commentModel.findByIdAndDelete(commentId);
+
+            const allComments = await commentModel.find({
+                teacher: instructorId,
+                assessment: assessmentID
+            })
+    
+            if (!deletedComment) {
+                return { status: "failure", comments: []}
+            }
+    
+            return { status: "success", comments: allComments}
+        } catch (e) {
+            console.error('Error deleting comment:', e);
+            return { status: "error", comments: []}
         }
     }
 
