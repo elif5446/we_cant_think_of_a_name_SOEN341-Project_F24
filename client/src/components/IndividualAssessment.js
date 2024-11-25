@@ -126,12 +126,23 @@ const IndividualAssessment = () => {
                         </div>
                     </div>
                 ))}
-                <button 
-                    type="submit" 
-                    className={confirmationStep === 1 ? 'confirming' : ''}
-                >
-                    {confirmationStep === 0 ? 'Submit Assessment' : 'Are you sure?'}
-                </button>
+                <div className="button-group">
+                    <button 
+                        type="submit" 
+                        className={confirmationStep === 1 ? 'confirming' : ''}
+                    >
+                        {confirmationStep === 0 ? 'Submit Assessment' : 'Are you sure?'}
+                    </button>
+                    {confirmationStep === 1 && (
+                        <button 
+                            type="button" 
+                            className="cancel-button"
+                            onClick={handleCancelSubmit}
+                        >
+                            Cancel
+                        </button>
+                    )}
+                </div>
             </form>
         </div>
     );

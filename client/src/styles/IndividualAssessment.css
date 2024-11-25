@@ -255,14 +255,12 @@ button[type="submit"].confirming {
     }
 }
 
-/* Add a shake animation when entering confirmation state */
 @keyframes shake {
     0%, 100% { transform: scale(1.1) translateX(0); }
     10%, 30%, 50%, 70%, 90% { transform: scale(1.1) translateX(-2px); }
     20%, 40%, 60%, 80% { transform: scale(1.1) translateX(2px); }
 }
 
-/* Apply shake animation when entering confirmation state */
 button[type="submit"].confirming {
     animation: 
         shake 0.5s cubic-bezier(.36,.07,.19,.97) both,
@@ -313,4 +311,15 @@ button[type="submit"].confirming {
     100% {
         transform: scale(1);
     }
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.cancel-button {
+    background-color: #f44336;
+    color: white;
 }
