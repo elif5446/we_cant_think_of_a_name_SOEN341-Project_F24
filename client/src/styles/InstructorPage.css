@@ -1,98 +1,167 @@
 .instructor-page {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-}
-
-h3, h4 {
-    color: #333;
-    margin-top: 20px;
-}
-
-form {
-    margin-bottom: 20px;
-}
-
-label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-input[type="text"],
-select {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-}
-
-thead {
-    background-color: #f2f2f2;
-}
-
-tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-.create-course-button {
-    margin-bottom: 20px;
-}
-
-.course-select {
-    margin-bottom: 20px;
-}
-
-.student-list {
-    margin-top: 20px;
-}
-
-.no-students {
-    color: #666;
-    font-style: italic;
+    padding: 30px;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f9f5f2;
+    min-height: 100vh;
 }
 
 .title-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid #772432;
 }
 
-.summary-link {
-    padding: 0.5rem 1rem;
-    background-color: #2196F3;
-    color: white;
+.title {
+    color: #772432;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(119, 36, 50, 0.1);
+}
+
+.assessment-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.assessment-link {
+    padding: 0.8rem 1.5rem;
+    background-color: #FFB81C;
+    color: #000;
     text-decoration: none;
     border-radius: 4px;
-    transition: background-color 0.2s;
+    font-weight: 500;
+    transition: all 0.3s ease;
 }
 
-.summary-link:hover {
-    background-color: #1976D2;
+.assessment-link:hover {
+    background-color: #772432;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(119, 36, 50, 0.2);
+}
+
+h3, h4 {
+    color: #772432;
+    margin-top: 25px;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+h3::after, h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: #FFB81C;
+    border-radius: 2px;
+}
+
+form {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 500;
+}
+
+input[type="text"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+select:focus {
+    outline: none;
+    border-color: #772432;
+}
+
+button {
+    background-color: #FFB81C;
+    color: #000;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #772432;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(119, 36, 50, 0.2);
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 20px;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+th {
+    background-color: #772432;
+    color: white;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f5f2;
+}
+
+tr:hover {
+    background-color: #fff3cd;
+}
+
+select[multiple] {
+    min-height: 120px;
+}
+
+.no-students {
+    color: #666;
+    font-style: italic;
+    text-align: center;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    border: 1px dashed #ddd;
 }
