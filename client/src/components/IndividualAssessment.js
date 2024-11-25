@@ -94,13 +94,22 @@ const IndividualAssessment = () => {
         workEthic: 'Work Ethic'
     };
 
+    const isSelfAssessment = localStorage.getItem('studentId') === teammateId;
+
     if (!teammate) {
         return <div>Loading...</div>;
     }
 
     return (
         <div className="individual-assessment">
-            <h1>Peer Assessment for {teammate.firstname} {teammate.lastname}</h1>
+            <h1>
+                {isSelfAssessment ? 'Self Assessment' : `Peer Assessment for ${teammate?.firstname} ${teammate?.lastname}`}
+            </h1>
+            {isSelfAssessment && (
+                <div className="self-assessment-notice">
+                    <p>You are completing a self-assessment. Please be honest and reflective in your evaluation.</p>
+                </div>
+            )}
             <form onSubmit={handleSubmitClick}>
                 {Object.entries(dimensionLabels).map(([dimension, label]) => (
                     <div key={dimension} className="assessment-dimension">

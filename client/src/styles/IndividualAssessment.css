@@ -323,3 +323,36 @@ button[type="submit"].confirming {
     background-color: #f44336;
     color: white;
 }
+
+.self-assessment-notice {
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    color: #856404;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.self-assessment-notice::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: #FFB81C;
+    border-radius: 4px 0 0 4px;
+}
+
+.self-assessment-notice p {
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+/* Style modifications for self-assessment form */
+.individual-assessment.self-assessment .assessment-dimension {
+    border-left: 4px solid #FFB81C;
+}
