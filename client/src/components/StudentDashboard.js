@@ -82,21 +82,26 @@ const StudentDashboard = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {team.members.map(member => (
-                                    <tr key={member._id}>
-                                        <td>{member.firstname}</td>
-                                        <td>{member.lastname}</td>
-                                        <td>{member.email}</td>
-                                        <td>
-                                            <Link 
-                                                to={`/peer-assessment/${member._id}`}
-                                                className="assess-link"
-                                            >
-                                                Assess {member.firstname}
-                                            </Link>
-                                        </td>
-                                    </tr>
-                                ))}
+                                {team.members.map(member => {
+                                    const isSelfAssessment = member._id === localStorage.getItem('studentId');
+                                    return (
+                                        <tr key={member._id}>
+                                            <td>{member.firstname}</td>
+                                            <td>{member.lastname}</td>
+                                            <td>{member.email}</td>
+                                            <td>
+                                                <Link
+                                                    to={`/assessment/${member._id}`}
+                                                    className={`assessment-link ${isSelfAssessment ? 'self-assessment-link' : ''}`}
+                                                >
+                                                    <span className={`assessment-name ${isSelfAssessment ? 'self-assessment-name' : ''}`}>
+                                                        {isSelfAssessment ? 'Assess Yourself' : `Assess ${member.firstname} ${member.lastname}`}
+                                                    </span>
+                                                </Link>
+                                            </td>
+                                        </tr>
+                                    );
+                                })}
                             </tbody>
                         </table>
                     </div>

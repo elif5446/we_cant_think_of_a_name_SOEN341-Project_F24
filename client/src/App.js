@@ -27,7 +27,7 @@ function App() {
         <Route path="/student-courses" element={<StudentCourses />} />
         <Route path="/student-profile" element={<StudentProfile />} />
         <Route path="/student-dashboard" element={<StudentDashboard />} />
-        <Route path="/peer-assessment/:teammateId" element={<IndividualAssessment />} />
+        <Route path="/assessment/:teammateId" element={<IndividualAssessment />} />
         <Route path="/assessment-confirmation" element={<AssessmentConfirmation />} />
         <Route path="/instructor/assessment-summary" element={<AssessmentSummary />} />
         <Route path="/instructor/detailed-assessment" element={<DetailedAssessmentView />} />

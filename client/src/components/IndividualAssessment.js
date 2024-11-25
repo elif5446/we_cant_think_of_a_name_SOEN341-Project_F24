@@ -28,12 +28,19 @@ const IndividualAssessment = () => {
             const response = await fetch(`http://localhost:3001/api/teammate/${teammateId}`);
             if (response.ok) {
                 const data = await response.json();
-                setTeammate(data.teammate);
+                if (data.teammate) {
+                    setTeammate(data.teammate);
+                } else {
+                    console.error('No teammate data received');
+                    // Handle the error appropriately
+                }
             } else {
-                console.error('Error fetching teammate');
+                console.error('Error fetching teammate:', response.status);
+                // Handle the error appropriately
             }
         } catch (error) {
             console.error('Error:', error);
+            // Handle the error appropriately
         }
     };
 
@@ -101,13 +108,14 @@ const IndividualAssessment = () => {
     }
 
     return (
-        <div className="individual-assessment">
-            <h1>
-                {isSelfAssessment ? 'Self Assessment' : `Peer Assessment for ${teammate?.firstname} ${teammate?.lastname}`}
+        <div className={`individual-assessment ${isSelfAssessment ? 'self-assessment-mode' : ''}`}>
+            <h1 className={isSelfAssessment ? 'self-assessment-title' : ''}>
+                {isSelfAssessment ? '🌟 Self Assessment 🌟' : `Peer Assessment for ${teammate?.firstname} ${teammate?.lastname}`}
             </h1>
             {isSelfAssessment && (
                 <div className="self-assessment-notice">
-                    <p>You are completing a self-assessment. Please be honest and reflective in your evaluation.</p>
+                    <h3>Self-Reflection Time</h3>
+                    <p>Take a moment to honestly evaluate your contributions and performance. Your self-awareness helps build a stronger team.</p>
                 </div>
             )}
             <form onSubmit={handleSubmitClick}>
