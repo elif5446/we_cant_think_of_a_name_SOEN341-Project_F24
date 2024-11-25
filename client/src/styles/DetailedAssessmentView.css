@@ -2,133 +2,162 @@
     padding: 2rem;
     max-width: 1400px;
     margin: 0 auto;
+    background-color: #f9f5f2;
 }
 
-.team-section {
-    margin-bottom: 3rem;
-    padding: 2rem;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.team-section h2 {
-    color: #2196F3;
-    border-bottom: 2px solid #2196F3;
-    padding-bottom: 0.5rem;
-    margin-bottom: 2rem;
-}
-
-.student-section {
-    margin: 2rem 0;
-    padding: 1.5rem;
-    background-color: #f8f9fa;
-    border-radius: 6px;
-}
-
-.student-section h3 {
-    color: #333;
-    margin-bottom: 1.5rem;
-}
-
-.scores-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 2rem;
-    background-color: white;
-}
-
-.scores-table th,
-.scores-table td {
-    padding: 0.75rem;
+.title {
+    color: #772432;
+    font-size: 2rem;
     text-align: center;
-    border: 1px solid #ddd;
-}
-
-.scores-table th {
-    background-color: #f5f5f5;
-    font-weight: bold;
-}
-
-.average-row {
-    background-color: #f8f9fa;
-}
-
-.average-row td {
-    border-top: 2px solid #2196F3;
-}
-
-.comments-section {
-    margin-top: 2rem;
-}
-
-.comments-section h4 {
-    margin-bottom: 1.5rem;
-    color: #333;
-}
-
-.peer-comments {
     margin-bottom: 2rem;
-    padding: 1rem;
-    background-color: white;
-    border-radius: 6px;
+}
+
+.team-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.team-name {
+    color: #772432;
+    border-bottom: 2px solid #FFB81C;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.students-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.student-card {
+    background: #f9f5f2;
+    border-radius: 8px;
+    padding: 1.5rem;
     border: 1px solid #ddd;
 }
 
-.peer-comments h5 {
-    color: #2196F3;
+.student-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 1rem;
 }
 
-.comments-grid {
-    display: grid;
-    gap: 1rem;
-}
-
-.comment-box {
-    padding: 1rem;
-    background-color: #f8f9fa;
-    border-radius: 4px;
-}
-
-.comment-box strong {
-    display: block;
-    margin-bottom: 0.5rem;
-    color: #555;
-}
-
-.comment-box p {
+.student-header h4 {
     margin: 0;
-    color: #666;
-    font-style: italic;
+    color: #333;
 }
 
-.no-assessments {
-    color: #666;
-    font-style: italic;
-    text-align: center;
-    padding: 1rem;
-    background-color: #fff;
+.overall-score {
+    background: #772432;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.score-summary {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.metric {
+    background: white;
+    padding: 0.8rem;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.details-toggle {
+    width: 100%;
+    padding: 0.8rem;
+    background: #FFB81C;
+    border: none;
     border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.details-toggle:hover {
+    background: #772432;
+    color: white;
+}
+
+.detailed-feedback {
+    margin-top: 1rem;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 1rem;
+    scrollbar-width: thin;
+    scrollbar-color: #772432 #f9f5f2;
+}
+
+.detailed-feedback::-webkit-scrollbar {
+    width: 8px;
+}
+
+.detailed-feedback::-webkit-scrollbar-track {
+    background: #f9f5f2;
+    border-radius: 4px;
+}
+
+.detailed-feedback::-webkit-scrollbar-thumb {
+    background-color: #772432;
+    border-radius: 4px;
+}
+
+.feedback-card {
+    background: white;
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 0.75rem;
+    border: 1px solid #eee;
+    transition: all 0.2s ease;
+}
+
+.feedback-card:hover {
+    transform: translateX(4px);
+    border-left: 3px solid #772432;
+}
+
+.feedback-card h5 {
+    color: #772432;
+    margin: 0 0 0.5rem 0;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #FFB81C;
+    padding-bottom: 0.3rem;
+}
+
+.feedback-card p {
+    margin: 0.3rem 0;
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+.feedback-card strong {
+    color: #772432;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+@media (max-width: 1200px) {
+    .students-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 768px) {
-    .detailed-assessment {
-        padding: 1rem;
-    }
-
-    .team-section {
-        padding: 1rem;
-    }
-
-    .scores-table {
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
-    }
-
-    .comments-grid {
+    .students-grid {
         grid-template-columns: 1fr;
     }
 }
