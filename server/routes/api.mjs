@@ -364,7 +364,7 @@ router.get('/instructor/detailed-assessment', async (req, res) => {
         const detailedData = await Promise.all(teams.map(async (team) => {
             const membersData = await Promise.all(team.members.map(async (member) => {
                 const assessments = await assessmentModel.find({ evaluatee: member._id })
-                    .populate('evaluator', 'firstname lastname');
+                    .populate('evaluator', '_id firstname lastname');
                 
                 if (assessments.length === 0) {
                     return {
@@ -387,6 +387,7 @@ router.get('/instructor/detailed-assessment', async (req, res) => {
                 const overallAvg = (cooperationAvg + conceptualAvg + practicalAvg + workEthicAvg) / 4;
 
                 const formattedAssessments = assessments.map(assessment => ({
+                    id: assessment._id,
                     evaluator: {
                         firstname: assessment.evaluator.firstname,
                         lastname: assessment.evaluator.lastname

@@ -1,7 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import '../styles/AssessmentChat.css';
 
-const AssessmentChat = ({ assessmentId, evaluatorId }) => {
+const AssessmentChat = () => {;
+    const location = useLocation()
+    const { assessmentId, evaluatorId } = location.state;
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState('');
     const [assessment, setAssessment] = useState(null);

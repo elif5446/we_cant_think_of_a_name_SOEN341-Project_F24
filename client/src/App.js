@@ -31,7 +31,7 @@ function App() {
         <Route path="/assessment-confirmation" element={<AssessmentConfirmation />} />
         <Route path="/instructor/assessment-summary" element={<AssessmentSummary />} />
         <Route path="/instructor/detailed-assessment" element={<DetailedAssessmentView />} />
-        <Route path="/instructor/comments/:evaluatorId" element={<AssessmentChat />} />
+        <Route path="/instructor/comments" element={<AssessmentChat />} />
       </Routes>
     </Router>
   );
