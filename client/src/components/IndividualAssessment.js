@@ -4,7 +4,7 @@ import '../styles/IndividualAssessment.css';
 
 const IndividualAssessment = () => {
     const [teammate, setTeammate] = useState(null);
-    const [showConfirmation, setShowConfirmation] = useState(false);
+    const [confirmationStep, setConfirmationStep] = useState(0);
     const [assessment, setAssessment] = useState({
         cooperation: { score: 1, comments: '' },
         conceptualContribution: { score: 1, comments: '' },
@@ -28,12 +28,19 @@ const IndividualAssessment = () => {
             const response = await fetch(`http://localhost:3001/api/teammate/${teammateId}`);
             if (response.ok) {
                 const data = await response.json();
-                setTeammate(data.teammate);
+                if (data.teammate) {
+                    setTeammate(data.teammate);
+                } else {
+                    console.error('No teammate data received');
+                    // Handle the error appropriately
+                }
             } else {
-                console.error('Error fetching teammate');
+                console.error('Error fetching teammate:', response.status);
+                // Handle the error appropriately
             }
         } catch (error) {
             console.error('Error:', error);
+            // Handle the error appropriately
         }
     };
 
@@ -49,7 +56,12 @@ const IndividualAssessment = () => {
 
     const handleSubmitClick = (e) => {
         e.preventDefault();
-        setShowConfirmation(true);
+        if (confirmationStep === 0) {
+            setConfirmationStep(1);
+            setTimeout(() => setConfirmationStep(0), 3000); // Reset after 3 seconds if not confirmed
+        } else {
+            handleConfirmSubmit();
+        }
     };
 
     const handleConfirmSubmit = async () => {
@@ -79,7 +91,7 @@ const IndividualAssessment = () => {
     };
 
     const handleCancelSubmit = () => {
-        setShowConfirmation(false);
+        setConfirmationStep(0);
     };
 
     const dimensionLabels = {
@@ -89,13 +101,23 @@ const IndividualAssessment = () => {
         workEthic: 'Work Ethic'
     };
 
+    const isSelfAssessment = localStorage.getItem('studentId') === teammateId;
+
     if (!teammate) {
         return <div>Loading...</div>;
     }
 
     return (
-        <div className="individual-assessment">
-            <h1>Peer Assessment for {teammate.firstname} {teammate.lastname}</h1>
+        <div className={`individual-assessment ${isSelfAssessment ? 'self-assessment-mode' : ''}`}>
+            <h1 className={isSelfAssessment ? 'self-assessment-title' : ''}>
+                {isSelfAssessment ? '🌟 Self Assessment 🌟' : `Peer Assessment for ${teammate?.firstname} ${teammate?.lastname}`}
+            </h1>
+            {isSelfAssessment && (
+                <div className="self-assessment-notice">
+                    <h3>Self-Reflection Time</h3>
+                    <p>Take a moment to honestly evaluate your contributions and performance. Your self-awareness helps build a stronger team.</p>
+                </div>
+            )}
             <form onSubmit={handleSubmitClick}>
                 {Object.entries(dimensionLabels).map(([dimension, label]) => (
                     <div key={dimension} className="assessment-dimension">
@@ -121,21 +143,24 @@ const IndividualAssessment = () => {
                         </div>
                     </div>
                 ))}
-                <button type="submit">Submit Assessment</button>
-            </form>
-
-            {showConfirmation && (
-                <div className="confirmation-overlay">
-                    <div className="confirmation-dialog">
-                        <h2>Confirm Submission</h2>
-                        <p>Are you sure you want to submit this assessment?</p>
-                        <div className="confirmation-buttons">
-                            <button onClick={handleConfirmSubmit}>Yes, Submit</button>
-                            <button onClick={handleCancelSubmit}>No, Cancel</button>
-                        </div>
-                    </div>
+                <div className="button-group">
+                    <button 
+                        type="submit" 
+                        className={confirmationStep === 1 ? 'confirming' : ''}
+                    >
+                        {confirmationStep === 0 ? 'Submit Assessment' : 'Are you sure?'}
+                    </button>
+                    {confirmationStep === 1 && (
+                        <button 
+                            type="button" 
+                            className="cancel-button"
+                            onClick={handleCancelSubmit}
+                        >
+                            Cancel
+                        </button>
+                    )}
                 </div>
-            )}
+            </form>
         </div>
     );
 };

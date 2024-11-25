@@ -67,13 +67,13 @@ const Chat = ({ courses, userId, userType, teams, selectedCourse: propSelectedCo
         if (initialLoadComplete && messages.length > 0) {
             scrollToBottom();
         }
-    }, [messages.length]);
+    }, [messages.length, initialLoadComplete]);
 
     useEffect(() => {
         if (courses.length > 0 && !selectedCourse) {
             setSelectedCourse(courses[0]._id);
         }
-    }, [courses]);
+    }, [courses, selectedCourse]);
 
     useEffect(() => {
         if (selectedCourse && teams && teams.length > 0) {

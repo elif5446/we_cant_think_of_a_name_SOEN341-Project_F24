@@ -58,18 +58,20 @@ class Database {
     
     async submitAssessment(evaluatorId, evaluateeId, assessment) {
         try {
-            if (evaluatorId.toString() === evaluateeId.toString()) {
-                return { 
-                    result: "error", 
-                    message: "Self-assessment is not allowed" 
-                };
-            }
-
+            // Check if this is a self-assessment
+            const isSelfAssessment = evaluatorId.toString() === evaluateeId.toString();
+            
+            // Create the assessment with the appropriate type
             const newAssessment = await assessmentModel.create({
                 evaluator: evaluatorId,
                 evaluatee: evaluateeId,
-                ...assessment
+                assessmentType: isSelfAssessment ? 'self' : 'peer',
+                cooperation: assessment.cooperation,
+                conceptualContribution: assessment.conceptualContribution,
+                practicalContribution: assessment.practicalContribution,
+                workEthic: assessment.workEthic
             });
+            
             return { result: "success", assessment: newAssessment };
         } catch (e) {
             console.error('Error submitting assessment:', e);

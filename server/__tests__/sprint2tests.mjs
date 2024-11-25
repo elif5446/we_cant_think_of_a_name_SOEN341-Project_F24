@@ -429,7 +429,7 @@ describe('Assessment Submission Tests', () => {
         expect(result.result).toBe('success');
     });
 
-    test('should prevent self-assessment', async () => {
+    test('should allow self-assessment', async () => {
         const student = await userModel.create({
             email: 'student@test.com',
             firstname: 'Test',
@@ -451,7 +451,7 @@ describe('Assessment Submission Tests', () => {
             assessment
         );
 
-        expect(result.result).toBe('error');
-        expect(result.message).toContain('Self-assessment is not allowed');
+        expect(result.result).toBe('success');
+        expect(result.assessment.assessmentType).toBe('self');
     });
 });

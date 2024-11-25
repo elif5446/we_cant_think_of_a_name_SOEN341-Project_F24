@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/DetailedAssessmentView.css';
+import { Link } from 'react-router-dom';
 
 const DetailedAssessmentView = () => {
     const [teamsData, setTeamsData] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [expandedStudent, setExpandedStudent] = useState(null);
 
     useEffect(() => {
         fetchDetailedData();
@@ -25,108 +27,117 @@ const DetailedAssessmentView = () => {
         }
     };
 
-    if (loading) {
-        return <div>Loading...</div>;
-    }
+    const calculateOverallAverage = (student) => {
+        if (student.cooperationAvg === 'N/A' || 
+            student.conceptualAvg === 'N/A' || 
+            student.practicalAvg === 'N/A' || 
+            student.workEthicAvg === 'N/A') {
+            return 'N/A';
+        }
+        
+        const cooperationAvg = parseFloat(student.cooperationAvg);
+        const conceptualAvg = parseFloat(student.conceptualAvg);
+        const practicalAvg = parseFloat(student.practicalAvg);
+        const workEthicAvg = parseFloat(student.workEthicAvg);
+        
+        return ((cooperationAvg + conceptualAvg + 
+                practicalAvg + workEthicAvg) / 4).toFixed(2);
+    };
+
+    const renderAssessment = (assessment, member) => {
+        const isSelfAssessment = assessment.assessmentType === 'self';
+        
+        return (
+            <div className={`feedback-card ${isSelfAssessment ? 'self-assessment' : ''}`}>
+                <div className="feedback-content">
+                    <h5>
+                        {assessment.evaluator._id === member.studentId ? 
+                            'Self Assessment' : 
+                            `${assessment.evaluator.firstname} ${assessment.evaluator.lastname}'s Feedback`
+                        }
+                    </h5>
+                    <div className={assessment.evaluator._id === member.studentId ? 'self-assessment-content' : ''}>
+                        {assessment.cooperation.comments && (
+                            <p><strong>Cooperation:</strong> {assessment.cooperation.comments}</p>
+                        )}
+                        {assessment.conceptual.comments && (
+                            <p><strong>Conceptual:</strong> {assessment.conceptual.comments}</p>
+                        )}
+                        {assessment.practical.comments && (
+                            <p><strong>Practical:</strong> {assessment.practical.comments}</p>
+                        )}
+                        {assessment.workEthic.comments && (
+                            <p><strong>Work Ethic:</strong> {assessment.workEthic.comments}</p>
+                        )}
+                    </div>
+                </div>
+                <div className="feedback-overlay">
+                    <Link to={`/instructor/comments/${assessment.evaluator._id}`} className="comments-button">
+                        Comments
+                    </Link>
+                </div>
+            </div>
+        );
+    };
+
+    if (loading) return <div className="loading-state">Loading...</div>;
 
     return (
         <div className="detailed-assessment">
-            <h1>Detailed Team Assessment View</h1>
+            <h2 className="title">Team Assessment Details</h2>
             
             {teamsData.map((team) => (
-                <div key={team._id} className="team-section">
-                    <h2>Team: {team.teamName}</h2>
+                <div key={team._id} className="team-card">
+                    <h3 className="team-name">{team.teamName}</h3>
                     
-                    {team.members.map((member) => (
-                        <div key={member.studentId} className="student-section">
-                            <h3>Student: {member.firstname} {member.lastname}</h3>
-                            
-                            {member.assessments.length > 0 ? (
-                                <>
-                                    <div className="scores-section">
-                                        <table className="scores-table">
-                                            <thead>
-                                                <tr>
-                                                    <th>Evaluator</th>
-                                                    <th>Cooperation</th>
-                                                    <th>Conceptual</th>
-                                                    <th>Practical</th>
-                                                    <th>Work Ethic</th>
-                                                    <th>Average</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {member.assessments.map((assessment, index) => {
-                                                    const avgScore = (
-                                                        (assessment.cooperation.score +
-                                                        assessment.conceptual.score +
-                                                        assessment.practical.score +
-                                                        assessment.workEthic.score) / 4
-                                                    ).toFixed(2);
-                                                    
-                                                    return (
-                                                        <tr key={index}>
-                                                            <td>Peer {index + 1}</td>
-                                                            <td>{assessment.cooperation.score}</td>
-                                                            <td>{assessment.conceptual.score}</td>
-                                                            <td>{assessment.practical.score}</td>
-                                                            <td>{assessment.workEthic.score}</td>
-                                                            <td>{avgScore}</td>
-                                                        </tr>
-                                                    );
-                                                })}
-                                                <tr className="average-row">
-                                                    <td><strong>Average</strong></td>
-                                                    <td><strong>{member.cooperationAvg}</strong></td>
-                                                    <td><strong>{member.conceptualAvg}</strong></td>
-                                                    <td><strong>{member.practicalAvg}</strong></td>
-                                                    <td><strong>{member.workEthicAvg}</strong></td>
-                                                    <td><strong>{member.overallAvg}</strong></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                    <div className="students-grid">
+                        {team.members.map((member) => (
+                            <div key={member.studentId} className="student-card">
+                                <div className="student-header">
+                                    <h4>{member.firstname} {member.lastname}</h4>
+                                    <div className="overall-score">
+                                        {calculateOverallAverage(member)}
                                     </div>
+                                </div>
 
-                                    <div className="comments-section">
-                                        <h4>Peer Comments</h4>
+                                <div className="score-summary">
+                                    <div className="metric">
+                                        <span>Cooperation</span>
+                                        <span>{member.cooperationAvg}</span>
+                                    </div>
+                                    <div className="metric">
+                                        <span>Conceptual</span>
+                                        <span>{member.conceptualAvg}</span>
+                                    </div>
+                                    <div className="metric">
+                                        <span>Practical</span>
+                                        <span>{member.practicalAvg}</span>
+                                    </div>
+                                    <div className="metric">
+                                        <span>Work Ethic</span>
+                                        <span>{member.workEthicAvg}</span>
+                                    </div>
+                                </div>
+
+                                <button 
+                                    className="details-toggle"
+                                    onClick={() => setExpandedStudent(
+                                        expandedStudent === member.studentId ? null : member.studentId
+                                    )}
+                                >
+                                    {expandedStudent === member.studentId ? 'Hide Details' : 'Show Details'}
+                                </button>
+
+                                {expandedStudent === member.studentId && (
+                                    <div className="detailed-feedback">
                                         {member.assessments.map((assessment, index) => (
-                                            <div key={index} className="peer-comments">
-                                                <h5>Peer {index + 1} Comments:</h5>
-                                                <div className="comments-grid">
-                                                    {assessment.cooperation.comments && (
-                                                        <div className="comment-box">
-                                                            <strong>Cooperation:</strong>
-                                                            <p>{assessment.cooperation.comments}</p>
-                                                        </div>
-                                                    )}
-                                                    {assessment.conceptual.comments && (
-                                                        <div className="comment-box">
-                                                            <strong>Conceptual Contribution:</strong>
-                                                            <p>{assessment.conceptual.comments}</p>
-                                                        </div>
-                                                    )}
-                                                    {assessment.practical.comments && (
-                                                        <div className="comment-box">
-                                                            <strong>Practical Contribution:</strong>
-                                                            <p>{assessment.practical.comments}</p>
-                                                        </div>
-                                                    )}
-                                                    {assessment.workEthic.comments && (
-                                                        <div className="comment-box">
-                                                            <strong>Work Ethic:</strong>
-                                                            <p>{assessment.workEthic.comments}</p>
-                                                        </div>
-                                                    )}
-                                                </div>
-                                            </div>
+                                            renderAssessment(assessment, member)
                                         ))}
                                     </div>
-                                </>
-                            ) : (
-                                <p className="no-assessments">No assessments submitted for this student.</p>
-                            )}
-                        </div>
-                    ))}
+                                )}
+                            </div>
+                        ))}
+                    </div>
                 </div>
             ))}
         </div>

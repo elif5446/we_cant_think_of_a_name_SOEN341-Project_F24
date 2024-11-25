@@ -3,7 +3,7 @@ import '../styles/AssessmentSummary.css';
 import { saveAs } from 'file-saver';
 import { Bar } from 'react-chartjs-2';
 import ExcelJS from 'exceljs';
-import Chart from 'chart.js/auto';
+import 'chart.js/auto';
 
 const AssessmentSummary = () => {
     const [summaryData, setSummaryData] = useState([]);
@@ -110,9 +110,7 @@ const AssessmentSummary = () => {
             if (chartRef.current) {
                 try {
                     const canvas = chartRef.current.canvas;
-                    const context = canvas.getContext('2d');
                     
-                    const currentConfig = chartRef.current.config;
                     const tempCanvas = document.createElement('canvas');
                     tempCanvas.width = canvas.width;
                     tempCanvas.height = canvas.height;
@@ -122,7 +120,6 @@ const AssessmentSummary = () => {
                     tempContext.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
                     tempContext.drawImage(canvas, 0, 0);
                     
-                    const imageBuffer = tempCanvas.toDataURL('image/png').split(',')[1];
                     const imageId = workbook.addImage({
                         base64: tempCanvas.toDataURL('image/png'),
                         extension: 'png',

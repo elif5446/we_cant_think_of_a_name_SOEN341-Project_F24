@@ -29,13 +29,25 @@ const InstructorPage = () => {
         fetchStudents();
     }, [navigate]);
 
+    const fetchTeams = useCallback(async (courseId) => {
+        try {
+            const response = await fetch(`http://localhost:3001/api/course/teams/${courseId}`);
+            if (response.ok) {
+                const data = await response.json();
+                setTeams(data.teams || []);
+            }
+        } catch (error) {
+            console.error('Error fetching teams:', error);
+        }
+    }, []);
+
     useEffect(() => {
         if (selectedCourse) {
             fetchTeams(selectedCourse);
             fetchCourseStudents(selectedCourse);
             fetchStudents();
         }
-    }, [selectedCourse]);
+    }, [selectedCourse, fetchTeams]);
 
     const fetchCourses = async () => {
         try {
@@ -91,18 +103,6 @@ const InstructorPage = () => {
             !courseStudents.some(courseStudent => courseStudent._id === student._id)
         );
     };
-
-    const fetchTeams = useCallback(async (courseId) => {
-        try {
-            const response = await fetch(`http://localhost:3001/api/course/teams/${courseId}`);
-            if (response.ok) {
-                const data = await response.json();
-                setTeams(data.teams || []);
-            }
-        } catch (error) {
-            console.error('Error fetching teams:', error);
-        }
-    }, []);
 
     const fetchCourseStudents = async (courseId) => {
         try {

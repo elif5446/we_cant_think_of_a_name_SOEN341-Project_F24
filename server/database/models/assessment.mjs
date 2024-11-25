@@ -23,6 +23,12 @@ const assessmentSchema = new mongoose.Schema({
     },
     comments: { type: String },
     createdAt: { type: Date, default: Date.now },
+    assessmentType: {
+        type: String,
+        enum: ['peer', 'self'],
+        required: true,
+        default: 'peer'
+    },
 });
 
 

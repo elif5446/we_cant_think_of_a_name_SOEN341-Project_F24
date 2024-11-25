@@ -13,26 +13,25 @@ import IndividualAssessment from './components/IndividualAssessment';
 import AssessmentConfirmation from './components/AssessmentConfirmation';
 import AssessmentSummary from './components/AssessmentSummary';
 import DetailedAssessmentView from './components/DetailedAssessmentView';
-
+import AssessmentChat from './components/AssessmentChat';
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path = "/" element = {<Main />} />
-        <Route path = "/student-login" element = {<StudentLogin />} />
-        <Route path = "/instructor-login" element = {<InstructorLogin />} />
-        <Route path = "/createPage-login" element = {<CreateAccount />} />
-        <Route path = "/student-menu" element = {<StudentMenu />} />
-        <Route path = "/instructor-page" element = {<InstructorPage />} />
-        <Route path = "/newuser-login" element = {<CreateAccount />} />
-        <Route path = "/student-courses" element = {<StudentCourses/>} />
-        <Route path = "/student-profile" element = {<StudentProfile/>} />
+        <Route path="/" element={<Main />} />
+        <Route path="/student-login" element={<StudentLogin />} />
+        <Route path="/instructor-login" element={<InstructorLogin />} />
+        <Route path="/create-account" element={<CreateAccount />} />
+        <Route path="/student-menu" element={<StudentMenu />} />
+        <Route path="/instructor-page" element={<InstructorPage />} />
+        <Route path="/student-courses" element={<StudentCourses />} />
+        <Route path="/student-profile" element={<StudentProfile />} />
         <Route path="/student-dashboard" element={<StudentDashboard />} />
-        <Route path="/peer-assessment/:teammateId" element={<IndividualAssessment />}/>
-        <Route path="/individual-assessment" element={<IndividualAssessment />} />
+        <Route path="/assessment/:teammateId" element={<IndividualAssessment />} />
         <Route path="/assessment-confirmation" element={<AssessmentConfirmation />} />
-        <Route path="instructor/assessment-summary" element={<AssessmentSummary/>} />
+        <Route path="/instructor/assessment-summary" element={<AssessmentSummary />} />
         <Route path="/instructor/detailed-assessment" element={<DetailedAssessmentView />} />
+        <Route path="/instructor/comments/:evaluatorId" element={<AssessmentChat />} />
       </Routes>
     </Router>
   );
