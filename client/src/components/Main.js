@@ -28,7 +28,7 @@ const Main = () => (
         <img src="/images/studentAvatar.svg" alt="Sign Up Icon" className="student-avatar" />
             STUDENT LOGIN</button>
     </Link>
-    <Link to = "/newuser-login">
+    <Link to = "/create-account">
         <button className="button">
         <img src="/images/newuser.png" alt="Sign Up Icon" className="unknown-avatar" />
             CREATE AN ACCOUNT</button>
