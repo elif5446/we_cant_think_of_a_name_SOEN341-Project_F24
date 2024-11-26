@@ -11,21 +11,23 @@ The development process follows the Agile Scrum methodology, with four sprints o
 - **Instructor Dashboard**: Instructors can manage teams, view assessment results, and export data in CSV format.
 
 Team Members:  
-**Yousef Bisharah** | Backend Developer (Login/Team Management)[40151411]  
-**Elif Sag Sesen** | Frontend Developer (UI/UX - Login) [40283343]  
-**Robert Stacey** | Quality Assurance (QA) [40228769]   
-**Hendrik Nelson Tebeng Nzodoum** | Backend Developer (Server/Authentication) [40282196]  
-**Jana El Madhoun** | Frontend Developer (UI/UX - Assessment) [40272201]  
+**Yousef Bisharah** (YousefBisharah) | Backend Developer (Login/Team Management)[40151411]  
+**Elif Sag Sesen** (elif5446) | Frontend Developer (UI/UX - Login) [40283343]  
+**Robert Stacey** (RobertStaceyCodes) | Quality Assurance (QA) [40228769]   
+**Hendrik Nelson Tebeng Nzodoum** (hendriktebeng) | Backend Developer (Server/Authentication) [40282196]  
+**Jana El Madhoun** (jana-madhoun) | Frontend Developer (UI/UX - Assessment) [40272201]  
 
 ## Sprint Planning
 - **Sprint 1**: Initial setup of User Authentication & Team Management. The key focus is on implementing:
   - Student and Instructor login system (with roles).
   - Functionality for instructors to create teams and assign students.
+- **Sprint 2**: 
 
 ## GitHub Workflow
 Our project will be managed through GitHub using Issues for user stories and tasks. Each issue will be labeled with:
 - `US.#` for user stories.
 - `Task.#` for specific tasks broken down from the user stories.
+- `A.T.#` for acceptance tests.
 
 ## Contribution Tracking
 All team members will log their contributions and time spent on tasks. These logs will be submitted at the end of each sprint for evaluation.
