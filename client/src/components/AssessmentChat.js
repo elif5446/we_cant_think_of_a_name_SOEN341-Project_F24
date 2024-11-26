@@ -4,14 +4,13 @@ import '../styles/AssessmentChat.css';
 
 const AssessmentChat = () => {;
     const location = useLocation()
-    const { assessmentId, evaluatorId } = location.state;
+    const { assessment, assessmentId, evaluatorId } = location.state;
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState('');
-    const [assessment, setAssessment] = useState(null);
     const messagesEndRef = useRef(null);
 
     useEffect(() => {
-        fetchAssessmentDetails();
+        console.log(assessmentId + "   " + evaluatorId)
         fetchMessages();
     }, [assessmentId]);
 
@@ -23,26 +22,12 @@ const AssessmentChat = () => {;
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     };
 
-    const fetchAssessmentDetails = async () => {
-        try {
-            // Fetch assessment details including original feedback
-            const response = await fetch(`http://localhost:3001/api/assessments/${assessmentId}`);
-            if (response.ok) {
-                const data = await response.json();
-                setAssessment(data);
-            }
-        } catch (error) {
-            console.error('Error fetching assessment:', error);
-        }
-    };
-
     const fetchMessages = async () => {
         try {
-            // Fetch chat messages related to this assessment
-            const response = await fetch(`http://localhost:3001/api/assessment-comments/${assessmentId}`);
+            const response = await fetch(`http://localhost:3001/api/comments?instructor_id=${evaluatorId}&assessment_id=${assessmentId}`);
             if (response.ok) {
                 const data = await response.json();
-                setMessages(data);
+                setMessages(data.comments);
             }
         } catch (error) {
             console.error('Error fetching messages:', error);

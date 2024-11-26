@@ -16,7 +16,6 @@ const DetailedAssessmentView = () => {
             const response = await fetch('http://localhost:3001/api/instructor/detailed-assessment');
             if (response.ok) {
                 const data = await response.json();
-                console.log(data)
                 setTeamsData(data.data);
             } else {
                 console.error('Error fetching detailed assessment data');
@@ -73,7 +72,7 @@ const DetailedAssessmentView = () => {
                     </div>
                 </div>
                 <div className="feedback-overlay">
-                    <Link to={`/instructor/comments}`} className="comments-button">
+                    <Link to={"/instructor/comments"} state={{ assessmentId: assessment.id, evaluatorId: "x", assessment: assessment }} className="comments-button">
                         Comments
                     </Link>
                 </div>
