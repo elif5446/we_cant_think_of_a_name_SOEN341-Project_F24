@@ -11,10 +11,10 @@
 - Prepare for demonstration of Sprint 4
   - What was done so far
   - List of questions to ask the TA concerning guidelines/criteria grid
-  - Finalize last feature we want to present to TA - AI chatbox
+  - Finalize last feature we want to present to the TA - AI chatbox
 - Demonstration during lab:
-  - Validate last new feature to implement - REJECTED (idea already selected by another team)
-  - Brainstrown with TA to find a new feature: 
+  - Validate last new feature to implement - REJECTED (already selected by another team)
+  - Brainstorm with TA to find a new feature: 
     - Students can reply to their feedback + Self-assessment
 - After lab:
   - Discuss how we will implement the final feature
@@ -24,16 +24,16 @@
   - Write user story for last feature
 
 - US 18 - Implement Self-Assessment Feature for Students (Issue #74)
-  - Story Points Assigned: 
-    - 
+  - Story Points Assigned: 3
+    - No new API or UI, just need to update to show self-assessment as well
   - Priority: High - It's important for students to evaluate themselves so they can pinpoint their strenghts/weaknesses to work on them
-  - Risk level: 
+  - Risk level: Medium - Not riskier than the rest of the achieved features
   
 - US 19 - Enable Commenting Functionality for Assessments (Issue #75)
-  - Story Points Assigned: 
-      - 
+  - Story Points Assigned: 4
+      - Define UI and API for commenting and validating/submitting comments through student's side
   - Priority: High - It's important to rate how your peers have evaluated you so they can evaluate better in the future
-  - Risk Level: 
+  - Risk Level: Medium - Not riskier than the rest of the achieved features
   
 * Next Meeting: *
 - 2024/11/23, @1400, JMSB
