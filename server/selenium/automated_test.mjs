@@ -1,5 +1,5 @@
-import { By, Builder, Actions } from "selenium-webdriver";
-import chrome from "selenium-webdriver/chrome.js";
+import { By, Builder } from "selenium-webdriver"
+import chrome from "selenium-webdriver/chrome.js"
 import chromedriver from "chromedriver"
 
 (async function auto_test() {
@@ -15,24 +15,24 @@ import chromedriver from "chromedriver"
         let buttons = await driver.findElements(By.tagName("button"))
 
         // create account (student) test
-        // const create_account_button = buttons[2]
-        // await create_account_button.click()
+        const create_account_button = buttons[2]
+        await create_account_button.click()
         
-        // const email_field = await driver.findElement(By.id("email"))
-        // await email_field.sendKeys("test_user@gmail.com")
-        // const password_field = await driver.findElement(By.id("password"))
-        // await password_field.sendKeys("pizza")
-        // const first_name_field = await driver.findElement(By.id("firstname"))
-        // await first_name_field.sendKeys("Test")
-        // const last_name_field = await driver.findElement(By.id("lastname"))
-        // await last_name_field.sendKeys("User")
-        // const type_field = await driver.findElement(By.id("usertype"))
-        // await type_field.click()
-        // const student_option = await driver.findElement(By.xpath("//option[@value='student']"))
-        // await student_option.click()
+        let email_field = await driver.findElement(By.id("email"))
+        await email_field.sendKeys("test_user3@gmail.com")
+        let password_field = await driver.findElement(By.id("password"))
+        await password_field.sendKeys("pizza")
+        const first_name_field = await driver.findElement(By.id("firstname"))
+        await first_name_field.sendKeys("Test")
+        const last_name_field = await driver.findElement(By.id("lastname"))
+        await last_name_field.sendKeys("User")
+        const type_field = await driver.findElement(By.id("usertype"))
+        await type_field.click()
+        const student_option = await driver.findElement(By.xpath("//option[@value='student']"))
+        await student_option.click()
 
-        // const signin_button = await driver.findElement(By.className("signin"))
-        // await signin_button.click()
+        const signin_button = await driver.findElement(By.className("signin"))
+        await signin_button.click()
 
         // login (instructor) test
         await driver.get("http://localhost:3001")
@@ -40,9 +40,9 @@ import chromedriver from "chromedriver"
         const login_instructor_button = buttons[0]
         await login_instructor_button.click()
 
-        const email_field = await driver.findElement(By.id("email"))
+        email_field = await driver.findElement(By.id("email"))
         await email_field.sendKeys("pizza@gmail.com")
-        const password_field = await driver.findElement(By.id("password"))
+        password_field = await driver.findElement(By.id("password"))
         await password_field.sendKeys("pizza")
 
         const login_button = await driver.findElement(By.className("login"))
@@ -57,9 +57,16 @@ import chromedriver from "chromedriver"
         const student = students[1].findElement(By.className("details-toggle"))
         await student.click()
         
-        const overlay = students[1].findElement(By.className("feedback-overlay"))
-        const actions = driver.actions({async: true})
-        await actions.move({origin: overlay}).perform()
+        const comments_button = await students[1].findElement(By.className("comments-button"))
+        await comments_button.click()
+
+        const comment_field = await driver.findElement(By.tagName("input"))
+        const comment_button = await driver.findElement(By.tagName("button"))
+        for (let i = 0; i < 5; i++){
+            await comment_field.sendKeys(`test #${i + 1}`)
+            await comment_button.click()
+        }
+        
     } catch (e) {
         console.log(e)
     } finally {
