@@ -4,19 +4,19 @@ import '../styles/AssessmentChat.css';
 
 const AssessmentChat = () => {;
     const location = useLocation()
-    const { assessment, assessmentId, evaluatorId } = location.state;
+    const instructorId = localStorage.getItem('instructorId');
+    const { assessment, assessmentId } = location.state;
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState('');
     const messagesEndRef = useRef(null);
 
     useEffect(() => {
-        console.log(assessmentId + "   " + evaluatorId)
         fetchMessages();
     }, [assessmentId]);
 
-    useEffect(() => {
-        scrollToBottom();
-    }, [messages]);
+    // useEffect(() => {
+    //     scrollToBottom();
+    // }, [messages]);
 
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -24,7 +24,7 @@ const AssessmentChat = () => {;
 
     const fetchMessages = async () => {
         try {
-            const response = await fetch(`http://localhost:3001/api/comments?instructor_id=${evaluatorId}&assessment_id=${assessmentId}`);
+            const response = await fetch(`http://localhost:3001/api/comments?instructor_id=${instructorId}&assessment_id=${assessmentId}`);
             if (response.ok) {
                 const data = await response.json();
                 setMessages(data.comments);
@@ -39,21 +39,22 @@ const AssessmentChat = () => {;
         if (!newMessage.trim()) return;
 
         try {
-            const response = await fetch('http://localhost:3001/api/assessment-comments', {
+            const response = await fetch('http://localhost:3001/api/comments/create', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    assessmentId,
-                    message: newMessage,
-                    timestamp: new Date(),
+                    assessment_id: assessmentId,
+                    body: newMessage,
+                    instructor_id: instructorId
                 }),
             });
 
             if (response.ok) {
                 setNewMessage('');
-                fetchMessages(); // Refresh messages
+                const data = await response.json();
+                setMessages(data.comments);
             }
         } catch (error) {
             console.error('Error sending message:', error);
@@ -86,14 +87,14 @@ const AssessmentChat = () => {;
                 <div className="messages-container">
                     {messages.map((msg, index) => (
                         <div key={index} 
-                             className={`message ${msg.senderId === evaluatorId ? 'sent' : 'received'}`}>
+                             className={`message ${msg.senderId === instructorId ? 'sent' : 'received'}`}>
                             <div className="message-header">
-                                <span>{msg.senderName}</span>
+                                <span>{msg.teacher.firstname} {msg.teacher.lastname}</span>
                                 <span className="timestamp">
-                                    {new Date(msg.timestamp).toLocaleTimeString()}
+                                    {new Date(msg.createdAt).toLocaleTimeString()}
                                 </span>
                             </div>
-                            <div className="message-content">{msg.message}</div>
+                            <div className="message-content">{msg.body}</div>
                         </div>
                     ))}
                     <div ref={messagesEndRef} />

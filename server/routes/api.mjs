@@ -389,6 +389,7 @@ router.get('/instructor/detailed-assessment', async (req, res) => {
                 const formattedAssessments = assessments.map(assessment => ({
                     id: assessment._id,
                     evaluator: {
+                        id: assessment.evaluator._id,
                         firstname: assessment.evaluator.firstname,
                         lastname: assessment.evaluator.lastname
                     },
@@ -561,7 +562,7 @@ router.get('/comments/', async (req, res) => {
     try{
         const instructorId = req.query.instructor_id
         const assessmentID = req.query.assessment_id
-        const commentObj = database.retrieveComments(instructorId, assessmentID)
+        const commentObj = await database.retrieveComments(instructorId, assessmentID)
 
         if (commentObj.status === "error") {
             res.status(serverError).json({ 
@@ -587,7 +588,7 @@ router.post('/comments/delete', async (req, res) => {
         const commentId = req.body.comment_id
         const instructorId = req.body.instructor_id
         const assessmentID = req.body.assessment_id
-        const commentObj = database.deleteComment(commentId, instructorId, assessmentID)
+        const commentObj = await database.deleteComment(commentId, instructorId, assessmentID)
 
         if (commentObj.status === "error") {
             res.status(serverError).json({ 
@@ -613,7 +614,7 @@ router.post('/comments/create', async (req, res) => {
         const instructorId = req.body.instructor_id
         const assessmentID = req.body.assessment_id
         const body = req.body.body
-        const commentObj = database.createComment(instructorId, assessmentID, body)
+        const commentObj = await database.createComment(instructorId, assessmentID, body)
 
         if (commentObj.status === "error") {
             res.status(serverError).json({ 

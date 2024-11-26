@@ -51,12 +51,12 @@ const DetailedAssessmentView = () => {
             <div className={`feedback-card ${isSelfAssessment ? 'self-assessment' : ''}`}>
                 <div className="feedback-content">
                     <h5>
-                        {assessment.evaluator._id === member.studentId ? 
+                        {assessment.evaluator.id === member.studentId ? 
                             'Self Assessment' : 
                             `${assessment.evaluator.firstname} ${assessment.evaluator.lastname}'s Feedback`
                         }
                     </h5>
-                    <div className={assessment.evaluator._id === member.studentId ? 'self-assessment-content' : ''}>
+                    <div className={assessment.evaluator.id === member.studentId ? 'self-assessment-content' : ''}>
                         {assessment.cooperation.comments && (
                             <p><strong>Cooperation:</strong> {assessment.cooperation.comments}</p>
                         )}
@@ -72,7 +72,7 @@ const DetailedAssessmentView = () => {
                     </div>
                 </div>
                 <div className="feedback-overlay">
-                    <Link to={"/instructor/comments"} state={{ assessmentId: assessment.id, evaluatorId: "x", assessment: assessment }} className="comments-button">
+                    <Link to={"/instructor/comments"} state={{ assessmentId: assessment.id, assessment: assessment }} className="comments-button">
                         Comments
                     </Link>
                 </div>
