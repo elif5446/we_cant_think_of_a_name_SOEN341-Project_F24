@@ -120,4 +120,128 @@
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border: 1px solid #eee;
+}
+
+.assessment-link {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #772432;
+    transition: all 0.3s ease;
+    border: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.self-assessment-link {
+    background: linear-gradient(135deg, #fff8e1, #fff3cd);
+    border: 2px solid #FFB81C;
+    position: relative;
+    overflow: hidden;
+}
+
+.self-assessment-link::before {
+    content: '🌟';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+}
+
+.assessment-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(119, 36, 50, 0.08);
+}
+
+.assessment-name {
+    font-size: 0.9rem;
+}
+
+.self-assessment-name {
+    color: #000;
+    font-weight: 600;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #FFB81C;
+    position: relative;
+}
+
+.dashboard-header h1 {
+    margin: 0;
+}
+
+.notification-bell-container {
+    position: relative;
+    margin-left: auto;
+}
+
+.bell-icon {
+    cursor: pointer;
+    position: relative;
+    padding: 8px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #772432;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.bell-icon:hover {
+    transform: translateY(-2px);
+    color: #FFB81C;
+}
+
+.notification-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #FFB81C;
+    color: #000;
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.notifications-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 300px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(119, 36, 50, 0.08);
+    border: 1px solid #eee;
+    z-index: 1000;
+    margin-top: 10px;
+}
+
+.notification-item {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.notification-item:last-child {
+    border-bottom: none;
+}
+
+.notification-item p {
+    margin: 0 0 5px 0;
+    color: #333;
+}
+
+.notification-item small {
+    color: #666;
+    font-size: 0.8rem;
 } 

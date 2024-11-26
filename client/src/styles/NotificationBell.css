@@ -1,0 +1,139 @@
+.notification-bell-container {
+    position: relative;
+    margin-left: auto;
+}
+
+.bell-icon {
+    cursor: pointer;
+    position: relative;
+    padding: 12px;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 8px;
+    width: 48px;
+    height: 48px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(119, 36, 50, 0.1);
+    border: 2px solid #772432;
+    color: #772432;
+}
+
+.bell-icon:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(119, 36, 50, 0.2);
+    background-color: #772432;
+    color: white;
+}
+
+.notification-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #FFB81C;
+    color: #000;
+    border-radius: 12px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.notifications-dropdown {
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    width: 320px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(119, 36, 50, 0.15);
+    border: 2px solid #772432;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.notification-item {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.notification-item:last-child {
+    border-bottom: none;
+}
+
+.notification-item:hover {
+    background-color: #fff3cd;
+}
+
+.notification-item p {
+    margin: 0 0 5px 0;
+    color: #333;
+    font-weight: 500;
+}
+
+.notification-item small {
+    color: #772432;
+    font-size: 0.8rem;
+    display: block;
+}
+
+.notification-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.notification-sender {
+    color: #772432;
+    font-weight: 500;
+}
+
+.notification-time {
+    color: #666;
+    font-size: 0.8em;
+}
+
+.notification-message {
+    color: #333;
+    font-size: 0.9em;
+    line-height: 1.4;
+}
+
+.confirmation-box {
+    background-color: white;
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(119, 36, 50, 0.08);
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    border: 1px solid #eee;
+    position: relative;
+    overflow: hidden;
+}
+
+.feedback-card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.student-dashboard h1 {
+    color: #772432;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.student-dashboard h2 {
+    color: #772432;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    border-bottom: 2px solid #FFB81C;
+    padding-bottom: 0.5rem;
+}

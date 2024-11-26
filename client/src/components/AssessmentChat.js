@@ -1,11 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import '../styles/AssessmentChat.css';
+import { useLocation } from 'react-router-dom';
 
 const AssessmentChat = ({ assessmentId, evaluatorId }) => {
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState('');
     const [assessment, setAssessment] = useState(null);
     const messagesEndRef = useRef(null);
+    const location = useLocation();
+    const readOnly = location.state?.readOnly;
 
     useEffect(() => {
         fetchAssessmentDetails();
@@ -111,15 +114,17 @@ const AssessmentChat = ({ assessmentId, evaluatorId }) => {
                     <div ref={messagesEndRef} />
                 </div>
 
-                <form className="message-form" onSubmit={handleSendMessage}>
-                    <input
-                        type="text"
-                        value={newMessage}
-                        onChange={(e) => setNewMessage(e.target.value)}
-                        placeholder="Type your message..."
-                    />
-                    <button type="submit">Send</button>
-                </form>
+                {!readOnly && (
+                    <form className="message-form" onSubmit={handleSendMessage}>
+                        <input
+                            type="text"
+                            value={newMessage}
+                            onChange={(e) => setNewMessage(e.target.value)}
+                            placeholder="Type your message..."
+                        />
+                        <button type="submit">Send</button>
+                    </form>
+                )}
             </div>
         </div>
     );

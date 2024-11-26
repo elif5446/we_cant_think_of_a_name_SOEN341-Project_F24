@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import Chat from './Chat';
+import NotificationBell from './NotificationBell';
 import '../styles/StudentDashboard.css';
 
 const StudentDashboard = () => {
@@ -56,7 +57,10 @@ const StudentDashboard = () => {
 
     return (
         <div className="student-dashboard">
-            <h1>Student Dashboard</h1>
+            <div className="dashboard-header">
+                <h1>Student Dashboard</h1>
+                <NotificationBell courses={courses} studentId={studentId} />
+            </div>
             <h2>Your Courses</h2>
             {courses.length > 0 ? (
                 <ul>
@@ -89,13 +93,13 @@ const StudentDashboard = () => {
                                             <td>{member.firstname}</td>
                                             <td>{member.lastname}</td>
                                             <td>{member.email}</td>
-                                            <td>
+                                            <td style={{ padding: '10px' }}>
                                                 <Link
                                                     to={`/assessment/${member._id}`}
                                                     className={`assessment-link ${isSelfAssessment ? 'self-assessment-link' : ''}`}
                                                 >
                                                     <span className={`assessment-name ${isSelfAssessment ? 'self-assessment-name' : ''}`}>
-                                                        {isSelfAssessment ? 'Assess Yourself' : `Assess ${member.firstname} ${member.lastname}`}
+                                                        {isSelfAssessment ? 'Assess Yourself' : `Assess ${member.firstname}`}
                                                     </span>
                                                 </Link>
                                             </td>
