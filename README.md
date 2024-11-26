@@ -15,7 +15,8 @@ Team Members:
 **Elif Sag Sesen** (elif5446) | Frontend Developer (UI/UX - Login) [40283343]  
 **Robert Stacey** (RobertStaceyCodes) | Quality Assurance (QA) [40228769]   
 **Hendrik Nelson Tebeng Nzodoum** (hendriktebeng) | Backend Developer (Server/Authentication) [40282196]  
-**Jana El Madhoun** (jana-madhoun) | Frontend Developer (UI/UX - Assessment) [40272201]  
+**Jana El Madhoun** (jana-madhoun & janamadhoun)* | Frontend Developer (UI/UX - Assessment) [40272201]  
+  * Jana El Madhoun has two accounts connected to the repository -> must consider both accounts and commits
 
 ## Sprint Planning
 - **Sprint 1**: Initial setup of User Authentication & Team Management. The key focus is on implementing:
