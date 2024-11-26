@@ -412,7 +412,7 @@ class Database {
             const comments = await commentModel.find({
                 teacher: instructorId,
                 assessment: assessmentID
-            })
+            }).populate("teacher", "firstname lastname")
 
             if (!comments || comments.length === 0) {
                 return {status: "success", comments: []}
@@ -436,7 +436,7 @@ class Database {
             const allComments = await commentModel.find({
                 teacher: instructorId,
                 assessment: assessmentID
-            })
+            }).populate("teacher", "firstname lastname")
 
             return { status: "success", comments: allComments}
         } catch (e) {
@@ -452,7 +452,7 @@ class Database {
             const allComments = await commentModel.find({
                 teacher: instructorId,
                 assessment: assessmentID
-            })
+            }).populate("teacher", "firstname lastname")
     
             if (!deletedComment) {
                 return { status: "failure", comments: []}

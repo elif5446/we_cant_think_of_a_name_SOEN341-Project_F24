@@ -1,48 +1,36 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import '../styles/AssessmentChat.css';
 import { useLocation } from 'react-router-dom';
 
-const AssessmentChat = ({ assessmentId, evaluatorId }) => {
+const AssessmentChat = () => {;
+    const location = useLocation()
+    const instructorId = localStorage.getItem('instructorId');
+    const { assessment, assessmentId } = location.state;
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState('');
-    const [assessment, setAssessment] = useState(null);
     const messagesEndRef = useRef(null);
     const location = useLocation();
     const readOnly = location.state?.readOnly;
 
     useEffect(() => {
-        fetchAssessmentDetails();
         fetchMessages();
     }, [assessmentId]);
 
-    useEffect(() => {
-        scrollToBottom();
-    }, [messages]);
+    // useEffect(() => {
+    //     scrollToBottom();
+    // }, [messages]);
 
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     };
 
-    const fetchAssessmentDetails = async () => {
-        try {
-            // Fetch assessment details including original feedback
-            const response = await fetch(`http://localhost:3001/api/assessments/${assessmentId}`);
-            if (response.ok) {
-                const data = await response.json();
-                setAssessment(data);
-            }
-        } catch (error) {
-            console.error('Error fetching assessment:', error);
-        }
-    };
-
     const fetchMessages = async () => {
         try {
-            // Fetch chat messages related to this assessment
-            const response = await fetch(`http://localhost:3001/api/assessment-comments/${assessmentId}`);
+            const response = await fetch(`http://localhost:3001/api/comments?instructor_id=${instructorId}&assessment_id=${assessmentId}`);
             if (response.ok) {
                 const data = await response.json();
-                setMessages(data);
+                setMessages(data.comments);
             }
         } catch (error) {
             console.error('Error fetching messages:', error);
@@ -54,21 +42,22 @@ const AssessmentChat = ({ assessmentId, evaluatorId }) => {
         if (!newMessage.trim()) return;
 
         try {
-            const response = await fetch('http://localhost:3001/api/assessment-comments', {
+            const response = await fetch('http://localhost:3001/api/comments/create', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    assessmentId,
-                    message: newMessage,
-                    timestamp: new Date(),
+                    assessment_id: assessmentId,
+                    body: newMessage,
+                    instructor_id: instructorId
                 }),
             });
 
             if (response.ok) {
                 setNewMessage('');
-                fetchMessages(); // Refresh messages
+                const data = await response.json();
+                setMessages(data.comments);
             }
         } catch (error) {
             console.error('Error sending message:', error);
@@ -101,14 +90,14 @@ const AssessmentChat = ({ assessmentId, evaluatorId }) => {
                 <div className="messages-container">
                     {messages.map((msg, index) => (
                         <div key={index} 
-                             className={`message ${msg.senderId === evaluatorId ? 'sent' : 'received'}`}>
+                             className={`message ${msg.senderId === instructorId ? 'sent' : 'received'}`}>
                             <div className="message-header">
-                                <span>{msg.senderName}</span>
+                                <span>{msg.teacher.firstname} {msg.teacher.lastname}</span>
                                 <span className="timestamp">
-                                    {new Date(msg.timestamp).toLocaleTimeString()}
+                                    {new Date(msg.createdAt).toLocaleTimeString()}
                                 </span>
                             </div>
-                            <div className="message-content">{msg.message}</div>
+                            <div className="message-content">{msg.body}</div>
                         </div>
                     ))}
                     <div ref={messagesEndRef} />

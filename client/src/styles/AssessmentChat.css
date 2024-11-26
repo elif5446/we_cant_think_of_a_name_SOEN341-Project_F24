@@ -6,7 +6,7 @@
     max-width: 800px;
     margin: 20px auto;
     border-radius: 12px;
-    overflow: hidden;
+    overflow: scroll;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
     background-color: white;
 }
