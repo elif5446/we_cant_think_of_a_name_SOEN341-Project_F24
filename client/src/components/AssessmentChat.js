@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import '../styles/AssessmentChat.css';
-import { useLocation } from 'react-router-dom';
 
 const AssessmentChat = () => {;
     const location = useLocation()
@@ -10,7 +9,6 @@ const AssessmentChat = () => {;
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState('');
     const messagesEndRef = useRef(null);
-    const location = useLocation();
     const readOnly = location.state?.readOnly;
 
     useEffect(() => {
