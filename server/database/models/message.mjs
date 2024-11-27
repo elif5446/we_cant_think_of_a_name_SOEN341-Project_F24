@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import teamModel from './team.mjs';
 
 const messageSchema = new mongoose.Schema({
     courseId: { 

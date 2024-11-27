@@ -566,8 +566,7 @@ router.get('/comments/', async (req, res) => {
 
         if (commentObj.status === "error") {
             res.status(serverError).json({ 
-                message: "Error fetching comments",
-                error: error.message 
+                message: "Error fetching comments"
             })
         } else {
             res.status(success).json({
@@ -575,10 +574,10 @@ router.get('/comments/', async (req, res) => {
             })
         }
     } catch(e) {
-        console.error('Error fetching comments:', error);
+        console.error('Error fetching comments:', e);
         res.status(500).json({ 
             message: "Error fetching comments",
-            error: error.message 
+            error: e.message 
         })
     }
 })
@@ -592,8 +591,7 @@ router.post('/comments/delete', async (req, res) => {
 
         if (commentObj.status === "error") {
             res.status(serverError).json({ 
-                message: "Error deleting comments",
-                error: error.message 
+                message: "Error deleting comments"
             })
         } else {
             res.status(success).json({
@@ -601,10 +599,10 @@ router.post('/comments/delete', async (req, res) => {
             })
         }
     } catch(e) {
-        console.error('Error deleting comments:', error);
+        console.error('Error deleting comments:', e);
         res.status(500).json({ 
             message: "Error deleting comments",
-            error: error.message 
+            error: e.message 
         })
     }
 })
@@ -618,8 +616,7 @@ router.post('/comments/create', async (req, res) => {
 
         if (commentObj.status === "error") {
             res.status(serverError).json({ 
-                message: "Error creating comments",
-                error: error.message 
+                message: "Error creating comments"
             })
         } else {
             res.status(success).json({
@@ -627,10 +624,10 @@ router.post('/comments/create', async (req, res) => {
             })
         }
     } catch(e) {
-        console.error('Error creating comments:', error);
+        console.error('Error creating comments:', e);
         res.status(500).json({ 
             message: "Error creating comments",
-            error: error.message 
+            error: e.message 
         })
     }
 })
