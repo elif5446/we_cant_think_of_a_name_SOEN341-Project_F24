@@ -6,8 +6,10 @@ import chromedriver from "chromedriver"
     let driver
 
     try {
+        // instatiatig the driver
         const service = new chrome.ServiceBuilder(chromedriver.path)
         driver = await new Builder().forBrowser("chrome").setChromeService(service).build()
+        // making window take the whole screen
         await driver.manage().window().maximize()
         await driver.manage().setTimeouts({implicit: 10000})
         await driver.get("http://localhost:3001")
