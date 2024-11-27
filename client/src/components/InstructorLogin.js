@@ -20,8 +20,12 @@ const InstructorLogin = () => {
                 }
             });
 
-            if (!response.ok) {
-                throw new Error("Login failed");
+            if (response.status === 401) {
+                throw new Error("Your password is wrong. Please try again.");
+            } else if (response.status === 400) {
+                throw new Error("User does not exist.");
+            } else if (!response.ok) {
+                throw new Error("Something Went Wrong");
             }
 
             const data = await response.json();
@@ -42,32 +46,30 @@ const InstructorLogin = () => {
         <div className="instructor-login-page">
             <div className="instructor-login-container">
                 <img src="/images/teacher.svg" alt="Sign Up Icon" className="instructor-icon" />
-                <div id="login-section"><br></br>
-                    <h1 className="title">INSTRUCTOR</h1>
-                    <h1 className="title">LOGIN</h1>
-
-
+                <div id="login-section">
+                    <h2 className="main-title">INSTRUCTOR LOGIN</h2>
                     <form id="form-group" onSubmit={login}>
-                        <div className="form-group"><br></br>
-                            <label htmlFor="email">Email:</label><br></br>
+                        <div className="form-group">
+                            <label htmlFor="email">Email:</label>
                             <input type="text" id="email" name="email" required />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="password">Password:</label><br></br>
+                            <label htmlFor="password">Password:</label>
                             <input type="password" id="password" name="password" required />
                         </div>
                         <div className="form-group">
-                                <button type="submit" className="login">Login</button>
-                            </div>
+                            <button className="loginbutton" type="submit">Login</button>
+                        </div>
                         <Link to="/">
-                            <button className="return">
+                            <button className="returnH">
                                 <img src="/images/home.svg" alt="Home Icon" className="home-avatar" />
                             </button>
                         </Link>
                     </form>
                 </div>
             </div>
-        </div>)
+        </div>
+    );
 };
 
 export default InstructorLogin;
