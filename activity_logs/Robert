@@ -82,7 +82,18 @@ Meetings with whole team: Present for every meeting (24 hours)
    
      -Added CI/CD testing for features in sprint 1 and sprint 2 (3 hours)
     
+Sprint 3 ---------------------------------------------------------------------------------------------------
 
+Roles: Full-stack
+Most collaboration with: Jana, Elif, Hendrik, Yousef
+
+* Activities *
+
+-Refactored InstructorLogin (1 hour)
+-Refactored StudentLogin (1 hour)
+-Refactored InstructorLogin (1 hour)
+-Added ESLINT, resolved all eslint errors (3 hours)
+-Added unit tests for sprint 3 and 4 features.
 
 
 - Meetings with whole team: 
