@@ -1,3 +1,4 @@
+/* global process */
 import app from '../app.mjs';
 import * as dotenv from 'dotenv';
 import Database from "../database/database.mjs"

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import '../styles/Chat.css';
+import PropTypes from 'prop-types';
 
 const Chat = ({ courses, userId, userType, teams, selectedCourse: propSelectedCourse, onCourseSelect }) => {
     const [messages, setMessages] = useState([]);
@@ -342,6 +343,18 @@ const Chat = ({ courses, userId, userType, teams, selectedCourse: propSelectedCo
             </div>
         </div>
     );
+};
+
+Chat.propTypes = {
+    courses: PropTypes.arrayOf(PropTypes.shape({
+        _id: PropTypes.string.isRequired,
+        // add other course properties
+    })).isRequired,
+    userId: PropTypes.string.isRequired,
+    userType: PropTypes.string.isRequired,
+    teams: PropTypes.array.isRequired,
+    selectedCourse: PropTypes.string,
+    onCourseSelect: PropTypes.func.isRequired
 };
 
 export default Chat;

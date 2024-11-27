@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/NotificationBell.css';
+import PropTypes from 'prop-types';
 
 const NotificationBell = ({ courses, studentId }) => {
     const [notifications, setNotifications] = useState([]);
@@ -42,6 +43,11 @@ const NotificationBell = ({ courses, studentId }) => {
             )}
         </div>
     );
+};
+
+NotificationBell.propTypes = {
+    courses: PropTypes.array.isRequired,
+    studentId: PropTypes.string.isRequired
 };
 
 export default NotificationBell;

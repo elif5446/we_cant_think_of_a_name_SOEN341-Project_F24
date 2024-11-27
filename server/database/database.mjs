@@ -1,6 +1,5 @@
 import dotenv from "dotenv"
 import mongoose from "mongoose"
-import readline from "readline-sync"
 import bcrypt from "bcryptjs"
 import userModel from "./models/user.mjs"
 import courseModel from './models/course.mjs';
@@ -79,16 +78,6 @@ class Database {
         }
     }
 
-    async getTeammate(teammateId) {
-        try {
-            const teammate = await userModel.findById(teammateId, 'firstname lastname email');
-            return { result: "success", data: { teammate } };
-        } catch (e) {
-            console.error('Error fetching teammate:', e);
-            return { result: "error", message: e.message };
-        }
-    }
-
     async createUser(email, firstname, lastname, password, usertype) {
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
@@ -102,9 +91,10 @@ class Database {
         })
 
         try {
-            user.save()
-        } catch (e) {
-            throw 'Error trying to save ' + e
+            await user.save()
+            return { result: "success" }
+        } catch (error) {
+            throw `Error trying to save: ${error}`
         }
     }
 

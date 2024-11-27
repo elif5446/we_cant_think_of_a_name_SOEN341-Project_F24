@@ -130,7 +130,7 @@ const DetailedAssessmentView = () => {
 
                                 {expandedStudent === member.studentId && (
                                     <div className="detailed-feedback">
-                                        {member.assessments.map((assessment, index) => (
+                                        {member.assessments.map((assessment) => (
                                             renderAssessment(assessment, member)
                                         ))}
                                     </div>
