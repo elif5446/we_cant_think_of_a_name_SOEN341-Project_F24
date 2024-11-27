@@ -44,7 +44,7 @@ const CreateAccount = () => {
         <div className="create-login-container">
             <img src="/images/loginimg.svg" alt="Sign Up Icon" className="newuser-icon" />
             <div id="login-section"><br></br>
-                <h3 className="main_title">CREATE ACCOUNT</h3>
+                <h3 className="main_title">CREATE AN ACCOUNT</h3>
 
 
                 <form id="form-group">

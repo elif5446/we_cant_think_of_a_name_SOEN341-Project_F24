@@ -7,18 +7,16 @@
     display: flex;
     align-items: center;
     padding: 20px;
-    gap:100px;
+    gap: 50px;
     
   }
 .create-login-page {
-    display:flex;
-    justify-content:flex-end;
-    background-color:#f9f5f2;
-    height:100vh;
-    padding-right:50px;
-    font-family: 'Arial', sans-serif;
-    margin:0;
-
+    display: flex;
+    justify-content: center;
+    background-color: #f9f5f2;
+    height: 100vh;
+    padding-right: 20px;
+    margin: 0;
 }
 
 
@@ -26,14 +24,14 @@
     border-radius: 8px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
     background-color: #ffffff;
-    width:450px;
-    height:550px;
-    padding:50px;
-    display:flex;
+    width: 400px;
+    height: auto;
+    padding: 30px;
+    display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    z-index:1;
+    z-index: 1;
 }
 
 #login-form {
@@ -47,17 +45,17 @@
 
 label {
     margin-bottom: 15px;
-    margin-top:15px;
+    margin-top: 15px;
     display: inline-block;
 
  }
   
 input[type = "text"], input[type="password"] {
-    width: calc(50%);
+    width: 100%;
     padding: 8px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    margin-top:5px;
+    margin-top: 5px;
     box-sizing: border-box;
 }
 
@@ -76,10 +74,10 @@ button.signin, button.returnHome {
     border: none;
     padding: 15px 30px;
     margin-top: 10px;
-    margin-left:30px;
+    margin-left: 30px;
     font-size: 1rem;
     cursor: pointer;
-    border-radius:8px;
+    border-radius: 8px;
     background: linear-gradient(135deg, #969595, #d3d3d3);
     transition: all 0.3s ease;
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
@@ -92,19 +90,18 @@ button:hover.signin, button:hover.returnHome {
   
   }
 .instructor-icon, .newuser-icon {
-    width: 600px;
-    height: 500px;
-    margin-top: 50px;
-    margin-left:25px;
-  }
+    width: 300px;
+    height: auto;
+    margin-top: 20px;
+}
 
 .homeavatar {
-    width:30px;
-    height:auto;
+    width: 30px;
+    height: auto;
 }
 .returnHome {
-    margin-bottom: 300px;
-    margin-left: 200px;
+    margin-bottom: 20px;
+    margin-left: 0;
     background: linear-gradient(135deg, #ededed, #d3d3d3);
     transition: all 0.3s ease;
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
@@ -114,9 +111,9 @@ button:hover.signin, button:hover.returnHome {
 
 
 .main_title {
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: bold;
-    margin-top: 30px;
+    margin-top: 10px;
     color: #333;
     text-align: center;
     text-shadow: 
@@ -128,7 +125,7 @@ button:hover.signin, button:hover.returnHome {
       6px 6px 5px rgba(0, 0, 0, 0.6), 
       7px 7px 10px rgba(0, 0, 0, 0.4),
       8px 8px 15px rgba(0, 0, 0, 0.2); 
-    line-height:0px;
+    line-height: normal;
 
 } 
   
