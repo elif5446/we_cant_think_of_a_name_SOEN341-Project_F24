@@ -54,3 +54,17 @@ Meetings with whole team: Present for every meeting (24 hours)
     - If there are any students with data, append this summary to the main result list for all courses.
   - Return the Compiled Summary:
     - Send the summary data as a JSON response with course and student information, or log an error and send an error response if an exception occurs.
+
+
+Sprint 4 ---------------------------------------------------------
+Roles: API, Database, Testing
+Most collaboration with: Yousef and Jana
+
+Activities
+
+- Meetings with whole team: 15 hours
+- Create Database functions to work with comments: 2 hours
+- Create API routes to comment and delete/retrieve ccomments: 2 hours
+- Implement the commenting feature in the frontend: 1 hours
+- Fix the frontend interactive comment display: 2 hours
+- Create automated testing script: 2 hours
