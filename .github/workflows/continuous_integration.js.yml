@@ -30,4 +30,4 @@ jobs:
       env:
         CI: true
     - name: Eslint
-      run: npm eslint
+      run: npx eslint
