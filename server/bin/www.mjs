@@ -2,7 +2,9 @@ import app from '../app.mjs';
 import * as dotenv from 'dotenv';
 import Database from "../database/database.mjs"
 
+// fetching
 dotenv.config();
+// connecting to port 3001 (default)
 const PORT = process.env.PORT || 3001;
 
 (async () => {
@@ -17,6 +19,7 @@ const PORT = process.env.PORT || 3001;
     process.exit()
   }
 
+  // starting the server on port 3001
   app.listen(PORT, () => {
     console.log(`Server started at localhost http://localhost:${PORT}`);
   });
