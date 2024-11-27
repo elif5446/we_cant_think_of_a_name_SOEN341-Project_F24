@@ -1,6 +1,5 @@
 import dotenv from "dotenv"
 import mongoose from "mongoose"
-import readline from "readline-sync"
 import bcrypt from "bcryptjs"
 import userModel from "./models/user.mjs"
 import courseModel from './models/course.mjs';
