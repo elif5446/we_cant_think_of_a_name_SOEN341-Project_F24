@@ -455,3 +455,115 @@ describe('Assessment Submission Tests', () => {
         expect(result.assessment.assessmentType).toBe('self');
     });
 });
+
+describe('Chat Feature Tests', () => {
+    let instructor, student1, student2, course, team;
+
+    beforeEach(async () => {
+        // Create test users
+        instructor = await userModel.create({
+            email: 'instructor@test.com',
+            firstname: 'Test',
+            lastname: 'Instructor',
+            password: 'password123',
+            usertype: 'instructor'
+        });
+
+        student1 = await userModel.create({
+            email: 'student1@test.com',
+            firstname: 'Student',
+            lastname: 'One',
+            password: 'password123',
+            usertype: 'student'
+        });
+
+        student2 = await userModel.create({
+            email: 'student2@test.com',
+            firstname: 'Student',
+            lastname: 'Two',
+            password: 'password123',
+            usertype: 'student'
+        });
+
+        // Create test course
+        course = await courseModel.create({
+            courseCode: 'TEST101',
+            courseName: 'Test Course',
+            instructor: instructor._id,
+            students: [student1._id, student2._id]
+        });
+
+        // Create test team
+        team = await teamModel.create({
+            teamName: 'Test Team',
+            course: course._id,
+            members: [student1._id, student2._id]
+        });
+    });
+
+    test('should send and retrieve course-wide message', async () => {
+        const result = await database.saveChatMessage(
+            course._id,
+            instructor._id,
+            null,
+            'Course announcement',
+            'instructor'
+        );
+
+        expect(result.result).toBe('success');
+        expect(result.message.message).toBe('Course announcement');
+        expect(result.message.senderType).toBe('instructor');
+    });
+
+    test('should send and retrieve direct message', async () => {
+        const result = await database.saveChatMessage(
+            course._id,
+            student1._id,
+            student2._id,
+            'Direct message test',
+            'student'
+        );
+
+        expect(result.result).toBe('success');
+        expect(result.message.recipientId.toString()).toBe(student2._id.toString());
+        expect(result.message.message).toBe('Direct message test');
+    });
+
+    test('should send and retrieve team message', async () => {
+        const result = await database.saveChatMessage(
+            course._id,
+            student1._id,
+            null,
+            'Team message',
+            'student',
+            team._id
+        );
+
+        expect(result.result).toBe('success');
+        expect(result.message.teamId.toString()).toBe(team._id.toString());
+        expect(result.message.message).toBe('Team message');
+    });
+
+    test('should get chat recipients for course', async () => {
+        const recipients = await database.getChatRecipients(course._id);
+        
+        expect(recipients.length).toBe(3); // instructor + 2 students
+        expect(recipients.some(r => r._id.toString() === instructor._id.toString())).toBe(true);
+        expect(recipients.some(r => r._id.toString() === student1._id.toString())).toBe(true);
+        expect(recipients.some(r => r._id.toString() === student2._id.toString())).toBe(true);
+    });
+
+    test('should reject empty messages', async () => {
+        const result = await database.saveChatMessage(
+            course._id,
+            student1._id,
+            null,
+            '',
+            'student'
+        );
+
+        expect(result.result).toBe('error');
+    });
+
+    
+});

@@ -49,7 +49,7 @@ const StudentLogin = () => {
             <div className="student-login-container">
                 <img src="/images/loginStudent.svg" alt="Sign Up Icon" className="student-icon" />
                 <div id="login-section">
-                    <h1 className="main-title">STUDENT LOGIN</h1>
+                    <h2 className="main-title">STUDENT LOGIN</h2>
                     <form id="form-group" onSubmit={login}>
                         <div className="form-group">
                             <label htmlFor="email">Email:</label>
