@@ -13,15 +13,15 @@ const AssessmentChat = () => {;
 
     useEffect(() => {
         fetchMessages();
-    }, [assessmentId]);
+    });
 
     // useEffect(() => {
     //     scrollToBottom();
     // }, [messages]);
 
-    const scrollToBottom = () => {
-        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-    };
+    // const scrollToBottom = () => {
+    //     messagesEndRef.current?.scrollIclsntoView({ behavior: "smooth" });
+    // };
 
     const fetchMessages = async () => {
         try {
