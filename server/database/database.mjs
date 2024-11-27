@@ -7,6 +7,7 @@ import teamModel from './models/team.mjs';
 import assessmentModel from './models/assessment.mjs';
 import messageModel from './models/message.mjs';
 import commentModel from "./models/comment.mjs"
+import process from 'process';
 
 
 // require('dotenv').config();
@@ -143,6 +144,7 @@ class Database {
                 return { result: "fail", user: null }
             }
         } catch (e) {
+            console.error('Error getting user:', e);
             return { result: "error", user: null }
         }
     }
@@ -199,19 +201,6 @@ class Database {
         }
     }
 
-    async addStudentToCourse(courseId, studentId) {
-        try {
-            const course = await courseModel.findByIdAndUpdate(
-                courseId,
-                { $addToSet: { students: studentId } },
-                { new: true }
-            );
-            return { result: "success", course };
-        } catch (e) {
-            console.error('Error adding student to course:', e);
-            return { result: "error", message: e.message };
-        }
-    }
     
     async createTeamForCourse(courseId, teamName, memberIds) {
         try {

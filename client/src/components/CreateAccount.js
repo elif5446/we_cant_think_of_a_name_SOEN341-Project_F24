@@ -30,12 +30,12 @@ const CreateAccount = () => {
             }
 
             return response.json();
-        }).then(successObj => {
+        }).then(()   => {
             if (userType.toLowerCase() === "student") {
                 navigate("/student-menu")
             } else {
                 navigate("/instructor-page")
-            }
+            } 
         })
     }
 
