@@ -10,6 +10,16 @@ The development process follows the Agile Scrum methodology, with four sprints o
 - **Anonymous Peer Feedback**: Peer feedback is anonymized to encourage honest, constructive feedback.
 - **Instructor Dashboard**: Instructors can manage teams, view assessment results, and export data in CSV format.
 
+## Technology Stack
+
+| Layer        | Technologies |
+|-------------|--------------|
+| **Frontend** | React 18, React Router DOM, Chart.js (react-chartjs-2), ExcelJS, Create React App |
+| **Backend**  | Node.js (ES modules), Express, Mongoose (MongoDB) |
+| **Auth**     | bcryptjs, express-session, jsonwebtoken (JWT) |
+| **Testing**  | Jest, React Testing Library, MongoDB Memory Server, Selenium WebDriver |
+| **Dev tools**| ESLint, Babel, Nodemon, dotenv |
+
 Team Members:  
 **Yousef Bisharah** (YousefBisharah) | Backend Developer (Login/Team Management)[40151411]  
 **Elif Sag Sesen** (elif5446) | Frontend Developer (UI/UX - Login) [40283343]  
